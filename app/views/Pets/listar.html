@@ -1,0 +1,22 @@
+#{extends 'main.html' /}
+#{set title:'hfchcct' /}
+
+
+
+<form action="@{Pets.listar}">
+    <input type="text" name="busca" value="${busca}">
+
+    <button type="submit">Pesquisar</button>
+
+
+</form>
+
+
+#{List items:lista, as: 'e'}
+
+<a href='@Pets.editar(e.id)'>Editar</a>
+<a href='@Pets.remover(e.id)'>Remover</a>
+
+${e.nome} <br/>
+
+#{/List}

@@ -1,0 +1,45 @@
+#{extends 'main.html' /}
+#{set title:'Formulário de Pets' /}
+
+
+<form action="@{Pets.salvar}">
+
+    <input type="hidden" name="e.id" value="${s?.id}">
+
+    <label>Nome</label>
+
+    <input type="text" name="e.nome" value="${s?.nome}"> <br/>
+
+    #{if s?.id}
+
+    <select name="idUsuario" >
+
+        <option></option>
+
+
+        #{list items:Usuarios, as: 'u'}
+        <option value="${u.id}">${u.nome}</option>
+        #{/list}
+
+
+    </select>
+
+    <br/>
+
+    #{/if}
+
+    <button type="submit">Enviar</button>
+
+</form>
+
+#{if s?.id}
+#{List items:s.Usuarios, as: 'r'}
+
+<a href="Pets.removerUsuario(s.id, r.id)">Remover</a>
+
+${r.nome}
+
+#{/List}
+
+#{/if}
+

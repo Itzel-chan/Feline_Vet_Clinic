@@ -39,7 +39,7 @@ public class Pets extends Controller {
     public static void editar(Long id) {
         Pet e = Pet.findById(id);
         List<Usuario> usuarios = Usuario.findAll();
-        renderTemplate("Pets/forms.html", e, usuarios);
+        renderTemplate("Pets/form.html", e, usuarios);
     }
 
     public static void remover(Long id) {

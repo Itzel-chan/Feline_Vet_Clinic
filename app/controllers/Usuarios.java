@@ -35,9 +35,9 @@ public class Usuarios extends Controller {
     }
 
     public static void editar(long id) {
-        Usuario usu = Usuario.findById(id);
+        Usuario u = Usuario.findById(id);
         List<Pet> pets = Pet.findAll();
-        renderTemplate("Usuarios/form.html", usu, pets);
+        renderTemplate("Usuarios/form.html", u, pets);
     }
 
     public static void remover(long id) {
