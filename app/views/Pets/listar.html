@@ -1,22 +1,31 @@
 #{extends 'main.html' /}
-#{set title:'hfchcct' /}
+#{set title:'Listagem de Pets' /}
 
 
 
-<form action="@{Pets.listar}">
-    <input type="text" name="busca" value="${busca}">
+<table>
+    <tr>
+        <th class="title" colspan="4">Listagem Pets</th>
+    </tr>
 
-    <button type="submit">Pesquisar</button>
+    <tr>
 
+        <th>Nome</th>
+        <th>Idade</th>
+        <th colspan="2">Ações</th>
 
-</form>
+    </tr>
 
+    #{list items: lista, as: 'pet'}
 
-#{List items:lista, as: 'e'}
+    <tr>
 
-<a href='@Pets.editar(e.id)'>Editar</a>
-<a href='@Pets.remover(e.id)'>Remover</a>
+        <td>${pet.nome}</td>
+        <td>${pet.idade}</td>
+        <td><a href='@{Pets.editar(pet.id)}'>Editar</a></td>
+        <td><a href='@{Pets.remover(pet.id)}'>Remover</a></td>
 
-${e.nome} <br/>
+    </tr>
 
-#{/List}
+    #{/list}
+</table>

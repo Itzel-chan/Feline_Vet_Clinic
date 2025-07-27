@@ -3,30 +3,29 @@ package controllers;
 import java.util.List;
 
 import models.Pessoa;
-import models.Pet;
 import play.mvc.Controller;
 
-public class Pets extends Controller {
+public class Pessoas extends Controller {
 
     public static void form() {
         render();
     }
 
-    public static void salvar(Pet felino) {
-        felino.save();
+    public static void salvar(Pessoa pess) {
+        pess.save();
         form();
     }
 
     public static void listar(String busca) {
 
-        List<Pet> lista = null;
+        List<Pessoa> lista = null;
 
         if (busca != null) {
-            lista = Pet.find("nome like ?1", "%" + busca + "%").fetch();
+            lista = Pessoa.find("nome like ?1", "%" + busca + "%").fetch();
 
             
         }else{
-            lista = Pet.findAll(); 
+            lista = Pessoa.findAll(); 
         }
         render(lista);
 
@@ -47,12 +46,12 @@ public class Pets extends Controller {
     }
 
     public static void editar(long id) {
-        Pet fe = Pet.findById(id);
-        renderTemplate("Pets/form.html", fe);
+        Pessoa pe = Pessoa.findById(id);
+        renderTemplate("Pessoas/form.html", pe);
     }
 
     public static void remover(long id) {
-        Pet s = Pet.findById(id);
+        Pessoa s = Pessoa.findById(id);
         s.delete();
         listar(null);
 

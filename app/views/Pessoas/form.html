@@ -1,0 +1,40 @@
+#{extends 'main.html' /}
+#{set title:'Formulário' /}
+
+<form action="@{Pessoas.salvar}" method="post">
+
+    <h1>Cadastro</h1>
+
+    <input type="hidden" name="pess.id" value="${pess?.id}">
+
+    <label>Nome</label>
+    <input type="text" name="pess.nome" value="${pess?.nome}"> <br />
+
+    <label>email</label>
+    <input type="text" name="pess.email" value="${pess?.email}"> <br />
+
+    <label>senha</label>
+    <input type="password" name="pess.senha" value="${pess?.senha}"> <br />
+
+    <label>Data Nascimento</label>
+    <input type="date" name="pess.dataNascimento" value="${pess?.dataNascimento}"> <br />
+
+
+
+    <select name="Pesooa.Pet.id">
+        #{list items: lista, as: 'pessoa'}
+        <option value="$pessoa.id">pessoa.nome</option>
+        #{/list}
+
+    </select>
+
+
+    <button type="submit">
+        #{if Pessoa} Editar #{/if}
+        #{else} Cadastrar #{/else}
+
+
+    </button>
+
+
+</form>

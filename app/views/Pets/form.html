@@ -1,45 +1,28 @@
 #{extends 'main.html' /}
-#{set title:'Formulário de Pets' /}
+#{set title:'Formulário' /}
+
+<form action="@{Pets.salvar}" method="post">
+
+    <h1>
+        #{if Pessoa} Edição #{/if}
+        #{else} Cadastro #{/else}
+    </h1>
 
 
-<form action="@{Pets.salvar}">
-
-    <input type="hidden" name="e.id" value="${s?.id}">
+    <input type="hidden" name="felino.id" value="${felino?.id}">
 
     <label>Nome</label>
+    <input type="text" name="felino.nome" value="${felino?.nome}"> <br />
 
-    <input type="text" name="e.nome" value="${s?.nome}"> <br/>
-
-    #{if s?.id}
-
-    <select name="idUsuario" >
-
-        <option></option>
+    <label>Idade</label>
+    <input type="text" name="felino.idade" value="${felino?.idade}"> <br />
 
 
-        #{list items:Usuarios, as: 'u'}
-        <option value="${u.id}">${u.nome}</option>
-        #{/list}
 
+    <button type="submit">
+        #{if Pet} Editar #{/if}
+        #{else} Cadastrar #{/else}
+    </button>
 
-    </select>
-
-    <br/>
-
-    #{/if}
-
-    <button type="submit">Enviar</button>
 
 </form>
-
-#{if s?.id}
-#{List items:s.Usuarios, as: 'r'}
-
-<a href="Pets.removerUsuario(s.id, r.id)">Remover</a>
-
-${r.nome}
-
-#{/List}
-
-#{/if}
-
