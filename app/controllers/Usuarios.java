@@ -16,21 +16,29 @@ public class Usuarios extends Controller {
         form();
     }
 
-    public static void listar() {
-        List<Usuario> lista = Usuario.findAll();
+    public static void listar(String busca) {
+
+        List<Usuario> lista;
+        if (busca == null) {
+            lista = Usuario.findAll();
+
+        } else {
+
+            lista = Usuario.find("nome like ?1 or email like ?1","%"+busca+"%").fetch();
+        }
         render(lista);
 
     }
 
     public static void editar(long id) {
         Usuario usu = Usuario.findById(id);
-        renderTemplate( "Usuarios/form.html, usu");
+        renderTemplate("Usuarios/form.html", usu);
     }
 
-    public static void remover() {
-        
-    
-        
+    public static void remover(long id) {
+        Usuario usu = Usuario.findById(id);
+        usu.delete();
+        listar(null);
 
     }
 

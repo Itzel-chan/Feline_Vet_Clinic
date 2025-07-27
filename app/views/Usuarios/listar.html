@@ -1,6 +1,21 @@
 #{extends 'main.html' /}
 #{set title:'Listagem de usuários' /}
 
+
+
+<form action="@{Usuarios.listar}">
+
+    <input type="text" name="busca">
+
+    <button type="submit">Pesquisar</button>
+
+
+
+
+
+      
+</form>
+
 <table>
 <tr>
 
@@ -8,7 +23,7 @@
     <th>Nome</th>
     <th>Email</th>
     <th>Senha</th>
-    <th>Ano de Nascimento</th>
+    <th>Data de Nascimento</th>
 
 
 </tr>
@@ -20,8 +35,9 @@
     <td>${u.nome}</td>
     <td>${u.email}</td>
     <td>${u.senha}</td>
-    <td>${u.anoNascimento}</td>
+    <td>${u.dataNascimento?.format("dd/MM/yyyy")}</td>
     <td><a href='@{Usuarios.editar(u.id)}'>Editar</a></td>
+    <td><a href='@{Usuarios.remover(u.id)}'>remover</a></td>
 
 
 </tr>

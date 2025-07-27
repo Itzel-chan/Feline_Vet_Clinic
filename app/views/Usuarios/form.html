@@ -5,6 +5,8 @@
 
     <h1>Cadastro</h1>
 
+    <input type="hidden" name="usu.id" value="${usu?.id}">
+
     <label>Nome</label>
     <input type="text" name="usu.nome" value="${usu?.nome}"> <br />
 
@@ -14,8 +16,8 @@
     <label>senha</label>
     <input type="password" name="usu.senha" value="${usu?.senha}"> <br />
 
-    <label>Ano Nascimento</label>
-    <input type="text" name="usu.anoNascimento" value="${usu?.anoNascimento}"> <br />
+    <label>Data Nascimento</label>
+    <input type="date" name="usu.dataNascimento" value="${usu?.dataNascimento}"> <br />
 
     <button type="submit">Enviar</button>
 
