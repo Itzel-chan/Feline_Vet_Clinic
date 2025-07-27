@@ -1,0 +1,29 @@
+#{extends 'main.html' /}
+#{set title:'Formulário' /}
+
+<form action="@{Usuarios.salvar}" method="post">
+
+    <h1>Cadastro</h1>
+
+    <label>Nome</label>
+    <input type="text" name="usu.nome" value="${usu?.nome}"> <br />
+
+    <label>email</label>
+    <input type="text" name="usu.email" value="${usu?.email}"> <br />
+
+    <label>senha</label>
+    <input type="password" name="usu.senha" value="${usu?.senha}"> <br />
+
+    <label>Ano Nascimento</label>
+    <input type="text" name="usu.anoNascimento" value="${usu?.anoNascimento}"> <br />
+
+    <button type="submit">Enviar</button>
+
+
+
+
+
+
+
+
+</form>
