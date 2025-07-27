@@ -2,18 +2,22 @@ package controllers;
 
 import java.util.List;
 
+import models.Pet;
 import models.Usuario;
 import play.mvc.Controller;
 
 public class Usuarios extends Controller {
 
     public static void form() {
-        render();
+        List<Pet> pets = Pet.findAll();
+
+        render(pets);
     }
 
     public static void salvar(Usuario usu) {
         usu.save();
-        form();
+        editar(usu.id);
+        // form();
     }
 
     public static void listar(String busca) {
@@ -32,7 +36,8 @@ public class Usuarios extends Controller {
 
     public static void editar(long id) {
         Usuario usu = Usuario.findById(id);
-        renderTemplate("Usuarios/form.html", usu);
+        List<Pet> pets = Pet.findAll();
+        renderTemplate("Usuarios/form.html", usu, pets);
     }
 
     public static void remover(long id) {
