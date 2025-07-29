@@ -1,0 +1,26 @@
+#{extends 'main.html' /}
+#{set title:'Formulário' /}
+
+<form action="@{Pessoas.salvar}" method="post">
+
+    <h1>
+    
+        #{if pe} Edição #{/if}
+        #{else} Cadastro #{/else}
+    </h1>
+
+    <input type="hidden" name="pess.id" value="${pe?.id}">
+
+    <label>Nome</label>
+    <input type="text" name="pess.nome" value="${pe?.nome}"> <br>
+
+    <label>email</label>
+    <input type="text" name="pess.email" value="${pe?.email}"> <br>
+
+    <button type="submit">
+        #{if pe} Editar #{/if}
+        #{else} Cadastrar #{/else}
+    </button>
+
+
+</form>

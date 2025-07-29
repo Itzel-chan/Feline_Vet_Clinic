@@ -1,22 +1,47 @@
 #{extends 'main.html' /}
-#{set title:'hfchcct' /}
+#{set title:'Listagem de Pets' /}
 
 
-
+<h2>Filtro de pets</h2>
 <form action="@{Pets.listar}">
-    <input type="text" name="busca" value="${busca}">
+
+
+    <input type="text" name="busca">
 
     <button type="submit">Pesquisar</button>
 
-
 </form>
 
+<table>
+    <tr>
+        <th colspan="5">
+            <h3>Listagem de Pets</h3>
+        </th>
+    </tr>
 
-#{List items:lista, as: 'e'}
+    <tr>
 
-<a href='@Pets.editar(e.id)'>Editar</a>
-<a href='@Pets.remover(e.id)'>Remover</a>
+        <th>Nome</th>
+        <th>Idade</th>
+        <th>Nome do dono</th>
+        <th colspan="2">Ações</th>
 
-${e.nome} <br/>
+    </tr>
 
-#{/List}
+    #{list items: lista, as: 'pet'}
+
+    <tr>
+
+        <td>${pet.nome}</td>
+        <td>${pet.idade}</td>
+
+
+        <td>${pet.dono?.nome}</td>
+
+        <td><a href='@{Pets.editar(pet.id)}'>Editar</a></td>
+        <td><a href='@{Pets.remover(pet.id)}'>Remover</a></td>
+
+    </tr>
+
+    #{/list}
+</table>

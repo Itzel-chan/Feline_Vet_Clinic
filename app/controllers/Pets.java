@@ -2,63 +2,60 @@ package controllers;
 
 import java.util.List;
 
+import models.Pessoa;
 import models.Pet;
-import models.Usuario;
+import models.Situacao;
 import play.mvc.Controller;
 
 public class Pets extends Controller {
 
-    public static void form() {
-        render();
-    }
+    public static void form(Long id) {
 
-    public static void salvar(Pet p, Long idUsuario) {
-        if (idUsuario != null) {
-            Usuario u = Usuario.findById(idUsuario);
-            p.Usuarios.add(u);
+        if (id == null) {
+            Pessoas.listar(null);
+        }
+        Pessoa pessoa = Pessoa.find("situacao = ?1 and id = ?2", Situacao.ATIVA, id).first();
 
+        if (pessoa == null) {
+            Pessoas.listar(null);
         }
 
-        p.save();
-        editar(p.id);
+        render(pessoa);
+    }
 
+    public static void salvar(Pet felino) {
+        felino.save();
+        listar(null);
     }
 
     public static void listar(String busca) {
 
-        List<Pet> lista;
-        if (busca == null) {
-            lista = Pet.findAll();
+        List<Pet> lista = null;
 
+        if (busca == null || busca.trim().isEmpty()) {
+
+            lista = Pet.find("situacao = ?1", Situacao.ATIVA).fetch();
         } else {
-            lista = Pet.find("cast(valor as string) like ?1 order by valor", "%" + busca + "%").fetch();
+
+            lista = Pet.find("situacao = ?1 and lower(nome) like ?2", Situacao.ATIVA, "%" + busca.toLowerCase() + "%")
+                    .fetch();
         }
-        render(lista, busca);
+        render(lista);
+
     }
 
-    public static void editar(Long id) {
-        Pet e = Pet.findById(id);
-        List<Usuario> usuarios = Usuario.findAll();
-        renderTemplate("Pets/form.html", e, usuarios);
+    public static void editar(long id) {
+        Pet fe = Pet.findById(id);
+        Pessoa pessoa = fe.dono;
+        renderTemplate("Pets/form.html", fe, pessoa);
     }
 
-    public static void remover(Long id) {
+    public static void remover(long id) {
+        Pet s = Pet.findById(id);
+        s.situacao = Situacao.INATIVA;
 
-        Pet t = Pet.findById(id);
-        t.delete();
+        s.save();
         listar(null);
-
-    }
-
-    public static void removerUsuario(Long idPet, Long idUsu) {
-
-        Pet e = Pet.findById(idPet);
-        Usuario u = Usuario.findById(idUsu);
-
-        e.Usuarios.remove(u);
-        e.save();
-        editar(e.id);
-
     }
 
 }
