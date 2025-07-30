@@ -190,14 +190,20 @@ a:hover {
 
 .footer-content {
     display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+ 
+
+    /* display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 15px;
+    gap: 15px; */
 }
 
 .main-footer p {
     margin-bottom: 0; /* Garante que o parágrafo no footer não tenha margem inferior extra */
-}
+}   
 
 .social-links a {
     color: var(--text-light);
@@ -623,6 +629,7 @@ form br {
 
     .footer-content {
         flex-direction: column;
+       
     }
 
     /* Formulários de Cadastro/Edição */
