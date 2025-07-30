@@ -1,4 +1,4 @@
-#{extends 'main.html' /}
+<!-- #{extends 'main.html' /}
 #{set title:'Formulário' /}
 
 
@@ -30,4 +30,44 @@
     </button>
 
 
-</form>
+</form> -->
+
+#{extends 'main.html' /}
+#{set title:'Formulário de Pets' /}
+
+<main class="form-page-content">
+    
+    <form action="@{Pets.salvar}" method="post" class="pet-form">
+
+        <h1>
+            #{if fe} Edição #{/if}
+            #{else} Cadastro #{/else}
+            de Pet
+        </h1>
+
+        @* Mensagem de relacionamento com a pessoa *@
+        <div class="form-related-info">
+            Relacionando um pet à pessoa com nome: <strong>${pessoa?.nome}</strong>
+        </div>
+
+        <input type="hidden" name="felino.id" value="${fe?.id}">
+        <input type="hidden" name="felino.dono.id" value="${pessoa?.id}">
+
+        <div class="form-group">
+            <label for="petNome">Nome do Pet:</label>
+            <input type="text" id="petNome" name="felino.nome" value="${fe?.nome}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="petIdade">Idade do Pet:</label>
+            <input type="number" id="petIdade" name="felino.idade" value="${fe?.idade}" required min="0">
+        </div>
+
+        <button type="submit" class="submit-button">
+            #{if fe} Salvar Alterações #{/if}
+            #{else} Cadastrar Pet #{/else}
+        </button>
+
+        <a href="@{Pets.listar}" class="back-button">Voltar para a Lista de Pets</a>
+    </form>
+</main>

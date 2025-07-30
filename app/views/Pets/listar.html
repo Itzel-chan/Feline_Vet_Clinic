@@ -1,16 +1,19 @@
 #{extends 'main.html' /}
 #{set title:'Listagem de Pets' /}
 
+<!-- <div class="container form-filter-container">
+    <form action="@{Pets.listar}">
 
-<h2>Filtro de pets</h2>
-<form action="@{Pets.listar}">
+        <h2>Filtro de pets</h2>
+
+        <input type="text" name="busca">
+
+        <button type="submit">Pesquisar</button>
+
+    </form>
 
 
-    <input type="text" name="busca">
-
-    <button type="submit">Pesquisar</button>
-
-</form>
+</div>
 
 <table>
     <tr>
@@ -44,4 +47,60 @@
     </tr>
 
     #{/list}
-</table>
+</table> -->
+
+
+
+
+
+
+<!-- #{extends 'main.html' /}
+#{set title:'Listagem de Pets' /} -->
+
+<div class="container form-filter-container">
+    <h2>Filtro de pets</h2>
+    <form action="@{Pets.listar}">
+        <input type="text" name="busca" placeholder="Buscar por nome ou dono...">
+        <button type="submit">Pesquisar</button>
+    </form>
+</div>
+
+<main class="data-table-container">
+    <h1>Listagem de Pets</h1>
+
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th>ID</th> <th class="column-name">Nome</th>
+                <th>Idade</th>
+                <th>Nome do dono</th>
+                <th colspan="2" class="column-actions">Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            #{list items: lista, as: 'pet'}
+            <tr>
+                <td data-label="ID">${pet.id}</td> <td data-label="Nome">${pet.nome}</td>
+                <td data-label="Idade">${pet.idade}</td>
+                <td data-label="Nome do dono">${pet.dono?.nome}</td>
+
+                <td class="table-action-buttons-cell">
+                    <a href='@{Pets.editar(pet.id)}' class="table-action-button edit-button">Editar</a>
+                    <a href='@{Pets.remover(pet.id)}' class="table-action-button delete-button">Remover</a>
+                </td>
+            </tr>
+            #{/list}
+            #{else}
+            <tr>
+                <td colspan="6" style="text-align: center; padding: 20px; color: var(--highlight-blue); font-style: italic;">
+                    Nenhum pet cadastrado ainda.
+                </td>
+            </tr>
+            #{/else}
+        </tbody>
+    </table>
+
+    <div class="add-new-button-container">
+        <a href="@{Pets.form()}" class="add-new-button">Cadastrar Novo Pet</a>
+    </div>
+</main>

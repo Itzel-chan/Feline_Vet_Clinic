@@ -1,46 +1,70 @@
 #{extends 'main.html' /}
 #{set title:'Listagem de Pessoas' /}
 
-<h2>Filtro de pessoas</h2>
-<form action="@{Pessoas.listar}">
+<div class="container form-filter-container">
+
+    <h2>Filtro de pessoas</h2>
+
+    <form action="@{Pessoas.listar}">
+        <input type="text" name="busca">
+        <button type="submit">Pesquisar</button>
+    </form>
 
 
-    <input type="text" name="busca">
-
-    <button type="submit">Pesquisar</button>
-
-</form>
+</div>
 
 
-<table>
-
-    <tr>
-        <th colspan="5">
-            <h3>Listagem Pessoas</h3>
-        </th>
-    </tr>
-
-    <tr>
-
-        <th>Nome</th>
-        <th>Email</th>
-        <th colspan="3">Ações</th>
-
-    </tr>
-
-    #{list items: lista, as: 'pessoa'}
-
-    <tr>
-        <td>${pessoa.nome}</td>
-        <td>${pessoa.email}</td>
+<!-- <form action="@{Pessoas.listar}" method="GET">
+    <input type="text" name="busc" placeholder="Buscar por nome ou email...">
+    <button type="submit">Buscar</button>
+</form> -->
 
 
-        <td><a href='@{Pets.form(pessoa.id)}'>Adicionar novo pet</a></td>
-
-        <td><a href='@{Pessoas.editar(pessoa.id)}'>Editar</a></td>
-        <td><a href='@{Pessoas.remover(pessoa.id)}'>Remover</a></td>
-    </tr>
-
-    #{/list}
 
 </table>
+
+
+<main class="data-table-container">
+    <h1>Listagem de Pessoas</h1>
+
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th class="column-name">Nome</th>
+                <th>Email</th>
+                <th class="column-actions" colspan="2">Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            #{list items: lista, as: 'pessoa'}
+
+            <tr>
+                <td>${pessoa.nome}</td>
+                <td>${pessoa.email}</td>
+
+
+                <td><a href='@{Pets.form(pessoa.id)}'>Adicionar novo pet</a></td>
+
+                <td><a href='@{Pessoas.editar(pessoa.id)}'>Editar</a></td>
+                <td><a href='@{Pessoas.remover(pessoa.id)}'>Remover</a></td>
+            </tr>
+
+            #{/list}
+
+            #{else}
+            <tr>
+                <td colspan="4"
+                    style="text-align: center; padding: 20px; color: var(--highlight-blue); font-style: italic;">
+                    Nenhuma pessoa cadastrada ainda.
+                </td>
+            </tr>
+            #{/else}
+        </tbody>
+    </table>
+
+    <div class="add-new-button-container">
+        <a href="@{Pessoas.form()}" class="add-new-button">Cadastrar Nova Pessoa</a>
+    </div>
+</main>

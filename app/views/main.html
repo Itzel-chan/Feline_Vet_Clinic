@@ -11,18 +11,91 @@
 </head>
 
 <body>
-    <a href="@{Pessoas.form}">form pessoas</a> <br>
-    <a href="@{Pessoas.listar}">listagem pessoas</a> <br>
+    <!-- <a href="@{Pessoas.form}">form pessoas</a> <br>
+    <a href="@{Pessoas.listar}">listagem pessoas</a> <br> -->
 
     <!-- Tirei o link para o form -->
-    <a href="@{Pets.listar}">listagem pets</a> <br>
+    <!-- <a href="@{Pets.listar}">listagem pets</a> <br> -->
     <br>
 
-    #{doLayout /}
+   
+    <header class="main-header">
+        <div class="container header-content">
+            <div class="logo">
+                <a href="/">
+                    <span class="site-name">Tsuki_Neko_Vet_Clinic</span>
+                </a>
+            </div>
+            <nav class="main-nav">
+                <button class="menu-toggle" aria-label="Abrir Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-list">
+                    <li><a href="@{Pessoas.form()}" class="nav-link">Cadastro Pessoas</a></li>
+                    <li><a href="@{Pessoas.listar()}" class="nav-link">Listagem Pessoas</a></li>
+                    <li><a href="@{Pets.listar()}" class="nav-link">Listagem Pets</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+       
+        #{doLayout /}
+
+<!-- Pode apagar -->
+
+    </main>
+
+    <footer class="main-footer">
+        <div class="container footer-content">
+          
+            <div class="social-links">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="@{'/public/javascripts/jquery-1.6.4.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+    <script src="@{'/public/javascripts/main.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+    <script src="https://kit.fontawesome.com/your-font-awesome-kit.js" crossorigin="anonymous"></script>
+    #{get 'moreScripts' /}
+
+   
+
+    <footer class="main-footer">
+    <div class="container footer-content">
+        <p>&copy; 2025 Itzel-Chan </p>
+        <div class="social-links">
+            <a href="https://github.com/seu_usuario_aqui" aria-label="GitHub" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+        </div>
+    </div>
+</footer>
+
+    <!-- <footer class="main-footer">
+        <div class="container footer-content">
+            <div class="social-links">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>     -->
+    
+    
+
+    <!-- <script src="@routes.Assets.at(javascripts/main.js)"></script>
+    <script src="https://kit.fontawesome.com/your-font-awesome-kit.js" crossorigin="anonymous"></script>
+
+ 
 
     <script src="@{'/public/javascripts/jquery-1.6.4.min.js'}" type="text/javascript"
         charset="${_response_encoding}"></script>
-    #{get 'moreScripts' /}
+    #{get 'moreScripts' /}  -->
 </body>
 
 </html>
