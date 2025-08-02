@@ -16,7 +16,9 @@ import play.db.jpa.Model;
 public class Pessoa extends Model {
 
     public String nome;
+    public String telefone;
     public String email;
+    public String senha;
 
     @Enumerated(EnumType.STRING)
     public Situacao situacao;

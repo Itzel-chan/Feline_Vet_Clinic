@@ -60,7 +60,7 @@
 <div class="container form-filter-container">
     <h2>Filtro de pets</h2>
     <form action="@{Pets.listar}">
-        <input type="text" name="busca" placeholder="Buscar por nome ou dono...">
+        <input type="text" name="busca" placeholder="Buscar por Pet">
         <button type="submit">Pesquisar</button>
     </form>
 </div>
@@ -71,7 +71,7 @@
     <table class="data-table">
         <thead>
             <tr>
-                <th>ID</th> <th class="column-name">Nome</th>
+                 <th class="column-name">Nome</th>
                 <th>Idade</th>
                 <th>Nome do dono</th>
                 <th colspan="2" class="column-actions">Ações</th>
@@ -80,7 +80,7 @@
         <tbody>
             #{list items: lista, as: 'pet'}
             <tr>
-                <td data-label="ID">${pet.id}</td> <td data-label="Nome">${pet.nome}</td>
+                <td data-label="Nome">${pet.nome}</td>
                 <td data-label="Idade">${pet.idade}</td>
                 <td data-label="Nome do dono">${pet.dono?.nome}</td>
 

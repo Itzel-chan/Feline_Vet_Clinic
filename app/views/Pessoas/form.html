@@ -1,36 +1,8 @@
-<!-- #{extends 'main.html' /}
-#{set title:'Formulário' /}
-
-<form action="@{Pessoas.salvar}" method="post">
-
-    <h1>
-    
-        #{if pe} Edição #{/if}
-        #{else} Cadastro #{/else}
-    </h1>
-
-    <input type="hidden" name="pess.id" value="${pe?.id}">
-
-    <label>Nome</label>
-    <input type="text" name="pess.nome" value="${pe?.nome}"> <br>
-
-    <label>email</label>
-    <input type="text" name="pess.email" value="${pe?.email}"> <br>
-
-    <button type="submit">
-        #{if pe} Editar #{/if}
-        #{else} Cadastrar #{/else}
-    </button>
-
-
-</form> -->
-
-
-
 #{extends 'main.html' /}
 #{set title:'Formulário de Pessoas' /}
 
 <main class="form-page-content">
+
     <form action="@{Pessoas.salvar}" method="post" class="person-form">
 
         <h1>
@@ -45,10 +17,18 @@
             <label for="nome">Nome:</label>
             <input type="text" id="nome" name="pess.nome" value="${pe?.nome}" required>
         </div>
+        <div class="form-group">
+            <label for="telefone">Telefone:</label>
+            <input type="text" id="telefone" name="pess.telefone" value="${pe?.telefone}" required>
+        </div>
 
         <div class="form-group">
             <label for="email">Email:</label>
             <input type="email" id="email" name="pess.email" value="${pe?.email}" required>
+        </div>
+        <div class="form-group">
+            <label for="senha">Senha:</label>
+            <input type="password" id="senha" name="pess.senha" required>
         </div>
 
         <button type="submit" class="submit-button">
@@ -56,7 +36,7 @@
             #{else} Cadastrar Pessoa #{/else}
         </button>
 
-        <a href="@{Pessoas.form()}" class="back-button">Voltar para a Lista</a>
+        <a href="@{Pessoas.listar()}" class="back-button">Voltar para a Lista</a>
 
     </form>
 </main>

@@ -6,18 +6,12 @@
     <h2>Filtro de pessoas</h2>
 
     <form action="@{Pessoas.listar}">
-        <input type="text" name="busca">
+        <input type="text" name="busca" placeholder="Buscar por Pessoa">
         <button type="submit">Pesquisar</button>
     </form>
 
 
 </div>
-
-
-<!-- <form action="@{Pessoas.listar}" method="GET">
-    <input type="text" name="busc" placeholder="Buscar por nome ou email...">
-    <button type="submit">Buscar</button>
-</form> -->
 
 
 
@@ -30,10 +24,12 @@
     <table class="data-table">
         <thead>
             <tr>
-                <th>ID</th>
+                
                 <th class="column-name">Nome</th>
+                <th>Telefone</th>
                 <th>Email</th>
-                <th class="column-actions" colspan="2">Ações</th>
+                <!-- <th>senha</th> -->
+                <th class="column-actions" colspan="3">Ações</th>
             </tr>
         </thead>
         <tbody>
@@ -42,7 +38,9 @@
 
             <tr>
                 <td>${pessoa.nome}</td>
+                <td>${pessoa.telefone}</td>
                 <td>${pessoa.email}</td>
+               
 
 
                 <td><a href='@{Pets.form(pessoa.id)}'>Adicionar novo pet</a></td>
@@ -55,7 +53,7 @@
 
             #{else}
             <tr>
-                <td colspan="4"
+                <td colspan="6"
                     style="text-align: center; padding: 20px; color: var(--highlight-blue); font-style: italic;">
                     Nenhuma pessoa cadastrada ainda.
                 </td>

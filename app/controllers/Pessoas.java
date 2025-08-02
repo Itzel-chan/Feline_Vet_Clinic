@@ -15,6 +15,7 @@ public class Pessoas extends Controller {
 
     public static void salvar(Pessoa pess) {
         pess.save();
+        flash.success("Usuário cadastrado com sucesso");
         form();
     }
 
@@ -40,8 +41,8 @@ public class Pessoas extends Controller {
         Pessoa s = Pessoa.findById(id);
 
         List<Pet> petsAssociados = Pet.find("situacao = ?1 and dono.id = ?2", Situacao.ATIVA, s.id).fetch();
-        for (Pet pet : petsAssociados) {
 
+        for (Pet pet : petsAssociados) {
             pet.situacao = Situacao.INATIVA;
             pet.save();
         }

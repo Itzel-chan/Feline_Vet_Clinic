@@ -35,13 +35,14 @@ public class Pets extends Controller {
         if (busca == null || busca.trim().isEmpty()) {
 
             lista = Pet.find("situacao = ?1", Situacao.ATIVA).fetch();
+
         } else {
 
             lista = Pet.find("situacao = ?1 and lower(nome) like ?2", Situacao.ATIVA, "%" + busca.toLowerCase() + "%")
                     .fetch();
         }
-        render(lista);
 
+        render(lista);
     }
 
     public static void editar(long id) {
@@ -53,7 +54,6 @@ public class Pets extends Controller {
     public static void remover(long id) {
         Pet s = Pet.findById(id);
         s.situacao = Situacao.INATIVA;
-
         s.save();
         listar(null);
     }

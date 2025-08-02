@@ -36,7 +36,7 @@
 #{set title:'Formulário de Pets' /}
 
 <main class="form-page-content">
-    
+
     <form action="@{Pets.salvar}" method="post" class="pet-form">
 
         <h1>
@@ -44,8 +44,6 @@
             #{else} Cadastro #{/else}
             de Pet
         </h1>
-
-        @* Mensagem de relacionamento com a pessoa *@
         <div class="form-related-info">
             Relacionando um pet à pessoa com nome: <strong>${pessoa?.nome}</strong>
         </div>
