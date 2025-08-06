@@ -699,7 +699,27 @@ public class Inicializador extends Job {
     }
 }
 
+msg flashes :  
 
+
+
+success: Para indicar que uma operação foi bem-sucedida.
+
+Exemplo no controlador: flash.success("Item salvo com sucesso!");
+
+error: Para indicar que algo deu errado, como uma validação que falhou ou um problema no sistema.
+
+Exemplo no controlador: flash.error("Ocorreu um erro ao processar sua requisição.");
+
+warning: Para avisos que não impedem a operação, mas que o usuário deve estar ciente.
+
+Exemplo no controlador: flash.warning("Atenção: alguns campos não foram preenchidos.");
+
+info: Para informações gerais que não se enquadram nas categorias acima.
+
+Exemplo no controlador: flash.info("Sua sessão irá expirar em breve.");
+
+A chave que você usa no controlador (ex: flash.success) é a mesma que você usará na view para verificar se a mensagem existe (ex: #{if flash.success}). A flexibilidade do flash permite que você crie chaves personalizadas se necessário.
 
 
 
