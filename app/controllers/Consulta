@@ -1,0 +1,334 @@
+CONSULTA
+
+Model com vários atributos: tipos Date, String e Integer.
+
+Validação, teste de duplicidade e calculo de idade.
+
+CRUD completo: funções form, salvar, listar (e calculo de quantidade de algum atributo), detalhar e remover.
+
+Formulário abrangente, table para listagem, links de remoção e detalhamento, além de uma página dedicada ao detalhamento.
+
+Inicializador: pra começar com dados.
+
+CSS.
+
+
+
+controller 1 :
+
+
+package controllers;
+
+import java.util.List;
+
+import models.Usuario;
+import play.mvc.Controller;
+
+public class Usuarios extends Controller {
+
+    public static void form() {
+        render();
+    }
+
+    public static void salvar(Usuario usu) {
+
+        if (usu.validacao() == false || usu.duplicidade() == false) {
+            form();
+        }
+
+        usu.save();
+        listar();
+    }
+
+    public static void listar() {
+        Integer totalDePets = 0;
+        List<Usuario> lista = Usuario.findAll();
+
+        // Fazendo um foreach para calcular a quantidade total de pets
+        for (Usuario usu : lista) {
+            totalDePets += usu.quantidadeDePets;
+        }
+
+        render(lista, totalDePets);
+    }
+
+    public static void remover(long id) {
+        Usuario usu = Usuario.findById(id);
+        usu.delete();
+        listar();
+    }
+
+    public static void detalhar(long id) {
+        Usuario usu = Usuario.findById(id);
+        render(usu);
+    }
+}
+
+
+
+
+inicializador: 
+
+package controllers;
+
+import java.util.Date;
+
+import models.Usuario;
+import play.jobs.Job;
+import play.jobs.OnApplicationStart;
+
+// Essa essa classe junto com a função doJob ali (ksksksksk), vão ser acionadas assim que o play run ativar
+@OnApplicationStart
+public class Inicializador extends Job {
+
+    public void doJob() {
+        
+        // Se não houver nenhum registro salvo de inicio (e claro que não vai ter), esse if executa o codigo dentro dele 
+        if (Usuario.count() == 0) {
+
+            // Criando manualemte um registro
+            Usuario inicial1 = new Usuario();
+            inicial1.nome = "Zé das brenha";
+            inicial1.email = "ze@email.com";
+            inicial1.cpf = "12345";
+            inicial1.vinculoProfissao = "Autônomo";
+            inicial1.dataNascimento = new Date(2000 - 1900, 0, 0);
+            inicial1.quantidadeDePets = 10;
+            // Salvando no BD
+            inicial1.save();
+
+            // Criando mais um registro manulamente
+            Usuario inicial2 = new Usuario();
+            inicial2.nome = "Tião da padaria";
+            inicial2.email = "tiao@email.com";
+            inicial2.cpf = "54321";
+            inicial2.vinculoProfissao = "Funcionário Público";
+            inicial2.dataNascimento = new Date(2010 - 1900, 5, 12);
+            inicial2.quantidadeDePets = 1;
+            // Salvando no BD
+            inicial2.save();
+
+            // Criando o ultimo registro na "mão"
+            Usuario inicial3 = new Usuario();
+            inicial3.nome = "Maquito das manga";
+            inicial3.email = "maquito@email.com";
+            inicial3.cpf = "98765";
+            inicial3.vinculoProfissao = "Desempregado";
+            inicial3.dataNascimento = new Date(1996 - 1900, 7, 8);
+            inicial3.quantidadeDePets = 2;
+            // Salvando no BD
+            inicial3.save();
+
+        }
+    }
+}
+
+
+
+
+model 1:
+
+package models;
+
+import java.time.Year;
+import java.util.Calendar;
+import java.util.Date;
+
+import javax.persistence.Entity;
+import javax.persistence.Transient;
+
+import play.db.jpa.Model;
+
+@Entity
+public class Usuario extends Model {
+
+    public String nome;
+    public String email;
+    public String cpf;
+    public String vinculoProfissao;
+    public Date dataNascimento;
+    public Integer quantidadeDePets;
+    @Transient // Se cair um atributo idade, coloque esse arroba em cima dele do jeito que tá aí
+    public Integer idade;
+
+    // Validação de dados
+    public boolean validacao() {
+
+        if (this.nome.isEmpty() || this.cpf.isEmpty() || this.cpf.isEmpty() || this.vinculoProfissao.isEmpty() // Validação de Strings
+                || this.dataNascimento == null || this.dataNascimento.after(new Date()) // Validação de tipo Date
+                || this.quantidadeDePets == null || this.quantidadeDePets < 0) { // Validação de Integer/Double (Com D maisculo)
+                    // Sysout se vê na tela preta que escreve play run
+                    System.out.println("\nErro ao tentar salvar!!!");
+                    return false;
+        }
+
+        System.out.println("\nTudo certo na validação");
+        return true;
+    }
+
+    // Teste de duplicidade
+    public boolean duplicidade() {
+        Usuario usu = Usuario.find("cpf = ?1", this.cpf).first();
+
+        if (usu != null) {
+        System.out.println("\nEsse CPF já está registrado!!!");
+        return false;
+    }
+    
+    System.out.println("\nTudo certo no teste de duplicidade, salvando novo CPF");
+        return true;
+    }
+
+    // Para calcular a idade dinamicamente
+    // Só copia e cola isso, caso precise
+    public Integer getIdade() {
+        Calendar calendarDataAtual = Calendar.getInstance();
+        Calendar calendarDataNascimento = Calendar.getInstance();
+
+        calendarDataNascimento.setTime(this.dataNascimento);
+
+        int dataAtual = calendarDataAtual.get(Calendar.YEAR);
+        int dataNascimento = calendarDataNascimento.get(Calendar.YEAR);
+
+        Integer idade = dataAtual - dataNascimento;
+
+        return idade;
+    }
+
+}
+
+
+
+View Usuarios - Detalhar:
+
+
+
+#{extends 'main.html' /}
+#{set title:'Detalhar' /}
+
+<div class="detalhar">
+
+    <div class="title"><strong>Detalhar</strong></div>
+  
+    <div><strong>Nome: </strong>${usu.nome}</div>
+    <div><strong>Email: </strong>${usu.email}</div>
+    <div><strong>CPF: </strong>${usu.cpf}</div>
+    <div><strong>Vínculo Profissão: </strong>${usu.vinculoProfissao}</div>
+    <div><strong>Data de nascimento: </strong>${usu.dataNascimento.format('dd/MM/yyyy')}</div>
+    <div><strong>Idade: </strong>${usu.idade} anos</div>
+    <div><strong>Quantidade de pets: </strong>${usu.quantidadeDePets}</div>
+</div>
+
+
+view Usuario-form :
+
+
+
+#{extends 'main.html' /}
+#{set title:'Formulário' /}
+
+
+<form action="@{Usuarios.salvar}" method="post">
+
+    <h1>Cadastro</h1>
+
+    <label>Nome</label>
+    <input type="text" name="usu.nome">
+
+    <label>Email</label>
+    <input type="text" name="usu.email">
+
+    <label>CPF</label>
+    <input type="text" name="usu.cpf">
+
+    <label>Vinculo profissão</label>
+    <select name="usu.vinculoProfissao">
+        <option value="Autônomo">Autônomo</option>
+        <option value="Celetista">Celetista</option>
+        <option value="Funcionário Público">Funcionário Público</option>
+        <option value="Desempregado">Desempregado</option>
+    </select>
+
+    <label>Data de nascimento</label>
+    <input type="date" name="usu.dataNascimento">
+
+    <label>Quantidade de pets</label>
+    <input type="number" name="usu.quantidadeDePets">
+
+    <button type="submit">Salvar</button>
+
+</form>
+
+
+
+
+views Usuario-listar:
+
+
+#{extends 'main.html' /}
+#{set title:'Listagem' /}
+
+
+<div class="totalPets">
+    <strong>Quantidade total de pets: </strong> ${totalDePets}
+</div>
+
+<table>
+
+    <tr>
+        <th class="title" colspan="8">Listagem</th>
+    </tr>
+
+    <tr>
+        <th>Nome</th>
+        <th>Email</th>
+        <th>CPF</th>
+        <th>Vínculo profissão</th>
+        <th>Data de nascimento</th>
+        <th>Idade</th>
+        <th>Quantidade de pets</th>
+        <th>Remoção</th>
+    </tr>
+
+    #{list items: lista, as:'usuario'}
+
+    <tr>
+        <td><a href="@{Usuarios.detalhar(usuario.id)}">${usuario.nome}</a></td>
+        <td>${usuario.email}</td>
+        <td>${usuario.cpf}</td>
+        <td>${usuario.vinculoProfissao}</td>
+        <td>${usuario.dataNascimento.format("dd/MM/yyyy")}</td>
+        <td>${usuario.idade} anos</td>
+        <td>${usuario.quantidadeDePets}</td>
+        <td><a href="@{Usuarios.remover(usuario.id)}">Remover</a></td>
+    </tr>
+
+    #{/list}
+
+</table>
+
+
+
+main :
+
+<!-- <!DOCTYPE html>
+
+<html>
+    <head>
+        <title>#{get 'title' /}</title>
+        <meta charset="${_response_encoding}">
+        <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/main.css'}">
+        #{get 'moreStyles' /}
+        <link rel="shortcut icon" type="image/png" href="@{'/public/images/favicon.png'}">
+    </head>
+    <body>
+        <a href="@{Usuarios.form}">Formulário</a>
+        <a href="@{Usuarios.listar}">Listagem</a>
+        #{doLayout /}
+        
+        <script src="@{'/public/javascripts/jquery-1.6.4.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+        #{get 'moreScripts' /}
+    </body>
+</html> -->
+
+
