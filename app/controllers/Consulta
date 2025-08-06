@@ -722,6 +722,92 @@ Exemplo no controlador: flash.info("Sua sessão irá expirar em breve.");
 A chave que você usa no controlador (ex: flash.success) é a mesma que você usará na view para verificar se a mensagem existe (ex: #{if flash.success}). A flexibilidade do flash permite que você crie chaves personalizadas se necessário.
 
 
+Exemplo prático (usando o projeto de Imóveis)
+Vamos supor que você queira exibir uma mensagem de sucesso após salvar um imóvel.
+
+1. No Controlador (app/controllers/Imoveis.java)
+Modifique o método salvar para adicionar uma mensagem flash antes de redirecionar.
+
+
+
+
+package controllers;
+
+import play.mvc.Controller;
+import java.util.List;
+import models.Imovel;
+import models.TipoImovel;
+
+public class Imoveis extends Controller {
+    // ... outros métodos
+
+    public static void salvar(Imovel imovel) {
+        imovel.save();
+        // Armazena uma mensagem de sucesso na chave "success".
+        // O valor da mensagem será "Imóvel salvo com sucesso!".
+        flash.success("Imóvel salvo com sucesso!");
+        // Redireciona para a página de listagem.
+        index();
+    }
+
+    // ... outros métodos
+}
+
+
+Na View (app/views/Imoveis/listagem.html)
+Adicione um bloco de código no início da view para verificar e exibir a mensagem.
+
+
+
+<!-- 
+<h1>Listagem de Imóveis</h1>
+<a href="@{Imoveis.form()}">Cadastrar Novo Imóvel</a>
+
+#{if flash.success}
+    <div class="alert alert-success">
+        ${flash.success}
+    </div>
+#{/if}
+
+#{if flash.error}
+    <div class="alert alert-error">
+        ${flash.error}
+    </div>
+#{/if}
+
+<table>
+    <thead>
+        <tr>
+            <th>Código</th>
+            <th>Bairro</th>
+            <th>Tipo</th>
+            <th>Área Total</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        #{list items:imoveis, as:'imovel'}
+            <tr>
+                <td>${imovel.codigoAnuncio}</td>
+                <td>${imovel.bairro}</td>
+                <td>${imovel.tipoImovel.descricao}</td>
+                <td>${imovel.getAreaTotal()} m²</td>
+                <td>
+                    <a href="@{Imoveis.form(imovel.id)}">Editar</a>
+                    <a href="@{Imoveis.remover(imovel.id)}" onclick="return confirm('Tem certeza?');">Remover</a>
+                </td>
+            </tr>
+        #{/list}
+    </tbody>
+</table> -->
+
+Você pode usar o flash para diferentes tipos de mensagens, como erros:
+
+No controlador: flash.error("Ocorreu um erro ao salvar o imóvel.");
+
+Na view: Use a mesma lógica para exibir flash.error.
+
+
 
 
 
