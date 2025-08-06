@@ -332,3 +332,371 @@ main :
 </html> -->
 
 
+
+Projeto 2 :
+
+
+
+Classes de Modelo (Models):
+
+
+Imovel: Deve representar um imóvel com os seguintes atributos: codigoAnuncio, bairro, quantidadeComodos, areaInterna, areaExterna e tipoImovel.
+
+
+TipoImovel: Deve ter um atributo descricao e a capacidade de realizar exclusão lógica. Exemplos de tipos são CASA, APARTAMENTO e CHALÉ.
+
+
+
+Controladores e Funcionalidades (Controllers):
+
+
+CRUD de TipoImovel: O sistema deve permitir a criação, leitura, atualização e exclusão de tipos de imóveis. A exclusão deve ser lógica, ou seja, o registro não é removido do banco de dados.
+
+
+
+CRUD de Imovel: O sistema deve ter a funcionalidade de criar, ler, atualizar e excluir imóveis. A interface de cadastro de 
+
+Imovel deve apresentar o campo tipoImovel como um select ou radio button.
+
+
+Relacionamento: Um Imovel deve estar associado a um TipoImovel. A relação deve ser representada usando anotações adequadas nas classes de modelo.
+
+
+
+Cálculo de Área Total: A funcionalidade de listagem de imóveis deve exibir a área total de cada imóvel, que é a soma de areaInterna e areaExterna.
+
+
+Restrição: Não deve ser possível ter mais de um imóvel com o mesmo codigoAnuncio no banco de dados.
+
+Views:
+
+As views (arquivos 
+
+.html) serão responsáveis por apresentar as interfaces de CRUD para Imovel e TipoImovel, além da listagem de imóveis com a área total calculada.
+
+Outros Pontos:
+
+O framework Play 1.5.3 deve ser usado para auxiliar no desenvolvimento.
+
+É sugerido criar uma classe 
+
+Job chamada Inicializador para popular o banco de dados com dados de teste ao iniciar a aplicação.
+
+A seguir, apresento uma estrutura de projeto com as classes de modelo, controladores e a lógica para as views, tudo comentado para facilitar o entendimento.
+
+Observação: O código abaixo é um exemplo e precisa ser adaptado e completado com a lógica de negócio específica, validações e a sintaxe correta do framework Play 1.5.3.
+
+Estrutura do Projeto
+app/
+
+controllers/
+
+Imoveis.java
+
+TiposImoveis.java
+
+models/
+
+Imovel.java
+
+TipoImovel.java
+
+views/
+
+Imoveis/
+
+listagem.html
+
+formulario.html
+
+TiposImoveis/
+
+listagem.html
+
+formulario.html
+
+conf/
+
+application.conf
+
+jobs/
+
+Inicializador.java
+
+
+
+Modelos (app/models)
+app/models/TipoImovel.java
+
+package models;
+
+import play.db.jpa.Model;
+import javax.persistence.Entity;
+
+// A anotação @Entity informa ao framework que esta classe é um modelo de dados.
+@Entity
+public class TipoImovel extends Model {
+
+    // Atributo 'descricao' para o nome do tipo de imóvel (ex: CASA, APARTAMENTO).
+    public String descricao;
+
+    // Atributo 'ativo' para a exclusão lógica.
+    // Se 'ativo' for 'true', o registro está "disponível".
+    // Se for 'false', o registro está "excluído logicamente".
+    public boolean ativo = true;
+
+    // Método para marcar o tipo de imóvel como logicamente excluído.
+    public void deletarLogicamente() {
+        this.ativo = false;
+        this.save(); // Salva a alteração no banco de dados.
+    }
+}
+
+
+app/models/Imovel.java
+
+
+package models;
+
+import play.db.jpa.Model;
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.Column;
+
+// A anotação @Entity informa ao framework que esta classe é um modelo de dados.
+@Entity
+public class Imovel extends Model {
+
+    // Anotação para garantir que o 'codigoAnuncio' seja único no banco de dados.
+    // Isso evita registros duplicados com o mesmo código.
+    @Column(unique = true)
+    public String codigoAnuncio;
+
+    public String bairro;
+    public int quantidadeComodos;
+    public double areaInterna;
+    public double areaExterna;
+
+    // Anotação @ManyToOne para mapear o relacionamento.
+    // Muitos imóveis podem ter um mesmo tipo de imóvel (ex: Vários imóveis do tipo CASA).
+    @ManyToOne
+    public TipoImovel tipoImovel;
+
+    // Método para calcular a área total do imóvel.
+    // É uma boa prática ter essa lógica de negócio no próprio modelo.
+    public double getAreaTotal() {
+        return this.areaInterna + this.areaExterna;
+    }
+}
+
+
+
+
+Controladores (app/controllers)
+app/controllers/TiposImoveis.java
+
+
+
+
+
+package controllers;
+
+import play.mvc.Controller;
+import java.util.List;
+import models.TipoImovel;
+
+public class TiposImoveis extends Controller {
+
+    // Ação para listar todos os tipos de imóveis ativos.
+    public static void index() {
+        // Busca todos os tipos de imóveis onde o atributo 'ativo' é 'true'.
+        List<TipoImovel> tipos = TipoImovel.find("ativo", true).fetch();
+        // Renderiza a view de listagem, passando a lista de tipos.
+        render(tipos);
+    }
+
+    // Ação para exibir o formulário de cadastro ou edição.
+    public static void form(Long id) {
+        if (id == null) {
+            // Se o ID for nulo, cria uma nova instância para o formulário de cadastro.
+            render();
+        } else {
+            // Se o ID não for nulo, busca o tipo de imóvel para edição.
+            TipoImovel tipo = TipoImovel.findById(id);
+            // Renderiza o formulário, passando o objeto para preencher os campos.
+            render(tipo);
+        }
+    }
+
+    // Ação para salvar um tipo de imóvel.
+    public static void salvar(TipoImovel tipoImovel) {
+        // O método 'save()' do Play Framework lida com a criação e atualização.
+        tipoImovel.save();
+        // Redireciona para a página de listagem após salvar.
+        index();
+    }
+
+    // Ação para exclusão lógica de um tipo de imóvel.
+    public static void remover(Long id) {
+        // Encontra o tipo de imóvel pelo ID.
+        TipoImovel tipo = TipoImovel.findById(id);
+        // Chama o método que criamos no modelo para a exclusão lógica.
+        tipo.deletarLogicamente();
+        // Redireciona para a página de listagem.
+        index();
+    }
+}
+
+
+
+app/controllers/Imoveis.java
+
+
+package controllers;
+
+import play.mvc.Controller;
+import java.util.List;
+import models.Imovel;
+import models.TipoImovel;
+
+public class Imoveis extends Controller {
+
+    // Ação para listar todos os imóveis.
+    public static void index() {
+        List<Imovel> imoveis = Imovel.findAll();
+        // Renderiza a view de listagem, passando a lista de imóveis.
+        render(imoveis);
+    }
+
+    // Ação para exibir o formulário de cadastro ou edição.
+    public static void form(Long id) {
+        // Busca todos os tipos de imóveis ativos para popular o select/radio button.
+        List<TipoImovel> tipos = TipoImovel.find("ativo", true).fetch();
+        if (id == null) {
+            render(tipos);
+        } else {
+            Imovel imovel = Imovel.findById(id);
+            render(imovel, tipos);
+        }
+    }
+
+    // Ação para salvar um imóvel.
+    public static void salvar(Imovel imovel) {
+        // O framework Play se encarrega de associar o TipoImovel selecionado ao Imovel.
+        imovel.save();
+        index();
+    }
+
+    // Ação para remover um imóvel.
+    public static void remover(Long id) {
+        Imovel imovel = Imovel.findById(id);
+        imovel.delete(); // Exclusão física do banco de dados (o requisito não especifica exclusão lógica para Imóvel).
+        index();
+    }
+}
+
+
+
+
+
+
+Views (app/views)
+app/views/Imoveis/listagem.html
+
+
+
+<!-- <h1>Listagem de Imóveis</h1>
+<a href="@{Imoveis.form()}">Cadastrar Novo Imóvel</a>
+
+<table>
+    <thead>
+        <tr>
+            <th>Código</th>
+            <th>Bairro</th>
+            <th>Tipo</th>
+            <th>Área Total</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        #{list items:imoveis, as:'imovel'}
+            <tr>
+                <td>${imovel.codigoAnuncio}</td>
+                <td>${imovel.bairro}</td>
+                <td>${imovel.tipoImovel.descricao}</td>
+                <td>${imovel.getAreaTotal()} m²</td>
+                <td>
+                    <a href="@{Imoveis.form(imovel.id)}">Editar</a>
+                    <a href="@{Imoveis.remover(imovel.id)}" onclick="return confirm('Tem certeza?');">Remover</a>
+                </td>
+            </tr>
+        #{/list}
+    </tbody>
+</table> -->
+
+app/views/Imoveis/formulario.html
+
+
+
+<h1>Cadastro de Imóvel</h1>
+#{form @Imoveis.salvar()}
+    #{if imovel?.id}
+        <input type="hidden" name="imovel.id" value="${imovel.id}" />
+    #{/if}
+    
+    <label>Código do Anúncio:</label>
+    <input type="text" name="imovel.codigoAnuncio" value="${imovel?.codigoAnuncio}" />
+    
+    <label>Bairro:</label>
+    <input type="text" name="imovel.bairro" value="${imovel?.bairro}" />
+
+    <label>Quantidade de Cômodos:</label>
+    <input type="number" name="imovel.quantidadeComodos" value="${imovel?.quantidadeComodos}" />
+
+    <label>Área Interna:</label>
+    <input type="number" name="imovel.areaInterna" value="${imovel?.areaInterna}" step="0.01" />
+
+    <label>Área Externa:</label>
+    <input type="number" name="imovel.areaExterna" value="${imovel?.areaExterna}" step="0.01" />
+    
+    <label>Tipo do Imóvel:</label>
+    <select name="imovel.tipoImovel.id">
+        #{list items:tipos, as:'tipo'}
+            <option value="${tipo.id}" ${imovel?.tipoImovel?.id == tipo.id ? 'selected' : ''}>
+                ${tipo.descricao}
+            </option>
+        #{/list}
+    </select>
+    
+    <button type="submit">Salvar</button>
+#{/form}
+
+
+Job de Inicialização (app/jobs/Inicializador.java)
+
+
+
+package jobs;
+
+import play.jobs.Job;
+import play.jobs.OnApplicationStart;
+import models.TipoImovel;
+
+// A anotação @OnApplicationStart garante que este job será executado na inicialização da aplicação.
+@OnApplicationStart
+public class Inicializador extends Job {
+
+    @Override
+    public void doJob() throws Exception {
+        // Verifica se já existem tipos de imóveis no banco de dados.
+        // Isso evita a duplicação de dados de teste a cada reinicialização.
+        if (TipoImovel.count() == 0) {
+            // Cria e salva tipos de imóveis de exemplo.
+            new TipoImovel("CASA").save();
+            new TipoImovel("APARTAMENTO").save();
+            new TipoImovel("CHALÉ").save();
+        }
+    }
+}
+
+
