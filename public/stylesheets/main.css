@@ -1291,7 +1291,7 @@ p {
     /* Reduz o padding vertical da seção de features */
     background-color: var(--background-color);
     text-align: center;
-    
+
 }
 
 .features-section h2 {
@@ -1356,4 +1356,322 @@ p {
     font-size: 0.95rem;
 }
 
-/* Diminui a fonte do parágrafo do
+
+
+
+/* ======================================================= */
+/* Nova Seção de Serviços (com ícones e texto oculto/visível) */
+/* ======================================================= */
+
+.services-section {
+    padding: 60px 20px;
+    /* Espaçamento generoso */
+    background-color: var(--background-color);
+    /* Usa a cor de fundo definida */
+    text-align: center;
+}
+
+.services-section h2 {
+    font-size: 2.2em;
+    /* Título grande e chamativo */
+    color: var(--dark-blue);
+    /* Cor escura para o título */
+    margin-bottom: 40px;
+    font-weight: 700;
+    padding-bottom: 15px;
+    display: inline-block;
+    /* Garante que a borda se ajuste ao texto */
+}
+
+.services-grid {
+    display: flex;
+    height: 300px;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+  
+
+}
+
+.service-card {   
+    margin-bottom: 50px ;
+    background-color: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    /* Sombra sutil */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    /* Organiza os elementos verticalmente dentro do card */
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    cursor: pointer;
+    /* Indica que o card é clicável */
+}
+
+.service-card:hover {
+    transform: translateY(-8px);
+    /* Efeito de "levantar" no hover */
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+    /* Sombra mais intensa */
+    background-color: var(--soft-blue);
+    /* Fundo muda para azul pastel no hover */
+    color: var(--dark-blue);
+    /* Texto muda para azul escuro */
+}
+
+.service-card .icon-wrapper {
+    background-color: var(--button-accent);
+    /* Fundo azul vibrante para o ícone */
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    /* Torna o wrapper circular */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    /* Sombra para o wrapper do ícone */
+    transition: background-color 0.3s ease;
+}
+
+.service-card:hover .icon-wrapper {
+    background-color: var(--dark-blue);
+    /* Fundo do ícone muda para azul escuro no hover */
+}
+
+.service-card i {
+    font-size: 2.2em;
+    /* Tamanho grande para o ícone */
+    color: var(--light-text-color);
+    /* Cor do ícone (quase branco) */
+    transition: color 0.3s ease;
+}
+
+.service-card:hover i {
+    color: white;
+    /* Cor do ícone permanece branca no hover */
+}
+
+.service-card .service-title {
+    font-size: 1.5em;
+    color: var(--dark-blue);
+    margin-bottom: 10px;
+    font-weight: 700;
+    transition: color 0.3s ease;
+}
+
+.service-card:hover .service-title {
+    color: var(--dark-blue);
+    /* Título mantém cor escura no hover */
+}
+
+.service-card .service-description {
+    font-size: 1em;
+    color: var(--text-dark);
+    line-height: 1.6;
+    max-height: 0;
+    /* Começa oculto */
+    opacity: 0;
+    /* Começa invisível */
+    overflow: hidden;
+    /* Garante que o conteúdo não transborde quando oculto */
+    transition: max-height 0.5s ease, opacity 0.5s ease, margin-top 0.5s ease;
+    /* Transição suave */
+    margin-top: 0;
+    /* Espaço zero inicialmente */
+}
+
+.service-card.expanded .service-description {
+    max-height: 300px;
+    /* Altura máxima quando visível (ajuste conforme necessário) */
+    opacity: 1;
+    /* Torna visível */
+    margin-top: 15px;
+    /* Adiciona espaço quando visível */
+}
+
+/* ======================================================= */
+/* Responsividade para a Seção de Serviços                 */
+/* ======================================================= */
+
+@media (max-width: 992px) {
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+        /* 2 colunas em telas de tablet */
+    }
+}
+
+@media (max-width: 768px) {
+    .services-section h2 {
+        font-size: 2.2em;
+        /* Reduz o título em telas menores */
+    }
+
+    .services-grid {
+        grid-template-columns: 1fr;
+        /* 1 coluna em telas de celular */
+        gap: 20px;
+        /* Reduz o gap */
+    }
+
+    .service-card {
+        padding: 25px;
+        /* Reduz o padding do card */
+    }
+
+    .service-card .service-title {
+        font-size: 1.3em;
+    }
+
+    .service-card .service-description {
+        max-height: 200px;
+        /* Aumenta um pouco o max-height em telas pequenas se necessário */
+    }
+}
+
+/* ======================================================= */
+
+/* .session{
+    display: flex;
+    align-items: right;
+    justify-content: right;
+    font-size: 1.5rem;
+    margin-right: 20px;
+    
+} */
+
+/* .icon-user {
+    display: flex;
+    align-items: right;
+    justify-content: right;
+    font-size: 3rem;
+    transform: translate(-50px, -40px);
+    
+} */
+
+.btn-cadastro{
+    display: flex;
+    align-items: right;
+    justify-content: right;
+
+}
+
+.txt-cadastro{
+    display: flex;
+    
+}
+
+
+
+
+
+
+/* Estilos para o botão de abrir o sidebar */
+.icon-user-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1002; /* Acima de tudo */
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: var(--text-color);
+    transition: color var(--transition-speed) ease;
+    padding: 10px;
+    border-radius: 50%;
+}
+
+.icon-user-btn:hover {
+    color: var(--primary-color);
+}
+
+/* Estilos do sidebar */
+.user-sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1001;
+    top: 0;
+    right: 0;
+    background-color: #333; /* Cor de fundo mais escura para contraste */
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    color: white;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+}
+
+.user-sidebar-content {
+    flex-grow: 1; /* Permite que o conteúdo ocupe o espaço restante */
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Espaço entre os botões */
+}
+
+/* Botão de fechar */
+.user-sidebar .close-btn {
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    font-size: 36px;
+    color: white;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.user-sidebar .close-btn:hover {
+    color: var(--primary-color);
+}
+
+/* Estilos para os links do sidebar */
+.sidebar-link {
+    display: flex;
+    align-items: center;
+    padding: 12px 16px;
+    text-decoration: none;
+    font-size: 18px;
+    color: #f1f1f1;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+}
+
+.sidebar-link:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.sidebar-link i {
+    margin-right: 15px;
+    font-size: 20px;
+}
+
+/* Estilos para o bloco do usuário no final */
+.user-info {
+    display: flex;
+    align-items: center;
+    padding: 20px 15px;
+    border-top: 1px solid #555;
+    background-color: #222;
+}
+
+.user-info .fa-cat {
+    font-size: 24px;
+    color: var(--secondary-color);
+    margin-right: 10px;
+}
+
+.user-info span {
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+}

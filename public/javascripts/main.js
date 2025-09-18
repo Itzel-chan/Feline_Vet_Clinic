@@ -32,3 +32,43 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const serviceCards = document.querySelectorAll('.service-card');
+
+        serviceCards.forEach(card => {
+            card.addEventListener('click', function() {
+                // Oculta qualquer descrição que esteja aberta
+                document.querySelectorAll('.service-card.expanded').forEach(openCard => {
+                    if (openCard !== this) { // Se for um card diferente do que foi clicado
+                        openCard.classList.remove('expanded');
+                    }
+                });
+
+                // Alterna a classe 'expanded' no card clicado
+                this.classList.toggle('expanded');
+            });
+        });
+    });
+
+
+
+
+
+
+    
+   
+        document.addEventListener('DOMContentLoaded', function() {
+            const sidebar = document.getElementById('user-sidebar');
+            const openBtn = document.querySelector('.icon-user-btn');
+            const closeBtn = document.querySelector('.close-btn');
+
+            openBtn.addEventListener('click', () => {
+                sidebar.style.width = '250px';
+            });
+
+            closeBtn.addEventListener('click', () => {
+                sidebar.style.width = '0';
+            });
+        });
+   
