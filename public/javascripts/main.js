@@ -33,13 +33,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-
-
-
-
-
-
-
     document.addEventListener('DOMContentLoaded', function() {
         const serviceCards = document.querySelectorAll('.service-card');
 
@@ -57,3 +50,25 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     });
+
+
+
+
+
+
+    
+   
+        document.addEventListener('DOMContentLoaded', function() {
+            const sidebar = document.getElementById('user-sidebar');
+            const openBtn = document.querySelector('.icon-user-btn');
+            const closeBtn = document.querySelector('.close-btn');
+
+            openBtn.addEventListener('click', () => {
+                sidebar.style.width = '250px';
+            });
+
+            closeBtn.addEventListener('click', () => {
+                sidebar.style.width = '0';
+            });
+        });
+   

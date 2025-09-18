@@ -1356,13 +1356,6 @@ p {
     font-size: 0.95rem;
 }
 
-/* Diminui a fonte do parágrafo do
-
-
-
-
-
-
 
 
 
@@ -1541,6 +1534,144 @@ p {
 }
 
 /* ======================================================= */
-/* Adicionar link para Font Awesome no <head> do seu HTML */
-/* <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"> */
-/* ======================================================= */
+
+/* .session{
+    display: flex;
+    align-items: right;
+    justify-content: right;
+    font-size: 1.5rem;
+    margin-right: 20px;
+    
+} */
+
+/* .icon-user {
+    display: flex;
+    align-items: right;
+    justify-content: right;
+    font-size: 3rem;
+    transform: translate(-50px, -40px);
+    
+} */
+
+.btn-cadastro{
+    display: flex;
+    align-items: right;
+    justify-content: right;
+
+}
+
+.txt-cadastro{
+    display: flex;
+    
+}
+
+
+
+
+
+
+/* Estilos para o botão de abrir o sidebar */
+.icon-user-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1002; /* Acima de tudo */
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: var(--text-color);
+    transition: color var(--transition-speed) ease;
+    padding: 10px;
+    border-radius: 50%;
+}
+
+.icon-user-btn:hover {
+    color: var(--primary-color);
+}
+
+/* Estilos do sidebar */
+.user-sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1001;
+    top: 0;
+    right: 0;
+    background-color: #333; /* Cor de fundo mais escura para contraste */
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    color: white;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+}
+
+.user-sidebar-content {
+    flex-grow: 1; /* Permite que o conteúdo ocupe o espaço restante */
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Espaço entre os botões */
+}
+
+/* Botão de fechar */
+.user-sidebar .close-btn {
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    font-size: 36px;
+    color: white;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.user-sidebar .close-btn:hover {
+    color: var(--primary-color);
+}
+
+/* Estilos para os links do sidebar */
+.sidebar-link {
+    display: flex;
+    align-items: center;
+    padding: 12px 16px;
+    text-decoration: none;
+    font-size: 18px;
+    color: #f1f1f1;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+}
+
+.sidebar-link:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.sidebar-link i {
+    margin-right: 15px;
+    font-size: 20px;
+}
+
+/* Estilos para o bloco do usuário no final */
+.user-info {
+    display: flex;
+    align-items: center;
+    padding: 20px 15px;
+    border-top: 1px solid #555;
+    background-color: #222;
+}
+
+.user-info .fa-cat {
+    font-size: 24px;
+    color: var(--secondary-color);
+    margin-right: 10px;
+}
+
+.user-info span {
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+}
