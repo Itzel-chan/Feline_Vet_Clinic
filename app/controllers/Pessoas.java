@@ -6,6 +6,9 @@ import models.Pessoa;
 import models.Pet;
 import models.Situacao;
 import play.mvc.Controller;
+import play.mvc.With;
+
+@With(Interceptador.class)
 
 public class Pessoas extends Controller {
 

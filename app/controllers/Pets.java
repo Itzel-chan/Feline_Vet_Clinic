@@ -6,7 +6,9 @@ import models.Pessoa;
 import models.Pet;
 import models.Situacao;
 import play.mvc.Controller;
+import play.mvc.With;
 
+@With(Interceptador.class)
 public class Pets extends Controller {
 
     public static void form(Long id) {
