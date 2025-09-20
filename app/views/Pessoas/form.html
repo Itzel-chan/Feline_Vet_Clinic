@@ -1,4 +1,5 @@
 #{extends 'main.html' /}
+<<<<<<< HEAD
 #{set title:'Formulário' /}
 
 <form action="@{Pessoas.salvar}" method="post">
@@ -38,3 +39,46 @@
 
 
 </form>
+=======
+#{set title:'Formulário de Pessoas' /}
+
+<main class="form-page-content">
+
+    <form action="@{Pessoas.salvar}" method="post" class="person-form">
+
+        <h1>
+            #{if pe} Edição #{/if}
+            #{else} Cadastro #{/else}
+            de Pessoa
+        </h1>
+
+        <input type="hidden" name="pess.id" value="${pe?.id}">
+
+        <div class="form-group">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="pess.nome" value="${pe?.nome}" required>
+        </div>
+        <div class="form-group">
+            <label for="telefone">Telefone:</label>
+            <input type="text" id="telefone" name="pess.telefone" value="${pe?.telefone}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="pess.email" value="${pe?.email}" required>
+        </div>
+        <div class="form-group">
+            <label for="senha">Senha:</label>
+            <input type="password" id="senha" name="pess.senha" required>
+        </div>
+
+        <button type="submit" class="submit-button">
+            #{if pe} Salvar Alterações #{/if}
+            #{else} Cadastrar Pessoa #{/else}
+        </button>
+
+        <a href="@{Pessoas.listar()}" class="back-button">Voltar para a Lista</a>
+
+    </form>
+</main>
+>>>>>>> master

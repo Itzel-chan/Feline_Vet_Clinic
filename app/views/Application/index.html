@@ -1,3 +1,115 @@
 #{extends 'main.html' /}
-#{set title:'hfchcct' /}
+#{set title: 'Feline Clinic' /}
+<section class="hero-section container">
+    <div class="hero-content">
+        <h1>Nós cuidamos do seu <strong>felino</strong> com carinho!</h1>
+        <p>Especialistas em saúde felina, oferecemos um ambiente tranquilo e serviços completos para o bem-estar e a
+            felicidade do seu gato.</p>
+        <div class="hero-buttons">
+            <a href="@{Pessoas.form()}" class="hero-button primary">Marque uma Consulta</a>
+        </div>
+    </div>
+    <div class="hero-image">
+        <img src="public/images/Gato_vet.png" alt="Gato cinza olhando para a frente">
+    </div>
+</section>
 
+<section class="features-section container">
+    <h2>Por que nos escolher?</h2>
+    <div class="features-grid">
+        <div class="feature-item">
+            <i class="fas fa-cat-house"></i>
+            <h3>Profissionais Especializados</h3>
+            <p>Veterinários com especialização e vasta experiência em medicina felina..</p>
+        </div>
+        <div class="feature-item">
+
+            <h3>Cuidado e Carinho em Cada Consulta</h3>
+            <p>Tratamos cada paciente como se fosse nosso, com paciência, carinho e dedicação.</p>
+        </div>
+        <div class="feature-item">
+
+            <h3>Ambiente exclusivo para Gatos</h3>
+            <p>Proporcionamos uma experiência completa, onde a saúde do seu gato é cuidada com excelência técnica e
+                muito afeto.</p>
+        </div>
+    </div>
+
+</section>
+<br>
+
+<section class="services-section container">
+    <h2>Como podemos te ajudar?</h2>
+
+
+    <div class="services-grid">
+
+        <!-- CARD -->
+        <div class="service-card" data-target="service1">
+            <div class="icon-wrapper">
+                <i class="fa-solid fa-syringe"></i>
+            </div>
+            <div class="service-title">Vacinação</div>
+            <div class="service-description" id="service1">
+                <p>Plano de vacinação completo e seguro para proteger seu felino de doenças. Vacinas importadas e de
+                    alta qualidade.</p>
+            </div>
+        </div>
+        <!-- CARD -->
+        <div class="service-card" data-target="service2">
+            <div class="icon-wrapper">
+                <i class="fa-solid fa-stethoscope"></i>
+            </div>
+            <div class="service-title">Consultas</div>
+            <div class="service-description" id="service2">
+                <p>Atendimento clínico especializado, check-ups de rotina e diagnósticos precisos para a saúde do seu
+                    gato.</p>
+            </div>
+        </div>
+        <!-- CARD -->
+        <div class="service-card" data-target="service3">
+            <div class="icon-wrapper">
+                <i class="fa-solid fa-heart-pulse"></i>
+            </div>
+            <div class="service-title">Cardiologia</div>
+            <div class="service-description" id="service3">
+                <p>Exames cardíacos, acompanhamento de doenças do coração e tratamentos personalizados para o seu pet.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="services-grid">
+        <!-- CARD -->
+        <div class="service-card" data-target="service4">
+            <div class="icon-wrapper">
+                <i class="fa-solid fa-scissors"></i>
+            </div>
+            <div class="service-title">Cirurgia</div>
+            <div class="service-description" id="service4">
+                <p>Procedimentos cirúrgicos de rotina e de emergência, com anestesia segura e monitoramento constante.
+                </p>
+            </div>
+        </div>
+        <!-- CARD -->
+        <div class="service-card" data-target="service5">
+            <div class="icon-wrapper">
+                <i class="fa-solid fa-tooth"></i>
+            </div>
+            <div class="service-title">Odontologia</div>
+            <div class="service-description" id="service5">
+                <p>Cuidados com a saúde bucal, limpeza de tártaro e extrações para prevenir problemas dentários.</p>
+            </div>
+        </div>
+        <!-- CARD -->
+        <div class="service-card" data-target="service6">
+            <div class="icon-wrapper">
+                <i class="fa-solid fa-flask-vial"></i>
+            </div>
+            <div class="service-title">Exames Laboratoriais</div>
+            <div class="service-description" id="service6">
+                <p>Coleta e análise de amostras para diagnósticos rápidos e precisos, auxiliando no tratamento.</p>
+            </div>
+        </div>
+    </div>
+</section>

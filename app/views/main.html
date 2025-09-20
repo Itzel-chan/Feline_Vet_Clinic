@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-
 <html>
+<<<<<<< HEAD
     <head>
         <title>#{get 'title' /}</title>
         <meta charset="${_response_encoding}">
@@ -16,8 +16,113 @@
       
       
         #{doLayout /}
+=======
+
+<head>
+    <title>#{get 'title' /}</title>
+    <meta charset="${_response_encoding}">
+    <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/main.css'}">
+    #{get 'moreStyles' /}
+    <link rel="shortcut icon" type="image/png" href="@{'/public/images/favicon.png'}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <script src="https://kit.fontawesome.com/your-font-awesome-kit.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <header class="main-header">
+        <div class="container header-content">
+            <div class="logo">
+                <a href="/">
+                    <span class="site-name">Feline_Vet_Clinic</span>
+                </a>
+            </div>
+
+            <nav class="main-nav">
+                <button class="menu-toggle" aria-label="Abrir Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-list">
+                    <li><a href="@{Application.index()}" class="nav-link">Página Inicial</a></li>
+                    <li><a href="@{Pessoas.form()}" class="nav-link">Cadastro Pessoas</a></li>
+                    <li><a href="@{Pessoas.listar()}" class="nav-link">Listagem Pessoas</a></li>
+                    <li><a href="@{Pets.listar()}" class="nav-link">Listagem Pets</a></li>
+                    <li><a href="@{Logins.form()}" class="nav-link">Login</a></li>
+                    <li><a href="@{Logins.deslogar()}" class="nav-link">Deslogar</a></li>
+                </ul>
+            </nav>
+        </div>
+>>>>>>> master
         
-        <script src="@{'/public/javascripts/jquery-1.6.4.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
-        #{get 'moreScripts' /}
-    </body>
+        <button class="icon-user-btn" aria-label="Abrir menu do usuário">
+            <i class="fa-solid fa-user"></i>
+        </button>
+
+        <div id="user-sidebar" class="user-sidebar">
+            <button class="close-btn">&times;</button>
+            <div class="user-sidebar-content">
+                <a href="@{Logins.deslogar()}" class="sidebar-link">
+                    <i class="fas fa-paw"></i> Cuidados Pet
+                </a>
+                <a href="@{Logins.deslogar()}" class="sidebar-link">
+                    <i class="fas fa-sign-out-alt"></i> Deslogar
+                </a>
+            </div>
+            
+            <div class="user-info">
+                <i class="fas fa-cat"></i>
+                <span>${session['DadosUsu'] ? session['DadosUsu'] : 'Usuário'}</span>
+            </div>
+        </div>
+
+        </header>
+
+    <main class="main-content">
+        <div class="flash-messages-container container">
+            #{if flash.success}
+            <div class="flash-message flash-success">
+                ${flash.success}
+            </div>
+            #{/if}
+            #{if flash.error}
+            <div class="flash-message flash-error">
+                ${flash.error}
+            </div>
+            #{/if}
+            #{if flash.warning}
+            <div class="flash-message flash-warning">
+                ${flash.warning}
+            </div>
+            #{/if}
+            #{if flash.info}
+            <div class="flash-message flash-info">
+                ${flash.info}
+            </div>
+            #{/if}
+        </div>
+
+        #{doLayout /}
+    </main>
+
+    <footer class="main-footer">
+        <div class="container footer-content">
+            <p>&copy; 2025 Itzel-Chan </p>
+            <p>|</p>
+            <p>&copy; 2025 AndréOliveira753 </p>
+            <div class="social-links">
+                <a href="https://github.com/seu_usuario_aqui" aria-label="GitHub" target="_blank"
+                    rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="@{'/public/javascripts/jquery-1.6.4.min.js'}" type="text/javascript"
+        charset="${_response_encoding}"></script>
+    <script src="@{'/public/javascripts/main.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+    #{get 'moreScripts' /}
+    
+</body>
+
 </html>

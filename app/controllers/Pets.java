@@ -4,58 +4,58 @@ import java.util.List;
 
 import models.Pessoa;
 import models.Pet;
+import models.Situacao;
 import play.mvc.Controller;
 
 public class Pets extends Controller {
 
-    public static void form() {
-        render();
+    public static void form(Long id) {
+
+        if (id == null) {
+            Pessoas.listar(null);
+        }
+        Pessoa pessoa = Pessoa.find("situacao = ?1 and id = ?2", Situacao.ATIVA, id).first();
+
+        if (pessoa == null) {
+            Pessoas.listar(null);
+        }
+
+        render(pessoa);
     }
 
     public static void salvar(Pet felino) {
         felino.save();
-        form();
+        listar(null);
     }
 
     public static void listar(String busca) {
 
         List<Pet> lista = null;
 
-        if (busca != null) {
-            lista = Pet.find("nome like ?1", "%" + busca + "%").fetch();
+        if (busca == null || busca.trim().isEmpty()) {
 
-            
-        }else{
-            lista = Pet.findAll(); 
+            lista = Pet.find("situacao = ?1", Situacao.ATIVA).fetch();
+
+        } else {
+
+            lista = Pet.find("situacao = ?1 and lower(nome) like ?2", Situacao.ATIVA, "%" + busca.toLowerCase() + "%")
+                    .fetch();
         }
+
         render(lista);
-
-
-
-
-
-        // List<Usuario> lista;
-        // if (busca == null) {
-        //     lista = Usuario.findAll();
-
-        // } else {
-
-        //     lista = Usuario.find("nome like ?1 or email like ?1","%"+busca+"%").fetch();
-        // }
-        // render(lista);
-
     }
 
     public static void editar(long id) {
         Pet fe = Pet.findById(id);
-        renderTemplate("Pets/form.html", fe);
+        Pessoa pessoa = fe.dono;
+        renderTemplate("Pets/form.html", fe, pessoa);
     }
 
     public static void remover(long id) {
         Pet s = Pet.findById(id);
-        s.delete();
+        s.situacao = Situacao.INATIVA;
+        s.save();
         listar(null);
-
     }
 
 }

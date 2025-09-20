@@ -1,6 +1,7 @@
 #{extends 'main.html' /}
 #{set title:'Listagem de Pessoas' /}
 
+<<<<<<< HEAD
 
 <table>
 
@@ -38,10 +39,26 @@
     #{/list}
 
     
+=======
+<div class="container form-filter-container">
+
+    <h2>Filtro de pessoas</h2>
+
+    <form action="@{Pessoas.listar}">
+        <input type="text" name="busca" placeholder="Buscar por Pessoa">
+        <button type="submit">Pesquisar</button>
+    </form>
+
+
+</div>
+
+
+>>>>>>> master
 
 </table>
 
 
+<<<<<<< HEAD
 
 
 <!-- <form action="@{Pessoas.listar}">
@@ -52,3 +69,53 @@
 
       
 </form> -->
+=======
+<main class="data-table-container">
+    <h1>Listagem de Pessoas</h1>
+
+    <table class="data-table">
+        <thead>
+            <tr>
+                
+                <th class="column-name">Nome</th>
+                <th>Telefone</th>
+                <th>Email</th>
+                <!-- <th>senha</th> -->
+                <th class="column-actions" colspan="3">Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            #{list items: lista, as: 'pessoa'}
+
+            <tr>
+                <td>${pessoa.nome}</td>
+                <td>${pessoa.telefone}</td>
+                <td>${pessoa.email}</td>
+               
+
+
+                <td><a href='@{Pets.form(pessoa.id)}'>Adicionar novo pet</a></td>
+
+                <td><a href='@{Pessoas.editar(pessoa.id)}'>Editar</a></td>
+                <td><a href='@{Pessoas.remover(pessoa.id)}'>Remover</a></td>
+            </tr>
+
+            #{/list}
+
+            #{else}
+            <tr>
+                <td colspan="6"
+                    style="text-align: center; padding: 20px; color: var(--highlight-blue); font-style: italic;">
+                    Nenhuma pessoa cadastrada ainda.
+                </td>
+            </tr>
+            #{/else}
+        </tbody>
+    </table>
+
+    <div class="add-new-button-container">
+        <a href="@{Pessoas.form()}" class="add-new-button">Cadastrar Nova Pessoa</a>
+    </div>
+</main>
+>>>>>>> master

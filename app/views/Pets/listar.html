@@ -1,5 +1,6 @@
 #{extends 'main.html' /}
 #{set title:'Listagem de Pets' /}
+<<<<<<< HEAD
 
 
 
@@ -9,11 +10,65 @@
     </tr>
 
     <tr>
+=======
+
+<!-- <div class="container form-filter-container">
+    <form action="@{Pets.listar}">
+
+        <h2>Filtro de pets</h2>
+
+        <input type="text" name="busca">
+
+        <button type="submit">Pesquisar</button>
+
+    </form>
+
+
+</div>
+
+<table>
+    <tr>
+        <th colspan="5">
+            <h3>Listagem de Pets</h3>
+        </th>
+    </tr>
+
+    <tr>
+
+        <th>Nome</th>
+        <th>Idade</th>
+        <th>Nome do dono</th>
+        <th colspan="2">Ações</th>
+
+    </tr>
+
+    #{list items: lista, as: 'pet'}
+
+    <tr>
+
+        <td>${pet.nome}</td>
+        <td>${pet.idade}</td>
+
+
+        <td>${pet.dono?.nome}</td>
+
+        <td><a href='@{Pets.editar(pet.id)}'>Editar</a></td>
+        <td><a href='@{Pets.remover(pet.id)}'>Remover</a></td>
+
+    </tr>
+
+    #{/list}
+</table> -->
+
+
+
+>>>>>>> master
 
         <th>Nome</th>
         <th>Idade</th>
         <th colspan="2">Ações</th>
 
+<<<<<<< HEAD
     </tr>
 
     #{list items: lista, as: 'pet'}
@@ -29,3 +84,56 @@
 
     #{/list}
 </table>
+=======
+
+<!-- #{extends 'main.html' /}
+#{set title:'Listagem de Pets' /} -->
+
+<div class="container form-filter-container">
+    <h2>Filtro de pets</h2>
+    <form action="@{Pets.listar}">
+        <input type="text" name="busca" placeholder="Buscar por Pet">
+        <button type="submit">Pesquisar</button>
+    </form>
+</div>
+
+<main class="data-table-container">
+    <h1>Listagem de Pets</h1>
+
+    <table class="data-table">
+        <thead>
+            <tr>
+                 <th class="column-name">Nome</th>
+                <th>Idade</th>
+                <th>Nome do dono</th>
+                <th colspan="2" class="column-actions">Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            #{list items: lista, as: 'pet'}
+            <tr>
+                <td data-label="Nome">${pet.nome}</td>
+                <td data-label="Idade">${pet.idade}</td>
+                <td data-label="Nome do dono">${pet.dono?.nome}</td>
+
+                <td class="table-action-buttons-cell">
+                    <a href='@{Pets.editar(pet.id)}' class="table-action-button edit-button">Editar</a>
+                    <a href='@{Pets.remover(pet.id)}' class="table-action-button delete-button">Remover</a>
+                </td>
+            </tr>
+            #{/list}
+            #{else}
+            <tr>
+                <td colspan="6" style="text-align: center; padding: 20px; color: var(--highlight-blue); font-style: italic;">
+                    Nenhum pet cadastrado ainda.
+                </td>
+            </tr>
+            #{/else}
+        </tbody>
+    </table>
+
+    <div class="add-new-button-container">
+        <a href="@{Pets.form()}" class="add-new-button">Cadastrar Novo Pet</a>
+    </div>
+</main>
+>>>>>>> master

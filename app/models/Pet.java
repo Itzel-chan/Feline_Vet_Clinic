@@ -10,30 +10,19 @@ import javax.persistence.ManyToOne;
 import play.db.jpa.Model;
 
 @Entity
-public class Pet extends Model{
-    
+public class Pet extends Model {
+
     public String nome;
-    public String idade;
+    public Integer idade;
 
     @ManyToOne
-    public Pet pet;
+    public Pessoa dono;
 
-    // @Enumerated(EnumType.STRING)
-    // public Situacao situacao;
+    @Enumerated(EnumType.STRING)
+    public Situacao situacao;
 
-    // public Pet(){
-    //     this.situacao = Situacao.ATIVA;
-    // }
-
-    public boolean isValid(){
-        if (this.nome.isEmpty() || this.idade.isEmpty()) {
-            return false;
-            
-        }
-        return true;
+    public Pet() {
+        this.situacao = Situacao.ATIVA;
     }
 
-   
-
-    
 }
