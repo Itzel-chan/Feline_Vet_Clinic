@@ -1,45 +1,6 @@
 #{extends 'main.html' /}
 #{set title:'Listagem de Pessoas' /}
 
-<<<<<<< HEAD
-
-<table>
-
-    <tr>
-        <th class="title" colspan="7">Listagem Pessoas</th>
-
-    </tr>
-
-    <tr>
-        
-        <th>Nome</th>
-        <th>Email</th>
-        <th>Senha</th>
-        <th>Data de Nascimento</th>
-        <th colspan="2">Ações</th>
-        
-    </tr>
-    
-    
-    
-    #{list items: lista, as: 'pessoas'}
-    
-    <tr>
-        <td>${pessoas.nome}</td>
-        <td>${pessoas.email}</td>
-        <td>${pessoas.senha}</td>
-        <td>${Pessoa.felino?.nome}</td>
-        <td>${pessoas.dataNascimento?.format("dd/MM/yyyy")}</td>
-        <td><a href='@{Pessoas.editar(pessoas.id)}'>Editar</a></td>
-        <td><a href='@{Pessoas.remover(pessoas.id)}'>Remover</a></td>
-    
-    
-    </tr>
-
-    #{/list}
-
-    
-=======
 <div class="container form-filter-container">
 
     <h2>Filtro de pessoas</h2>
@@ -53,23 +14,10 @@
 </div>
 
 
->>>>>>> master
 
 </table>
 
 
-<<<<<<< HEAD
-
-
-<!-- <form action="@{Pessoas.listar}">
-
-    <input type="text" name="busca" value="${busca}">
-
-    <button type="submit">Pesquisar</button>
-
-      
-</form> -->
-=======
 <main class="data-table-container">
     <h1>Listagem de Pessoas</h1>
 
@@ -118,4 +66,3 @@
         <a href="@{Pessoas.form()}" class="add-new-button">Cadastrar Nova Pessoa</a>
     </div>
 </main>
->>>>>>> master

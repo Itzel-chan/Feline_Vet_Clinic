@@ -1,12 +1,6 @@
 package models;
 
 import java.util.Date;
-<<<<<<< HEAD
-
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-=======
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -15,22 +9,10 @@ import javax.persistence.Enumerated;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
->>>>>>> master
 
 import play.db.jpa.Model;
 
 @Entity
-<<<<<<< HEAD
-public class Pessoa extends Model{
-    
-    public String nome;
-    public String email;
-    public String senha;
-    public Date dataNascimento;
-
-
-    
-=======
 public class Pessoa extends Model {
 
     public String nome;
@@ -45,5 +27,4 @@ public class Pessoa extends Model {
         this.situacao = Situacao.ATIVA;
     }
 
->>>>>>> master
 }

@@ -1,16 +1,5 @@
 #{extends 'main.html' /}
 #{set title:'Listagem de Pets' /}
-<<<<<<< HEAD
-
-
-
-<table>
-    <tr>
-        <th class="title" colspan="4">Listagem Pets</th>
-    </tr>
-
-    <tr>
-=======
 
 <!-- <div class="container form-filter-container">
     <form action="@{Pets.listar}">
@@ -62,29 +51,11 @@
 
 
 
->>>>>>> master
 
         <th>Nome</th>
         <th>Idade</th>
         <th colspan="2">Ações</th>
 
-<<<<<<< HEAD
-    </tr>
-
-    #{list items: lista, as: 'pet'}
-
-    <tr>
-
-        <td>${pet.nome}</td>
-        <td>${pet.idade}</td>
-        <td><a href='@{Pets.editar(pet.id)}'>Editar</a></td>
-        <td><a href='@{Pets.remover(pet.id)}'>Remover</a></td>
-
-    </tr>
-
-    #{/list}
-</table>
-=======
 
 <!-- #{extends 'main.html' /}
 #{set title:'Listagem de Pets' /} -->
@@ -136,4 +107,3 @@
         <a href="@{Pets.form()}" class="add-new-button">Cadastrar Novo Pet</a>
     </div>
 </main>
->>>>>>> master

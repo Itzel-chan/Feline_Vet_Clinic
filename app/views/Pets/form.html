@@ -44,25 +44,6 @@
 
 <main class="form-page-content">
 
-<<<<<<< HEAD
-    <input type="hidden" name="felino.id" value="${felino?.id}">
-
-    <label>Nome</label>
-    <input type="text" name="felino.nome" value="${felino?.nome}"> <br />
-
-    <label>Idade</label>
-    <input type="text" name="felino.idade" value="${felino?.idade}"> <br />
-
-
-
-    <button type="submit">
-        #{if Pet} Editar #{/if}
-        #{else} Cadastrar #{/else}
-    </button>
-
-
-</form>
-=======
     <form action="@{Pets.salvar}" method="post" class="pet-form">
 
         <h1>
@@ -95,4 +76,3 @@
         <a href="@{Pets.listar}" class="back-button">Voltar para a Lista de Pets</a>
     </form>
 </main>
->>>>>>> master
