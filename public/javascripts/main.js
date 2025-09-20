@@ -52,23 +52,37 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
 
+document.addEventListener('DOMContentLoaded', function() {
+    const userBtn = document.querySelector('.icon-user-btn');
+    const closeBtn = document.querySelector('.close-btn');
+    const userSidebar = document.getElementById('user-sidebar');
 
+    // Define a largura com base no tamanho da tela
+    function getSidebarWidth() {
+        return window.innerWidth <= 768 ? '80vw' : '25vw';
+    }
 
+    // Abre a sidebar e posiciona a patinha ao lado
+    userBtn.addEventListener('click', function() {
+        const sidebarWidth = getSidebarWidth();
+        const patinhaGap = '20px';
 
+        userSidebar.style.width = sidebarWidth;
+        closeBtn.style.display = 'block';
+        closeBtn.style.right = `calc(${sidebarWidth} + ${patinhaGap})`;
+    });
 
-    
-   
-        document.addEventListener('DOMContentLoaded', function() {
-            const sidebar = document.getElementById('user-sidebar');
-            const openBtn = document.querySelector('.icon-user-btn');
-            const closeBtn = document.querySelector('.close-btn');
+    // Fecha a sidebar e esconde a patinha
+    closeBtn.addEventListener('click', function() {
+        userSidebar.style.width = '0';
+        closeBtn.style.display = 'none';
+    });
 
-            openBtn.addEventListener('click', () => {
-                sidebar.style.width = '250px';
-            });
-
-            closeBtn.addEventListener('click', () => {
-                sidebar.style.width = '0';
-            });
-        });
-   
+    // Fecha a sidebar ao clicar fora dela
+    document.addEventListener('click', function(event) {
+        if (!userSidebar.contains(event.target) && !userBtn.contains(event.target) && !closeBtn.contains(event.target)) {
+            userSidebar.style.width = '0';
+            closeBtn.style.display = 'none';
+        }
+    });
+});

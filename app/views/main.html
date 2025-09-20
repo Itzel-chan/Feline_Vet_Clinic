@@ -38,26 +38,37 @@
             </nav>
         </div>
         
-        <button class="icon-user-btn" aria-label="Abrir menu do usuário">
-            <i class="fa-solid fa-user"></i>
-        </button>
+       <button class="icon-user-btn" aria-label="Abrir menu do usuário">
+    <i class="fa-solid fa-user"></i>
+</button>
 
-        <div id="user-sidebar" class="user-sidebar">
-            <button class="close-btn">&times;</button>
-            <div class="user-sidebar-content">
-                <a href="@{Logins.deslogar()}" class="sidebar-link">
-                    <i class="fas fa-paw"></i> Cuidados Pet
-                </a>
-                <a href="@{Logins.deslogar()}" class="sidebar-link">
-                    <i class="fas fa-sign-out-alt"></i> Deslogar
-                </a>
-            </div>
-            
-            <div class="user-info">
-                <i class="fas fa-cat"></i>
-                <span>${session['DadosUsu'] ? session['DadosUsu'] : 'Usuário'}</span>
-            </div>
+<button class="close-btn" aria-label="Fechar menu do usuário">
+    <i class="fas fa-paw"></i>
+</button>
+
+<div id="user-sidebar" class="user-sidebar">
+    <div class="sidebar-top">
+        <div class="user-info">
+            <i class="fas fa-cat"></i>
+            <span>${session['DadosUsu'] ? session['DadosUsu'] : 'Usuário'}</span>
         </div>
+    </div>
+    
+    <div class="user-sidebar-content">
+        <a href="@{Logins.deslogar()}" class="sidebar-link">
+            <i class="fas fa-paw"></i> Cuidados Pet
+        </a>
+        <a href="@{Logins.deslogar()}" class="sidebar-link">
+            <i class="fas fa-paw"></i> Cadastrar
+        </a>
+    </div>
+
+    <div class="sidebar-bottom">
+        <a href="@{Logins.deslogar()}" class="sidebar-link deslogar-link">
+            <i class="fas fa-sign-out-alt"></i> Deslogar
+        </a>
+    </div>
+</div>
 
         </header>
 
