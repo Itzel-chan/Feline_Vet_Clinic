@@ -61,6 +61,7 @@
 }
 
 body {
+    /* cursor: url('/public/imagens/CursorPata.png'), auto; */
     font-family: 'Quicksand', sans-serif;
     line-height: 1.6;
     color: var(--text-dark);
@@ -1247,6 +1248,7 @@ p {
     /* Ajusta a translação no hover */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
     /* Ajusta a sombra no hover */
+    text-decoration: none;
 }
 
 .hero-button.secondary {
@@ -1289,7 +1291,7 @@ p {
 .features-section {
     padding: 50px 20px;
     /* Reduz o padding vertical da seção de features */
-    background-color: var(--background-color);
+    background-color: #D4E6F1;
     text-align: center;
 
 }
@@ -1366,7 +1368,7 @@ p {
 .services-section {
     padding: 60px 20px;
     /* Espaçamento generoso */
-    background-color: var(--background-color);
+    background-color: #D4E6F1;
     /* Usa a cor de fundo definida */
     text-align: center;
 }
@@ -1495,7 +1497,7 @@ p {
 }
 
 /* ======================================================= */
-/* Responsividade para a Seção de Serviços                 */
+/* Responsividade para a Seção de Serviços                 */
 /* ======================================================= */
 
 @media (max-width: 992px) {
@@ -1612,21 +1614,22 @@ p {
 .close-btn {
     display: none;
     position: fixed;
-    top: calc(50% - var(--header-height) / 2); /* Posiciona no meio da altura útil */
-    right: calc(var(--sidebar-width-desktop) + 20px);
+    top: calc(55% - var(--header-height) / 2); /* Posiciona no meio da altura útil */
+    right: calc(var(--sidebar-width-desktop) + 0px);
     transform: translateY(-50%);
     z-index: 1002;
     background: none;
     border: none;
     cursor: pointer;
     font-size: 2.2rem;
-    color: var(--primary-color);
+    color: #ffd700;
     transition: color var(--transition-speed) ease, right var(--transition-speed) ease;
-    text-shadow: 0 0 5px rgba(0,0,0,0.5);
+    text-shadow: 5px 5px 5px blue;
 }
 
 .close-btn:hover {
-    color: var(--secondary-color);
+    color: #ffd700;
+    /* box-shadow: #ffd700 -10px 10px 10px  ; */
     transform: translateY(-50%) scale(1.1) rotate(10deg);
 }
 
@@ -1678,6 +1681,7 @@ p {
     background: rgba(255, 255, 255, 0.1);
     color: var(--secondary-color);
     transform: translateX(10px);
+    text-decoration: none;
 }
 
 .sidebar-link i {
@@ -1701,5 +1705,3 @@ p {
         right: calc(var(--sidebar-width-mobile) + 15px);
     }
 }
-
-/* Fim do código*/
