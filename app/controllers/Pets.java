@@ -1,9 +1,11 @@
 package controllers;
 
+import java.util.Arrays;
 import java.util.List;
 
 import models.Pessoa;
 import models.Pet;
+import models.PetSexo;
 import models.Situacao;
 import play.mvc.Controller;
 import play.mvc.With;
@@ -11,18 +13,9 @@ import play.mvc.With;
 @With(Interceptador.class)
 public class Pets extends Controller {
 
-    public static void form(Long id) {
-
-        if (id == null) {
-            Pessoas.listar(null);
-        }
-        Pessoa pessoa = Pessoa.find("situacao = ?1 and id = ?2", Situacao.ATIVA, id).first();
-
-        if (pessoa == null) {
-            Pessoas.listar(null);
-        }
-
-        render(pessoa);
+    public static void form() {
+        List<PetSexo> sexos = Arrays.asList(PetSexo.values());
+        render(sexos);
     }
 
     public static void salvar(Pet felino) {
@@ -49,8 +42,9 @@ public class Pets extends Controller {
 
     public static void editar(long id) {
         Pet fe = Pet.findById(id);
-        Pessoa pessoa = fe.dono;
-        renderTemplate("Pets/form.html", fe, pessoa);
+         List<PetSexo> sexos = Arrays.asList(PetSexo.values());
+       
+        renderTemplate("Pets/form.html", fe, sexos);
     }
 
     public static void remover(long id) {

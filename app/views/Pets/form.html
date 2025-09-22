@@ -1,46 +1,5 @@
-<!-- #{extends 'main.html' /}
-#{set title:'Formulário' /}
-
-
-<div>Relacionado um pet à pessoa com nome: <strong>${pessoa?.nome}</strong></div>
-
-<br>
-
-<form action="@{Pets.salvar}" method="post">
-
-    <h1>
-        #{if fe} Edição #{/if}
-        #{else} Cadastro #{/else}
-    </h1>
-
-
-    <input type="hidden" name="felino.id" value="${fe?.id}">
-
-    <input type="hidden" name="felino.dono.id" value="${pessoa?.id}">
-
-    <label>Nome</label>
-    <input type="text" name="felino.nome" value="${fe?.nome}"> <br />
-
-    <label>Idade</label>
-    <input type="text" name="felino.idade" value="${fe?.idade}"> <br />
-
-    <button type="submit">
-        #{if fe} Editar #{/if}
-        #{else} Cadastrar #{/else}
-    </button>
-
-
-</form> -->
-
 #{extends 'main.html' /}
 #{set title:'Formulário' /}
-
-<form action="@{Pets.salvar}" method="post">
-
-    <h1>
-        #{if Pessoa} Edição #{/if}
-        #{else} Cadastro #{/else}
-    </h1>
 
 <main class="form-page-content">
 
@@ -51,28 +10,63 @@
             #{else} Cadastro #{/else}
             de Pet
         </h1>
-        <div class="form-related-info">
-            Relacionando um pet à pessoa com nome: <strong>${pessoa?.nome}</strong>
-        </div>
 
         <input type="hidden" name="felino.id" value="${fe?.id}">
-        <input type="hidden" name="felino.dono.id" value="${pessoa?.id}">
 
+        <!-- Input Nome -->
         <div class="form-group">
             <label for="petNome">Nome do Pet:</label>
-            <input type="text" id="petNome" name="felino.nome" value="${fe?.nome}" required>
+            <input type="text" id="petNome" name="felino.nome" value="${fe?.nome}" placeholder="Informe o nome do pet"
+                required>
         </div>
-
+        <!-- Input dataNascimento -->
         <div class="form-group">
-            <label for="petIdade">Idade do Pet:</label>
-            <input type="number" id="petIdade" name="felino.idade" value="${fe?.idade}" required min="0">
+            <label for="petdataNascimento">Data de Nascimento:</label>
+
+            <input type="date" id="petdataNascimento" name="felino.dataNascimento" value="${fe?.dataNascimento}" 
+                required> 
         </div>
 
+        <!-- Input Raça -->
+        <div class="form-group">
+            <label for="petRaca">Raça:</label>
+            <input type="text" id="petRaca" name="felino.raca" value="${fe?.raca}" placeholder="Informe a raça do pet"
+                required min="0">
+        </div>
+        <!-- Input Peso -->
+        <div class="form-group">
+            <label for="petPeso">Peso:</label>
+            <input type="number" id="petPeso" name="felino.peso" value="${fe?.peso}" placeholder="Informe o peso do pet"
+                required min="0">
+        </div>
+
+        <!-- Select Sexo -->
+        <div class="form-group">
+            <label for="petdataNascimento">Sexo:</label>
+
+
+            <select name="felino.sexo">
+
+                <!--  -->
+
+                <option value="" disabled selected>Selecione uma opção</option>
+                #{list items: sexos, as: 's'}
+                <!-- <option value="${s}"> ${s}</option> -->
+
+                <option value="${s}" #{if fe?.sexo==s} selected #{/if}>${s}</option>
+
+                #{/list}
+
+
+            </select>
+        </div>
+
+        <!-- Button -->
         <button type="submit" class="submit-button">
             #{if fe} Salvar Alterações #{/if}
             #{else} Cadastrar Pet #{/else}
         </button>
 
-        <a href="@{Pets.listar}" class="back-button">Voltar para a Lista de Pets</a>
+        <a href="@{Pets.listar}" class="back-button">Lista de Pets</a>
     </form>
 </main>

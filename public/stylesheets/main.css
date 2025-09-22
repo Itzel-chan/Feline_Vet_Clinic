@@ -109,6 +109,10 @@ a:hover {
     background-color: var(--header-footer-bg);
     padding: 15px 0;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 .header-content {
@@ -147,6 +151,12 @@ a:hover {
 .site-name:hover {
     color: var(--soft-blue);
     /* Cor de hover, usando seu azul pastel suave */
+}
+
+.svg-Cat {
+    width: 24px;
+    height: 24px;
+    color: white;
 }
 
 /* ======================================================= */
@@ -278,6 +288,47 @@ a:hover {
 /* ======================================================= */
 /* 7. Estilos de Formulários (Cadastro/Edição)           */
 /* ======================================================= */
+
+
+/* Estilo para inputs e textareas existentes */
+.pet-form input[type="text"],
+.pet-form input[type="email"],
+.pet-form input[type="number"],
+.pet-form input[type="date"],
+form textarea,
+/* Adicione o seletor para o <select> aqui */
+.pet-form select { 
+    /* Inclui select também */
+    width: 100%;
+    padding: 14px 18px;
+    border: 1px solid var(--soft-blue);
+    border-radius: 8px;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 1.1em;
+    color: var(--text-dark);
+    background-color: var(--text-light);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    
+    /* Propriedades extras para o select */
+    appearance: none; /* Remove o estilo padrão do navegador */
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%232c3e50' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-chevron-down'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+}
+
+/* Estilo de foco para o select */
+.pet-form input[type="text"]:focus,
+.pet-form input[type="email"]:focus,
+.pet-form input[type="number"]:focus,
+.pet-form input[type="date"]:focus,
+.pet-form select:focus, /* Adicione o seletor de foco para o <select> */
+form textarea:focus {
+    outline: none;
+    border-color: var(--button-accent);
+    box-shadow: 0 0 0 4px rgba(52, 152, 219, 0.2);
+    background-color: #f7fcfe;
+}
 .form-page-content {
     flex-grow: 1;
     padding: 40px 20px;
@@ -787,8 +838,8 @@ body {
         flex-direction: column;
         background-color: #34495e;
         /* Fundo do menu mobile */
-        position: absolute;
-        top: 60px;
+        /* position: absolute;
+        top: 60px; */
         /* Ajuste conforme a altura do seu header */
         right: 0;
         width: 100%;
@@ -1391,12 +1442,12 @@ p {
     align-items: center;
     justify-content: center;
     gap: 30px;
-  
+
 
 }
 
-.service-card {   
-    margin-bottom: 50px ;
+.service-card {
+    margin-bottom: 50px;
     background-color: white;
     padding: 30px;
     border-radius: 12px;
@@ -1558,15 +1609,21 @@ p {
 
 /* Paleta de cores moderna em tons de azul */
 :root {
-    --primary-color: #4a90e2; /* Azul vibrante */
-    --secondary-color: #6a6aff; /* Roxo-azulado */
-    --background-color: #e6f0ff; /* Azul clarinho */
-    --sidebar-bg-color: #002d62; /* Azul marinho escuro */
+    --primary-color: #4a90e2;
+    /* Azul vibrante */
+    --secondary-color: #6a6aff;
+    /* Roxo-azulado */
+    --background-color: #e6f0ff;
+    /* Azul clarinho */
+    --sidebar-bg-color: #002d62;
+    /* Azul marinho escuro */
     --text-color: #333;
     --white: #fff;
     --transition-speed: 0.5s;
-    --sidebar-width-desktop: 25vw; /* 25% da largura da tela no desktop */
-    --sidebar-width-mobile: 80vw; /* 80% da largura da tela no mobile */
+    --sidebar-width-desktop: 25vw;
+    /* 25% da largura da tela no desktop */
+    --sidebar-width-mobile: 80vw;
+    /* 80% da largura da tela no mobile */
     --header-height: 80px;
     --footer-height: 60px;
 }
@@ -1614,7 +1671,8 @@ p {
 .close-btn {
     display: none;
     position: fixed;
-    top: calc(55% - var(--header-height) / 2); /* Posiciona no meio da altura útil */
+    top: calc(55% - var(--header-height) / 2);
+    /* Posiciona no meio da altura útil */
     right: calc(var(--sidebar-width-desktop) + 0px);
     transform: translateY(-50%);
     z-index: 1002;
@@ -1649,7 +1707,8 @@ p {
 
 .user-info .fa-cat {
     font-size: 28px;
-    color: #ffd700; /* Dourado para o gato */
+    color: #ffd700;
+    /* Dourado para o gato */
     margin-right: 15px;
 }
 
@@ -1701,6 +1760,7 @@ p {
         height: calc(100vh - var(--header-height) - var(--footer-height));
         top: var(--header-height);
     }
+
     .close-btn {
         right: calc(var(--sidebar-width-mobile) + 15px);
     }

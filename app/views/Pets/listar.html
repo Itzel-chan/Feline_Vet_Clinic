@@ -1,65 +1,6 @@
 #{extends 'main.html' /}
 #{set title:'Listagem de Pets' /}
 
-<!-- <div class="container form-filter-container">
-    <form action="@{Pets.listar}">
-
-        <h2>Filtro de pets</h2>
-
-        <input type="text" name="busca">
-
-        <button type="submit">Pesquisar</button>
-
-    </form>
-
-
-</div>
-
-<table>
-    <tr>
-        <th colspan="5">
-            <h3>Listagem de Pets</h3>
-        </th>
-    </tr>
-
-    <tr>
-
-        <th>Nome</th>
-        <th>Idade</th>
-        <th>Nome do dono</th>
-        <th colspan="2">Ações</th>
-
-    </tr>
-
-    #{list items: lista, as: 'pet'}
-
-    <tr>
-
-        <td>${pet.nome}</td>
-        <td>${pet.idade}</td>
-
-
-        <td>${pet.dono?.nome}</td>
-
-        <td><a href='@{Pets.editar(pet.id)}'>Editar</a></td>
-        <td><a href='@{Pets.remover(pet.id)}'>Remover</a></td>
-
-    </tr>
-
-    #{/list}
-</table> -->
-
-
-
-
-        <th>Nome</th>
-        <th>Idade</th>
-        <th colspan="2">Ações</th>
-
-
-<!-- #{extends 'main.html' /}
-#{set title:'Listagem de Pets' /} -->
-
 <div class="container form-filter-container">
     <h2>Filtro de pets</h2>
     <form action="@{Pets.listar}">
@@ -75,7 +16,10 @@
         <thead>
             <tr>
                  <th class="column-name">Nome</th>
-                <th>Idade</th>
+                <th>dataNascimento</th>
+                <th>raca</th>
+                <th>peso</th>
+                <th>sexo</th>
                 <th>Nome do dono</th>
                 <th colspan="2" class="column-actions">Ações</th>
             </tr>
@@ -84,7 +28,10 @@
             #{list items: lista, as: 'pet'}
             <tr>
                 <td data-label="Nome">${pet.nome}</td>
-                <td data-label="Idade">${pet.idade}</td>
+                <td data-label="Idade">${pet.dataNascimento}</td>
+                <td data-label="Idade">${pet.raca}</td>
+                <td data-label="Idade">${pet.peso}</td>
+                <td data-label="Idade">${pet.sexo}</td>
                 <td data-label="Nome do dono">${pet.dono?.nome}</td>
 
                 <td class="table-action-buttons-cell">

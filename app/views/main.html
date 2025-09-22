@@ -29,11 +29,15 @@
                 </button>
                 <ul class="nav-list">
                     <li><a href="@{Application.index()}" class="nav-link">Página Inicial</a></li>
-                    <li><a href="@{Pessoas.form()}" class="nav-link">Cadastro Pessoas</a></li>
-                    <li><a href="@{Pessoas.listar()}" class="nav-link">Listagem Pessoas</a></li>
-                    <li><a href="@{Pets.listar()}" class="nav-link">Listagem Pets</a></li>
+                    <!-- <li><a href="@{Pessoas.listar()}" class="nav-link">Listagem Pessoas</a></li>
+                    <li><a href="@{Pets.listar()}" class="nav-link">Listagem Pets</a></li> -->
+                    
+                    #{if !session['DadosUsu']}
                     <li><a href="@{Logins.form()}" class="nav-link">Login</a></li>
-                    <li><a href="@{Logins.deslogar()}" class="nav-link">Deslogar</a></li>
+                    <li><a href="@{Pessoas.form()}" class="nav-link">Cadastrar-se</a></li>
+
+                    #{/if}
+                    <!-- <li><a href="@{Logins.deslogar()}" class="nav-link">Deslogar</a></li> -->
                 </ul>
             </nav>
         </div>
@@ -56,16 +60,26 @@
     </div>
     
     <div class="user-sidebar-content">
+        
+        <!-- <a href="@{Logins.deslogar()}" class="sidebar-link">
+            <i class="fa-solid fa-user"></i>Perfil
+        </a> -->
+        <a href="@{Pets.form()}" class="sidebar-link">
+            <i class="fas fa-cat"></i>Cadastrar Pet
+        </a>
+            
+        <a href="@{Logins.deslogar()}" class="sidebar-link">
+             <i class="fas fa-stethoscope"></i>Consultas
+        </a>
+        <a href="@{Logins.deslogar()}" class="sidebar-link">
+          <i class="fas fa-heart"></i>Seus Pets
+            <!-- <img src="/public/imagens/pngCat.svg" class="svg-Cat"></i>Seus Pets -->
+        </a>
+
         <a href="@{Logins.deslogar()}" class="sidebar-link">
             <i class="fas fa-paw"></i> Cuidados Pet
         </a>
-        <a href="@{Logins.deslogar()}" class="sidebar-link">
-            <i class="fa-solid fa-user"></i>Cadastrar
-             <!-- <i class="fas fa-stethoscope"></i> -->
-        <a href="@{Logins.deslogar()}" class="sidebar-link">
-            <i class="fas fa-sign-in-alt"></i>Logar
-             
-        </a>
+
     </div>
 
     <div class="sidebar-bottom">
