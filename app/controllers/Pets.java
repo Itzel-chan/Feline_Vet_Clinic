@@ -19,8 +19,19 @@ public class Pets extends Controller {
     }
 
     public static void salvar(Pet felino) {
+        if (session.contains("DadosUsu") == false) {
+            flash.error("Não logado");
+            Logins.form();
+        }
+
+        String nomeUsu = session.get("DadosUsu");
+        Pessoa donoPet = Pessoa.find("nome = ?1 ", nomeUsu).first();
+
+        felino.dono = donoPet;
         felino.save();
-        listar(null);
+
+        Pets.form();
+
     }
 
     public static void listar(String busca) {
@@ -28,11 +39,8 @@ public class Pets extends Controller {
         List<Pet> lista = null;
 
         if (busca == null || busca.trim().isEmpty()) {
-
             lista = Pet.find("situacao = ?1", Situacao.ATIVA).fetch();
-
         } else {
-
             lista = Pet.find("situacao = ?1 and lower(nome) like ?2", Situacao.ATIVA, "%" + busca.toLowerCase() + "%")
                     .fetch();
         }
@@ -42,8 +50,8 @@ public class Pets extends Controller {
 
     public static void editar(long id) {
         Pet fe = Pet.findById(id);
-         List<PetSexo> sexos = Arrays.asList(PetSexo.values());
-       
+        List<PetSexo> sexos = Arrays.asList(PetSexo.values());
+
         renderTemplate("Pets/form.html", fe, sexos);
     }
 
@@ -52,6 +60,21 @@ public class Pets extends Controller {
         s.situacao = Situacao.INATIVA;
         s.save();
         listar(null);
+    }
+
+    public static void perfilPetsUsu() {
+        if (session.contains("DadosUsu") == false) {
+            flash.error("Login necessário!");
+            Logins.form();
+
+        }
+
+        String NomeUsu = session.get("DadosUsu");
+        Pessoa usuario = Pessoa.find("nome = ?1", NomeUsu).first();
+
+        List<Pet> pets = Pet.find("dono = ?1", usuario).fetch();
+        render(pets);
+
     }
 
 }

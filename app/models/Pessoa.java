@@ -19,6 +19,7 @@ public class Pessoa extends Model {
     public String telefone;
     public String email;
     public String senha;
+    public boolean IsAdm;
 
     @Enumerated(EnumType.STRING)
     public Situacao situacao;
