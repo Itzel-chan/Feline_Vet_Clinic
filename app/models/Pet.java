@@ -20,6 +20,9 @@ public class Pet extends Model {
     public Integer peso;
     public Date dataNascimento;
 
+    // @Enumerated(EnumType.STRING)
+    // public SituacaoConsulta situacaoConsulta;
+
     @ManyToOne
     public Pessoa dono;
 
