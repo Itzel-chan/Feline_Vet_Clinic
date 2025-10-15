@@ -55,4 +55,56 @@ public class Pessoas extends Controller {
         listar(null);
     }
 
+    public static void formConsulta(Long id) {
+        Pet pet = Pet.findById(id);
+        render(pet);
+
+    }
+
+    public static void registrarConsulta(Consulta consulta) {
+        consulta.save();
+        listar();
+    }
+
+    public static void agendar(Long id) {
+        Consulta consulta = Consulta.findById(id);
+
+        consulta.status = Status.AGENDADA;
+
+        consulta.save();
+        listar();
+
+    }
+
+    public static void finalizarConsulta(Long id) {
+
+        Consulta consulta = Consulta.findById(id);
+
+        consulta.status = Status.FINALIZADA;
+
+        consulta.save();
+        listar();
+
+    }
+
+    public void listarConsultas(String termo) {
+        List<Consulta> consultas = null;
+
+        if (termo.equals("andamento")) {
+            consultas = Consulta.find("status = ?1, Status.EM_ANDAMENTO").fetch();
+
+        }
+        if (termo.equals("agendadas")) {
+            consultas = Consulta.find("status = ?1, Status.AGENDADA").fetch();
+
+        }
+        if (termo.equals("finalizadas")) {
+            consultas = Consulta.find("status = ?1, Status.FINALIZADA").fetch();
+
+        }
+
+        render(consultas);
+
+    }
+
 }
