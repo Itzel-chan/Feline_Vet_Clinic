@@ -7,6 +7,7 @@ import models.Pessoa;
 import models.Pet;
 import models.PetSexo;
 import models.Situacao;
+import play.data.validation.Valid;
 import play.mvc.Controller;
 import play.mvc.With;
 
@@ -18,7 +19,15 @@ public class Pets extends Controller {
         render(sexos);
     }
 
-    public static void salvar(Pet felino) {
+    public static void salvar(@Valid Pet felino) {
+        if (validation.hasErrors()) {
+            validation.keep();
+            form();
+
+            
+        }
+
+
         if (session.contains("DadosUsu") == false) {
             flash.error("Não logado");
             Logins.form();

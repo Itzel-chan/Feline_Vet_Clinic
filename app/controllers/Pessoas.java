@@ -5,6 +5,7 @@ import java.util.List;
 import models.Pessoa;
 import models.Pet;
 import models.Situacao;
+import play.data.validation.Valid;
 import play.mvc.Controller;
 import play.mvc.With;
 
@@ -16,7 +17,12 @@ public class Pessoas extends Controller {
         render();
     }
 
-    public static void salvar(Pessoa pess) {
+    public static void salvar(@Valid Pessoa pess) {
+        if (validation.hasErrors()) {
+            validation.keep();
+            form();
+            
+        }
         pess.save();
         flash.success("Usuário cadastrado com sucesso");
         form();

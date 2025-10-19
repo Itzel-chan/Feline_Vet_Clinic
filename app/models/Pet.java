@@ -10,14 +10,22 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.ManyToOne;
 
+import play.data.validation.Required;
 import play.db.jpa.Model;
 
 @Entity
 public class Pet extends Model {
 
+    @Required(message = "Nome obrigatório")
     public String nome;
+    
+    @Required(message = "Raca obrigatório")
     public String raca;
+    
+    @Required(message = "Peso obrigatório!")
     public Integer peso;
+   
+    @Required(message = "Data de Nascimento obrigatório!")
     public Date dataNascimento;
 
     // @Enumerated(EnumType.STRING)

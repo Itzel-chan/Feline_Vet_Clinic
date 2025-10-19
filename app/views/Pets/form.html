@@ -15,34 +15,34 @@
 
         <!-- Input Nome -->
         <div class="form-group">
-            <label for="petNome">Nome do Pet:</label>
+            <label for="petNome">Nome do Pet:</label> <span class="error"> #{error 'felino.nome'/}</span>
             <input type="text" id="petNome" name="felino.nome" value="${fe?.nome}" placeholder="Informe o nome do pet"
-                required>
+                >
         </div>
         <!-- Input dataNascimento -->
         <div class="form-group">
-            <label for="petdataNascimento">Data de Nascimento:</label>
+            <label for="petdataNascimento">Data de Nascimento:</label> <span class="error"> #{error 'felino.dataNascimento'/}</span>
 
             <input type="date" id="petdataNascimento" name="felino.dataNascimento" value="${fe?.dataNascimento}" 
-                required> 
+                > 
         </div>
 
         <!-- Input Raça -->
         <div class="form-group">
-            <label for="petRaca">Raça:</label>
+            <label for="petRaca">Raça:</label> <span class="error"> #{error 'felino.raca'/}</span>
             <input type="text" id="petRaca" name="felino.raca" value="${fe?.raca}" placeholder="Informe a raça do pet"
-                required min="0">
+                 min="0">
         </div>
         <!-- Input Peso -->
         <div class="form-group">
-            <label for="petPeso">Peso:</label>
+            <label for="petPeso">Peso:</label> <span class="error"> #{error 'felino.peso'/}</span>
             <input type="number" id="petPeso" name="felino.peso" value="${fe?.peso}" placeholder="Informe o peso do pet"
-                required min="0">
+                 min="0">
         </div>
 
         <!-- Select Sexo -->
         <div class="form-group">
-            <label for="petdataNascimento">Sexo:</label>
+            <label for="petdataNascimento">Sexo:</label> 
 
 
             <select name="felino.sexo">
