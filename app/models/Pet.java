@@ -10,35 +10,38 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.ManyToOne;
 
+import play.data.validation.Min;
+import play.data.validation.MinSize;
 import play.data.validation.Required;
 import play.db.jpa.Model;
 
 @Entity
 public class Pet extends Model {
 
-    @Required(message = "Nome obrigatório")
+    @Required(message = "Nome obrigatório!")
+    @MinSize(value = 3, message = "No mínimo 3 caracteres!" )
     public String nome;
-    
-    @Required(message = "Raca obrigatório")
+
+    @Required(message = "Raça obrigatória!")
+    @MinSize(value = 5, message = "No mínimo 5 caracteres!")
     public String raca;
-    
+
     @Required(message = "Peso obrigatório!")
-    public Integer peso;
-   
-    @Required(message = "Data de Nascimento obrigatório!")
+    @Min(value = 0.1, message = "No mínimo 100g")
+    public Double peso;
+
+    @Required(message = "Data de Nascimento obrigatória!")
     public Date dataNascimento;
 
-    // @Enumerated(EnumType.STRING)
-    // public SituacaoConsulta situacaoConsulta;
+    @Required(message = "Campo obrigatório!")
+    @Enumerated(EnumType.STRING)
+    public PetSexo sexo;
 
     @ManyToOne
     public Pessoa dono;
 
     @Enumerated(EnumType.STRING)
     public Situacao situacao;
-
-    @Enumerated(EnumType.STRING)
-    public PetSexo sexo;
 
     public Pet() {
         this.situacao = Situacao.ATIVA;
@@ -51,7 +54,8 @@ public class Pet extends Model {
         }
         LocalDate dataAtual = LocalDate.now();
         LocalDate dataNasci = this.dataNascimento.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        int idade = Period.between(dataAtual, dataNasci).getYears();
+        int idade = Period.between(dataNasci,  dataAtual).getYears();
+
         return idade;
     }
 

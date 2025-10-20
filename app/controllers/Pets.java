@@ -23,10 +23,7 @@ public class Pets extends Controller {
         if (validation.hasErrors()) {
             validation.keep();
             form();
-
-            
         }
-
 
         if (session.contains("DadosUsu") == false) {
             flash.error("Não logado");
@@ -71,11 +68,10 @@ public class Pets extends Controller {
         listar(null);
     }
 
-    public static void perfilPetsUsu() {
+    public static void listarPetsUsu() {
         if (session.contains("DadosUsu") == false) {
             flash.error("Login necessário!");
             Logins.form();
-
         }
 
         String NomeUsu = session.get("DadosUsu");

@@ -35,19 +35,19 @@
         </div>
         <!-- Input Peso -->
         <div class="form-group">
-            <label for="petPeso">Peso:</label> <span class="error"> #{error 'felino.peso'/}</span>
+            <label for="petPeso">Peso (kg):</label> <span class="error"> #{error 'felino.peso'/}</span>
             <input type="number" id="petPeso" name="felino.peso" value="${fe?.peso}" placeholder="Informe o peso do pet"
                  min="0">
         </div>
 
         <!-- Select Sexo -->
         <div class="form-group">
-            <label for="petdataNascimento">Sexo:</label> 
+            <label for="petdataNascimento">Sexo:</label> <span class="error"> #{error 'felino.sexo'/}</span>
 
 
             <select name="felino.sexo">
 
-                <!--  -->
+                
 
                 <option value="" disabled selected>Selecione uma opção</option>
                 #{list items: sexos, as: 's'}

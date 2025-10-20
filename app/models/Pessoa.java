@@ -23,10 +23,8 @@ import play.db.jpa.Model;
 public class Pessoa extends Model {
 
     @Required(message = "Nome obrigatório!")
+    @MinSize(value = 3, message = "No mínimo 3 caracteres!")
     public String nome;
-   
-    @Required(message = "Telefone obrigatório!")
-    public String telefone;
    
     @Required
     @Email(message = "Fomato inválido!")

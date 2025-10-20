@@ -1,0 +1,33 @@
+#{extends 'main.html' /}
+#{set title:'Listagem de Pets' /}
+
+
+<div class="cards">
+    
+#{list items: pets, as: 'pet' }
+
+<div class="carteira">
+    <div class="header">
+        <div class="icone-gato">
+            <i class="fas fa-cat"></i>
+        </div>
+            <h1 class="nome-gatinho">${pet.nome}</h1>
+        </div>
+
+        <div class="dados-gatinho">
+            <p><strong>Data de nascimento:</strong> <span>${pet.dataNascimento.format('dd/MM/yyyy')}</span></p>
+            <p><strong>Idade:</strong> <span>${pet.idade}</span></p>
+            <p><strong>Peso: </strong> <span>${pet.peso} Kg</span></p>
+            <p><strong>Sexo:</strong> <span>${pet.sexo}</span></p>
+            <p><strong>Raça:</strong> <span>${pet.raca}</span></p>
+        </div>
+        
+        <div class="patinhas">
+            <i class="fas fa-paw"></i>
+            <i class="fas fa-paw"></i>
+        </div>
+        
+    </div>
+    #{/list}
+    
+</div>
