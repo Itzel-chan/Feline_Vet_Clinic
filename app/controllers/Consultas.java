@@ -1,5 +1,10 @@
 package controllers;
 
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import models.Consulta;
@@ -51,17 +56,35 @@ public class Consultas extends Controller {
         else if (termo.equals("andamento")) {
             consultas = Consulta.find("status = ?1, SituacaoConsulta.EM_ANDAMENTO").fetch();
 
-        }
-        else if (termo.equals("agendadas")) {
+        } else if (termo.equals("agendadas")) {
             consultas = Consulta.find("status = ?1, SituacaoConsulta.AGENDADA").fetch();
 
-        }
-        else if (termo.equals("finalizadas")) {
+        } else if (termo.equals("finalizadas")) {
             consultas = Consulta.find("status = ?1, SituacaoConsulta.FINALIZADA").fetch();
 
         }
 
         render(consultas);
+
+    }
+
+    public static void calendario() {
+        List<Date> datas = new ArrayList<>();
+
+        Date data = null;
+        LocalDate aux = null;
+        
+        int diasRestantesDoMes = LocalDate.now().lengthOfMonth() - LocalDate.now().getDayOfMonth();
+
+        for (int i = 0; i < diasRestantesDoMes; i++) {
+            aux = LocalDate.now().plusDays(i);
+            if (aux.getDayOfWeek()!= DayOfWeek.SATURDAY) {
+                data = Date.from(aux.atStartOfDay(ZoneId.systemDefault()).toInstant());
+                datas.add(data);
+            }
+        }
+
+        render(datas);
 
     }
 

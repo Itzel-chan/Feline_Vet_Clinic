@@ -1796,14 +1796,13 @@ p {
   transform: scale(0.9);
 }
 
-.listar-pets-btns{
-
+.listar-pets-btns {
   position: absolute;
   right: 20px;
-  top: 15px; 
+  top: 15px;
 }
 
-.listar-pets-btns button{
+.listar-pets-btns button {
   outline: none;
   padding: 10px;
   background: none;
@@ -1811,26 +1810,22 @@ p {
   border-radius: 10px;
   color: white;
   font-size: 1rem;
-  transition: all ease-in-out .3s;
+  transition: all ease-in-out 0.3s;
   cursor: pointer;
 
+  &.consultar:hover {
+    border-color: rgb(0, 255, 0);
+    color: rgb(0, 255, 0);
+  }
 
-&.consultar:hover{
-border-color: rgb(0, 255, 0);
-color: rgb(0, 255, 0);
-}
-
-&.editar:hover{
-  border-color: rgb(255, 120, 9);
-color: rgb(255, 120, 9);
-
-}
-&.remover:hover{
-  border-color:red;
-color: red;
-
-}
-
+  &.editar:hover {
+    border-color: rgb(255, 120, 9);
+    color: rgb(255, 120, 9);
+  }
+  &.remover:hover {
+    border-color: red;
+    color: red;
+  }
 }
 
 /* ------------------- HEADER (Ícone e Nome) ------------------- */
@@ -1954,7 +1949,6 @@ color: red;
   --sombra-escuro: rgba(0, 0, 0, 0.3);
 }
 
-
 .tituloPágCuid h1 {
   color: var(--azul-escuro);
   margin-bottom: 40px;
@@ -2047,7 +2041,6 @@ color: red;
   margin: auto;
 }
 
-
 /* 4. COLUNA ESQUERDA (DESTAQUE) */
 .modal-left {
   flex: 1;
@@ -2060,9 +2053,8 @@ color: red;
   text-align: center;
 }
 
-.modal-left h2{
+.modal-left h2 {
   color: rgba(255, 255, 255, 0.507);
-
 }
 
 /* Cores de fundo diferentes */
@@ -2125,5 +2117,39 @@ color: red;
   .modal-right {
     padding: 20px;
     border-radius: 0 0 10px 10px;
+  }
+}
+
+/* ===============================CALENDARIO============================ */
+.calendario {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 5px;
+  gap: 20px;
+}
+
+.dia {
+  width: max-content;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(74, 119, 216);
+  color: white;
+  border-radius: 10px;
+  padding: 5px  30px;
+  align-items: center;
+  justify-content: center;
+}
+
+.data {
+}
+
+.link{
+  opacity: 0.5;
+  cursor: pointer;
+  transition: all ease-in-out .3s;
+
+  &:hover{
+    opacity: 1;
   }
 }
