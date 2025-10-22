@@ -7,7 +7,7 @@
 #{list items: pets, as: 'pet' }
 
 <div class="carteira">
-    <div class="header">
+    <div class="card-header">
         <div class="icone-gato">
             <i class="fas fa-cat"></i>
         </div>
@@ -21,6 +21,12 @@
             <p><strong>Sexo:</strong> <span>${pet.sexo}</span></p>
             <p><strong>Raça:</strong> <span>${pet.raca}</span></p>
         </div>
+
+        <div class="listar-pets-btns">
+            <button class="consultar">Consultar</button>
+            <button class="editar">Editar</button>
+            <button class="remover">Remover</button>
+        </div>
         
         <div class="patinhas">
             <i class="fas fa-paw"></i>
@@ -28,6 +34,9 @@
         </div>
         
     </div>
-    #{/list}
-    
+    #{/list} 
+
+    #{else}
+    <h2>Você ainda não tem nenhum pet cadastrado! </h2>
+    #{/else}
 </div>

@@ -1796,8 +1796,45 @@ p {
   transform: scale(0.9);
 }
 
+.listar-pets-btns{
+
+  position: absolute;
+  right: 20px;
+  top: 15px; 
+}
+
+.listar-pets-btns button{
+  outline: none;
+  padding: 10px;
+  background: none;
+  border: white 1px solid;
+  border-radius: 10px;
+  color: white;
+  font-size: 1rem;
+  transition: all ease-in-out .3s;
+  cursor: pointer;
+
+
+&.consultar:hover{
+border-color: rgb(0, 255, 0);
+color: rgb(0, 255, 0);
+}
+
+&.editar:hover{
+  border-color: rgb(255, 120, 9);
+color: rgb(255, 120, 9);
+
+}
+&.remover:hover{
+  border-color:red;
+color: red;
+
+}
+
+}
+
 /* ------------------- HEADER (Ícone e Nome) ------------------- */
-.header {
+.card-header {
   display: flex;
   align-items: center;
   gap: 20px;
@@ -1903,5 +1940,190 @@ p {
     font-size: 20px;
     bottom: 20px;
     right: 20px;
+  }
+}
+
+/* Página CuidadosPet */
+
+/* Paleta de Azuis */
+:root {
+  --azul-escuro: #0f4c75;
+  --azul-medio: #3282b8;
+  --azul-claro: #bbe1fa;
+  --branco: #ffffff;
+  --sombra-escuro: rgba(0, 0, 0, 0.3);
+}
+
+
+.tituloPágCuid h1 {
+  color: var(--azul-escuro);
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+/* CARDS */
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.card {
+  width: 300px;
+  height: 200px; /* Reduzi um pouco a altura para ficar mais compacto */
+  cursor: pointer;
+  box-shadow: 0 4px 8px var(--sombra-escuro);
+  border-radius: 15px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+.card-front {
+  background-color: var(--azul-medio);
+  color: var(--branco);
+  border: 2px solid var(--azul-escuro);
+  border-radius: 15px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.icon-grande {
+  font-size: 3.5em; /* Ajustei o tamanho do ícone */
+  color: var(--azul-claro);
+  margin-bottom: 10px;
+}
+
+/* ============================================== */
+/* ESTILOS DO MODAL */
+/* ============================================== */
+
+/* 1. OVERLAY (O fundo escuro) - ESSENCIAL PARA O JS */
+.modal-overlay {
+  display: none; /* ESCONDIDO POR PADRÃO */
+
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.85); /* Mais escuro */
+
+  /* Centralização */
+  justify-content: center;
+  align-items: center;
+  padding: 20px; /* Ajuda na visualização em telas pequenas */
+  box-sizing: border-box;
+}
+
+/* Classe que o JS adiciona para MOSTRAR o modal */
+.modal-overlay.active {
+  display: flex; /* MUDA PARA FLEXBOX para mostrar e centralizar */
+}
+
+/* 2. CONTEÚDO DO MODAL */
+.modal-content {
+  background-color: var(--branco);
+  max-width: 900px;
+  min-height: 400px;
+  border-radius: 10px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.6);
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  width: 95%; /* Garante que é responsivo */
+  margin: auto;
+}
+
+
+/* 4. COLUNA ESQUERDA (DESTAQUE) */
+.modal-left {
+  flex: 1;
+  padding: 30px;
+  color: var(--branco);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.modal-left h2{
+  color: rgba(255, 255, 255, 0.507);
+
+}
+
+/* Cores de fundo diferentes */
+.bg-alimentacao {
+  background-color: #0f4c75;
+}
+.bg-comportamento {
+  background-color: #3282b8;
+}
+.bg-higiene {
+  background-color: #1b262c;
+}
+.bg-saude {
+  background-color: #007bff;
+}
+
+.modal-icon {
+  font-size: 4em;
+  margin-bottom: 15px;
+}
+
+/* 5. COLUNA DIREITA (CONTEÚDO) */
+.modal-right {
+  flex: 1.5;
+  padding: 40px;
+  color: var(--azul-escuro);
+  display: flex;
+  flex-direction: column;
+  max-height: 500px;
+  overflow-y: scroll;
+}
+
+/* 6. CTA (Call to Action) - Botão */
+.modal-cta {
+  background-color: #28a745;
+  color: var(--branco);
+  border: none;
+  padding: 15px 25px;
+  font-size: 1em;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: auto;
+  width: 100%;
+}
+
+/* Responsividade do Modal */
+@media (max-width: 768px) {
+  .modal-content {
+    flex-direction: column;
+  }
+
+  .modal-left {
+    min-height: 150px;
+    order: -1;
+    border-radius: 10px 10px 0 0;
+  }
+
+  .modal-right {
+    padding: 20px;
+    border-radius: 0 0 10px 10px;
   }
 }

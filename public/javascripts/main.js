@@ -86,3 +86,44 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+
+
+
+// Página CuidadosPet
+
+/**
+ * Abre o modal especificado pelo ID, adicionando a classe 'active'.
+ * @param {string} modalId - O ID do elemento modal-overlay a ser aberto.
+ */
+function openModal(modalId) {
+    const modal = document.getElementById(modalId);
+    if (modal) {
+        modal.classList.add('active');
+        // Impede o scroll da página enquanto o modal estiver aberto
+        document.body.style.overflow = 'hidden'; 
+    } else {
+        console.error('Modal não encontrado com o ID:', modalId);
+    }
+}
+
+/**
+ * Fecha o modal especificado pelo ID, removendo a classe 'active'.
+ * @param {string} modalId - O ID do elemento modal-overlay a ser fechado.
+ */
+function closeModal(modalId) {
+    const modal = document.getElementById(modalId);
+    if (modal) {
+        modal.classList.remove('active');
+        // Restaura o scroll da página
+        document.body.style.overflow = 'auto';
+    }
+}
+
+// Opcional: Fechar o modal clicando no overlay escuro (fora do conteúdo)
+document.addEventListener('click', function(event) {
+    // Verifica se o elemento clicado possui a classe 'modal-overlay' E se está visível
+    if (event.target.classList.contains('modal-overlay')) {
+        closeModal(event.target.id);
+    }
+});

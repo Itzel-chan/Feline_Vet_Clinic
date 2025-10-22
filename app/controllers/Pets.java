@@ -82,4 +82,8 @@ public class Pets extends Controller {
 
     }
 
+    public static void cuidadosPet(){
+        render();
+    }
+
 }
