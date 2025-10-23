@@ -47,8 +47,6 @@
 
             <select name="felino.sexo">
 
-                
-
                 <option value="" disabled selected>Selecione uma opção</option>
                 #{list items: sexos, as: 's'}
                 <!-- <option value="${s}"> ${s}</option> -->
@@ -56,7 +54,6 @@
                 <option value="${s}" #{if fe?.sexo==s} selected #{/if}>${s}</option>
 
                 #{/list}
-
 
             </select>
         </div>
@@ -67,6 +64,8 @@
             #{else} Cadastrar Pet #{/else}
         </button>
 
+        #{if session["adm"]}
         <a href="@{Pets.listar}" class="back-button">Lista de Pets</a>
+        #{/if}
     </form>
 </main>

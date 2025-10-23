@@ -25,7 +25,7 @@ public class Pessoas extends Controller {
         }
         pess.save();
         flash.success("Usuário cadastrado com sucesso");
-        form();
+        Logins.form();
     }
 
     public static void listar(String busca) {

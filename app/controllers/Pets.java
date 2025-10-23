@@ -22,19 +22,21 @@ public class Pets extends Controller {
     public static void salvar(@Valid Pet felino) {
         if (validation.hasErrors()) {
             validation.keep();
+            flash.error("falha ao salvar!");
             form();
         }
 
-        if (session.contains("DadosUsu") == false) {
-            flash.error("Não logado");
-            Logins.form();
-        }
+        // if (session.contains("DadosUsu") == false) {
+        //     flash.error("Não logado");
+        //     Logins.form();
+        // }
 
         String nomeUsu = session.get("DadosUsu");
         Pessoa donoPet = Pessoa.find("nome = ?1 ", nomeUsu).first();
 
         felino.dono = donoPet;
         felino.save();
+        flash.success("Cadastrado com sucesso!");
 
         Pets.form();
 

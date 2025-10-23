@@ -12,7 +12,6 @@ import play.db.jpa.Model;
 @Entity
 public class Consulta extends Model {
 
-    public SituacaoConsulta status;
     public Date dataAgendada;
 
     @ManyToOne

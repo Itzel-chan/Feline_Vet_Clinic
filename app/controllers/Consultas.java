@@ -15,25 +15,23 @@ import play.mvc.Controller;
 
 public class Consultas extends Controller {
 
-    public static void registrarConsulta(Date data) {
+    public static void registrarConsulta(Date data, long id) {
         Consulta consulta = new Consulta();
-        Long idPet = (Long) Cache.get("petId");
-        
-        Pet pet = Pet.findById(idPet);
         consulta.dataAgendada = data;
-        consulta.pet = pet;
 
+        Pet pet = Pet.findById(id);
+
+        consulta.pet = pet;
         consulta.save();
         flash.success("Consulta registrada com sucesso!");
 
-        Cache.clear();
         listarConsultas(null);
     }
 
     public static void agendar(Long id) {
         Consulta consulta = Consulta.findById(id);
 
-        consulta.status = SituacaoConsulta.AGENDADA;
+        consulta.situacaoConsulta = SituacaoConsulta.AGENDADA;
 
         consulta.save();
         listarConsultas(null);
@@ -44,7 +42,7 @@ public class Consultas extends Controller {
 
         Consulta consulta = Consulta.findById(id);
 
-        consulta.status = SituacaoConsulta.FINALIZADA;
+        consulta.situacaoConsulta = SituacaoConsulta.FINALIZADA;
 
         consulta.save();
         listarConsultas(null);
@@ -59,13 +57,13 @@ public class Consultas extends Controller {
         }
 
         else if (termo.equals("andamento")) {
-            consultas = Consulta.find("status = ?1, SituacaoConsulta.EM_ANDAMENTO").fetch();
+            consultas = Consulta.find("situacaoConsulta = ?1, SituacaoConsulta.EM_ANDAMENTO").fetch();
 
         } else if (termo.equals("agendadas")) {
-            consultas = Consulta.find("status = ?1, SituacaoConsulta.AGENDADA").fetch();
+            consultas = Consulta.find("situacaoConsulta = ?1, SituacaoConsulta.AGENDADA").fetch();
 
         } else if (termo.equals("finalizadas")) {
-            consultas = Consulta.find("status = ?1, SituacaoConsulta.FINALIZADA").fetch();
+            consultas = Consulta.find("situacaoConsulta = ?1, SituacaoConsulta.FINALIZADA").fetch();
 
         }
 
@@ -75,7 +73,6 @@ public class Consultas extends Controller {
 
     public static void calendario(Long id) {
         List<Date> datas = new ArrayList<>();
-
         Date data = null;
         LocalDate aux = null;
         
@@ -89,8 +86,7 @@ public class Consultas extends Controller {
             }
         }
 
-        Cache.add("petId", id);
-        render(datas);
+        render(datas,id);
 
     }
 
