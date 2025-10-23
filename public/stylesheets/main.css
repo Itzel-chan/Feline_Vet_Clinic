@@ -2126,6 +2126,8 @@ p {
   flex-wrap: wrap;
   padding: 5px;
   gap: 20px;
+  justify-content: center;
+  
 }
 
 .dia {

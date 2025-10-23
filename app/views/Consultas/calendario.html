@@ -3,9 +3,15 @@
 
 
 <div class="calendario">
-    <div class="dia">
-        <span class="data"><strong>20/22/7</strong></span>
-        <span class="link">Agendar</span>
-    </div>
-</div>
 
+    #{list items: datas, as: 'data' }
+
+    <div class="dia">
+        <span class="data"><strong>${data.format("dd/MM/yyyy")}</strong></span>
+       <a href="@{Consultas.registrarConsulta(data)}" class="link">Agendar</a>
+     
+    </div>
+
+    #{/list}
+
+</div>
