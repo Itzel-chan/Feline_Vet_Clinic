@@ -67,7 +67,7 @@ public class Pets extends Controller {
         Pet s = Pet.findById(id);
         s.situacao = Situacao.INATIVA;
         s.save();
-        listar(null);
+        listarPetsUsu();
     }
 
     public static void listarPetsUsu() {
@@ -75,11 +75,11 @@ public class Pets extends Controller {
             flash.error("Login necessário!");
             Logins.form();
         }
-
+    
         String NomeUsu = session.get("DadosUsu");
         Pessoa usuario = Pessoa.find("nome = ?1", NomeUsu).first();
 
-        List<Pet> pets = Pet.find("dono = ?1", usuario).fetch();
+        List<Pet> pets = Pet.find("dono = ?1 and situacao = ?2 ", usuario, Situacao.ATIVA).fetch();
         render(pets);
 
     }

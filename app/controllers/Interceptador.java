@@ -13,7 +13,7 @@ public class Interceptador extends Controller {
 
         }
     }
-    @Before(only ={"Pessoas.listar", "Pets.listar"})
+    @Before(only ={"Pessoas.listar", "Pets.listar", "Consultas.agendar", "Consultas.finalizar", "Consultas.listarConsultas"})
     static void acessoAdm(){
         if(!session.contains("adm")){
             flash.error("Restrito a administradores!");

@@ -3,14 +3,14 @@
 
 
 <div class="cards">
-    
-#{list items: pets, as: 'pet' }
 
-<div class="carteira">
-    <div class="card-header">
-        <div class="icone-gato">
-            <i class="fas fa-cat"></i>
-        </div>
+    #{list items: pets, as: 'pet' }
+
+    <div class="carteira">
+        <div class="card-header">
+            <div class="icone-gato">
+                <i class="fas fa-cat"></i>
+            </div>
             <h1 class="nome-gatinho">${pet.nome}</h1>
         </div>
 
@@ -24,20 +24,26 @@
 
         <div class="listar-pets-btns">
             <a href="@{Consultas.calendario(pet.id)}">
-                <button class="consultar">Marcar Consulta
-                </button>
+                <button class="consultar">Marcar Consulta</button>
             </a>
-            <button class="editar">Editar</button>
-            <button class="remover">Remover</button>
+
+            <a href="@{Pets.editar(pet.id)}">
+                <button class="editar">Editar </button>
+            </a>
+
+            <a href="@{Pets.remover(pet.id)}">
+                <button class="remover">Remover </button>
+            </a>
+
         </div>
-        
+
         <div class="patinhas">
             <i class="fas fa-paw"></i>
             <i class="fas fa-paw"></i>
         </div>
-        
+
     </div>
-    #{/list} 
+    #{/list}
 
     #{else}
     <h2>Você ainda não tem nenhum pet cadastrado! </h2>

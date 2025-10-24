@@ -38,7 +38,9 @@
                     <li><a href="@{Pessoas.form()}" class="nav-link">Cadastrar-se</a></li>
 
                     #{/if}
-                    <!-- <li><a href="@{Logins.deslogar()}" class="nav-link">Deslogar</a></li> -->
+                    #{if session['adm']}
+                    <li><a href="@{Consultas.listarConsultas()}" class="nav-link">Listar Consultas</a></li>
+                    #{/if}
                 </ul>
             </nav>
         </div>
@@ -69,7 +71,7 @@
             <i class="fas fa-cat"></i>Cadastrar Pet
         </a>
             
-        <a href="@{Consultas.listarConsultas()}" class="sidebar-link">
+        <a href="@{Consultas.listarConsultasUsu()}" class="sidebar-link">
              <i class="fas fa-stethoscope"></i>Consultas
         </a>
         <a href="@{Pets.listarPetsUsu()}" class="sidebar-link">

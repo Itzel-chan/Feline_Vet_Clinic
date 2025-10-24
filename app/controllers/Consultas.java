@@ -8,6 +8,7 @@ import java.util.Date;
 import java.util.List;
 
 import models.Consulta;
+import models.Pessoa;
 import models.Pet;
 import models.SituacaoConsulta;
 import play.cache.Cache;
@@ -25,7 +26,7 @@ public class Consultas extends Controller {
         consulta.save();
         flash.success("Consulta registrada com sucesso!");
 
-        listarConsultas(null);
+        listarConsultasUsu(null);
     }
 
     public static void agendar(Long id) {
@@ -71,22 +72,48 @@ public class Consultas extends Controller {
 
     }
 
+    public static void listarConsultasUsu(String termo) {                                               
+
+        String nomeUsu = session.get("DadosUsu");
+        Pessoa pes = Pessoa.find("nome =?1", nomeUsu).first();
+
+        List<Consulta> consultas = null;
+
+        if (termo == null) {
+            consultas = Consulta.find("pet.dono = ?1", pes).fetch();
+        }
+
+        else if (termo.equals("andamento")) {
+            consultas = Consulta.find("situacaoConsulta = ?1, SituacaoConsulta.EM_ANDAMENTO").fetch();
+
+        } else if (termo.equals("agendadas")) {
+            consultas = Consulta.find("situacaoConsulta = ?1, SituacaoConsulta.AGENDADA").fetch();
+
+        } else if (termo.equals("finalizadas")) {
+            consultas = Consulta.find("situacaoConsulta = ?1, SituacaoConsulta.FINALIZADA").fetch();
+
+        }
+
+        render(consultas);
+
+    }
+
     public static void calendario(Long id) {
         List<Date> datas = new ArrayList<>();
         Date data = null;
         LocalDate aux = null;
-        
+
         int diasRestantesDoMes = LocalDate.now().lengthOfMonth() - LocalDate.now().getDayOfMonth();
 
         for (int i = 1; i <= diasRestantesDoMes; i++) {
             aux = LocalDate.now().plusDays(i);
-            if (aux.getDayOfWeek()!= DayOfWeek.SATURDAY && aux.getDayOfWeek()!= DayOfWeek.SUNDAY) {
+            if (aux.getDayOfWeek() != DayOfWeek.SATURDAY && aux.getDayOfWeek() != DayOfWeek.SUNDAY) {
                 data = Date.from(aux.atStartOfDay(ZoneId.systemDefault()).toInstant());
                 datas.add(data);
             }
         }
 
-        render(datas,id);
+        render(datas, id);
 
     }
 

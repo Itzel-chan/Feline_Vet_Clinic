@@ -14,12 +14,11 @@ public class Inicializador extends Job {
             Pessoa adm1 = new Pessoa();
             adm1.nome = "adm";
             adm1.email = "adm@adm.com";
-            adm1.senha = "adm";
+            adm1.senha = "admm";
             adm1.situacao = Situacao.ATIVA;
             // adm1.telefone = "987654321";
             adm1.IsAdm = true;
             adm1.save();
-
 
         }
     }

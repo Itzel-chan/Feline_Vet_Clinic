@@ -2147,6 +2147,8 @@ p {
   opacity: 0.5;
   cursor: pointer;
   transition: all ease-in-out .3s;
+  color:white;
+  text-decoration: none;
 
   &:hover{
     opacity: 1;
@@ -2166,6 +2168,7 @@ p {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     display: flex;
     overflow: hidden; /* Importante para as ondas laterais */
+    margin: 10px;
 }
 
 /* Lado esquerdo (fundo azul) */
@@ -2313,5 +2316,18 @@ p {
     text-align: right;
     font-size: 11px;
 }
+
+/* ==============btns ListarConsultas Cards================= */
+
+.business-card .btns{
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  gap: 10px;
+  transform: translateY(5px);
+ 
+}
+
+
 
 
