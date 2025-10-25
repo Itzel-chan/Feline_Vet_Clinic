@@ -13,10 +13,9 @@ public class Inicializador extends Job {
         if (Pessoa.count() == 0) {
             Pessoa adm1 = new Pessoa();
             adm1.nome = "adm";
-            adm1.email = "adm@adm.com";
+            adm1.email = "adm@gmail.com";
             adm1.senha = "admm";
             adm1.situacao = Situacao.ATIVA;
-            // adm1.telefone = "987654321";
             adm1.IsAdm = true;
             adm1.save();
 

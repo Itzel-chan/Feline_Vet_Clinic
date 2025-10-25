@@ -32,12 +32,12 @@ public class Logins extends Controller {
             form();
         }
 
-        // Caso o usuario for um ADM, essa session aqui de dentro, vai existir tbm
+        // Caso o usuario for um ADM, essa session vai existir
         if (pes.IsAdm == true) {
             session.put("adm", true);
         }
 
-        // Daqui pra baixo até ""}"" é pra todos os usuarios, sejam eles comuns ou ADMS
+        // D pra todos os usuarios, sejam eles comuns ou ADMS
         flash.success("Logado");
         session.put("DadosUsu", nome);
         Application.index();

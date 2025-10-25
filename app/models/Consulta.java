@@ -7,13 +7,15 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.ManyToOne;
 
+import play.data.validation.Required;
 import play.db.jpa.Model;
 
 @Entity
 public class Consulta extends Model {
-
+    @Required
     public Date dataAgendada;
-
+    
+    @Required
     @ManyToOne
     public Pet pet;
 

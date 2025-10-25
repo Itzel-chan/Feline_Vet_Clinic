@@ -12,15 +12,36 @@ import models.Pessoa;
 import models.Pet;
 import models.SituacaoConsulta;
 import play.cache.Cache;
+import play.data.validation.Valid;
+import play.data.validation.Validation;
 import play.mvc.Controller;
+import play.mvc.With;
 
+
+@With(Interceptador.class)
 public class Consultas extends Controller {
 
-    public static void registrarConsulta(Date data, long id) {
+    public static void registrarConsulta(@Valid Date data, long id) {
+
+        if (Validation.hasErrors()) {
+            flash.error("Falha ao cadastrar consulta!");
+            Pets.listarPetsUsu();
+
+        }
+
         Consulta consulta = new Consulta();
         consulta.dataAgendada = data;
 
         Pet pet = Pet.findById(id);
+
+        if (pet == null) {
+            Validation.addError("consulta.pet", "Id inválido");
+        }
+
+        if (Validation.hasErrors()) {
+            flash.error("Falha ao cadastrar consulta!");
+            Pets.listarPetsUsu();
+        }
 
         consulta.pet = pet;
         consulta.save();
@@ -72,7 +93,7 @@ public class Consultas extends Controller {
 
     }
 
-    public static void listarConsultasUsu(String termo) {                                               
+    public static void listarConsultasUsu(String termo) {
 
         String nomeUsu = session.get("DadosUsu");
         Pessoa pes = Pessoa.find("nome =?1", nomeUsu).first();
