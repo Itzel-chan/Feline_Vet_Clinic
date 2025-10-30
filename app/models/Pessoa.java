@@ -26,11 +26,11 @@ public class Pessoa extends Model {
     @MinSize(value = 3, message = "No mínimo 3 caracteres!")
     public String nome;
    
-    @Required
+    @Required(message= "Email obrigatório!")
     @Email(message = "Fomato inválido!")
     public String email;
     
-    @Required
+    @Required(message = "Senha obrigatória!")
     @MinSize(value= 4, message = "No mínimo 4 caracteres!")
     public String senha;
     

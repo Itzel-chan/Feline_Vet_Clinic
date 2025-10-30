@@ -1,0 +1,33 @@
+#{extends 'main.html' /}
+#{set title:'Formulário' /}
+
+<form action="@{Carros.salvar}" method="post">
+
+    <!-- Esqueci de colocar ? nos values -->
+    <input type="hidden" name="carro.id" value="${carro?.id}">
+
+    <input type="text" name="carro.marca" value="${carro?.marca}">
+    <span>#{error 'carro.marca' /}</span> <br><br>
+
+    <input type="number" name="carro.peso" value="${carro?.peso}">
+    <span>#{error 'carro.peso' /}</span> <br><br>
+
+    <input type="number" name="carro.serie" value="${carro?.serie}">
+    <span>#{error 'carro.serie' /}</span> <br><br>
+
+    <!-- Esse é a estrutura do select -->
+
+    <!-- No name, a gente chama o nome do objeto, o nome do atributo ponto ID -->
+
+    <!-- E agr precisamos de um FOR (lembresse, se tem lista sendo mandada, sempre use um for) -->
+    <!-- Vou usar o for nos options, pra repetir apenas eles -->
+    <select name="carro.proprietario.id">
+        #{list items: pessoas, as: 'pessoa'}
+        <option value="${pessoa.id}">${pessoa.nome}</option>
+        #{/list}
+    </select>
+
+    <!-- E pronto, é assim q fazemos -->
+
+    <button type="submit">Enviar</button>
+</form>

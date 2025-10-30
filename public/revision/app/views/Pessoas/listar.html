@@ -1,0 +1,51 @@
+#{extends 'main.html' /}
+#{set title:'listagem' /}
+
+<!-- O listar não precisa seguir a estrutura de table q sempre fazemos, vc viu q usamos cards -->
+
+<!-- Mas, para não bagunçar muito, vou usar a table mesmo -->
+
+<!-- Primeiro criar a estrutura -->
+
+<table>
+
+    <!-- tr é linha -->
+    <tr>
+        <!-- th é coluna -->
+        <th>Nome</th>
+        <th>Email</th>
+        <th colspan="3">Ações</th>
+        <!-- "Em uma linha, 3 colunas" -->
+    </tr>
+
+    <!-- Mas, th é cabeçalho, sao aqueles nomes q ficam em negrito em cima na tabela -->
+
+    <!-- agr vamos criar as linhas de conteudo -->
+
+    <!-- E agr q entra o FOR, pois vamos ter q repetir um html, para cada pessoa da lista q vem da função -->
+
+    <!-- Oq ficar dentro do for, vai ser repetido, por isso colocamos as linhas -->
+
+    <!-- thanks -->
+    #{list items: lista, as: 'pessoa'}
+    <tr>
+        <td>${pessoa.nome}</td>
+        <td>${pessoa.email}</td>
+        <!-- Agr um link para cada ação: editar, detalhar e remover -->
+
+        <!-- Lembresse, q essas funções recebem um id, então vamos mandar o id da pessoa dentro
+         dos parenteses -->
+        <td><a href="@{Pessoas.detalhar(pessoa.id)}">Detalhar</a></td>
+        <td><a href="@{Pessoas.editar(pessoa.id)}">Editar</a></td>
+        <td><a href="@{Pessoas.remover(pessoa.id)}">Remover</a></td>
+    </tr>
+    #{/list}
+
+    <!-- Isso q eu vou fazer, aparece em casos onde não se tem ninguem no BD, ainda -->
+    #{else}
+    <tr>
+        <td>Ninguem cadastrado!</td>
+    </tr>
+    #{/else}
+
+</table>
