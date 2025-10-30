@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>#{get 'title' /}</title>
+    <meta charset="${_response_encoding}">
+    <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/main.css'}">
+    #{get 'moreStyles' /}
+    <link rel="shortcut icon" type="image/png" href="@{'/public/images/favicon.png'}">
+</head>
+
+<body>
+
+
+    #{if session['nomeDoUsuario']}
+    <div class="usuarioLogado">
+        <ion-icon name="person-circle-outline"></ion-icon>
+        ${session['nomeDoUsuario']}
+    </div>
+    #{/if }
+
+    <div class="messages">
+
+        <!-- FLASH INFO -->
+        #{if flash.info}
+        <div class="message info">${flash.info}</div>
+        #{/if}
+        <!-- FLASH SUCCESS -->
+        #{if flash.success}
+        <div class="message success">${flash.success}</div>
+        #{/if}
+        <!-- FLASH ERORR -->
+        #{if flash.error}
+        <div class="message error">${flash.error}</div>
+        #{/if}
+
+    </div>
+
+    <nav>
+        <ul>
+
+            <li><a href="@{Application.index()}">Inicio</a></li>
+            <li><a href="@{Pessoas.form()}">Formulário</a></li>
+
+            #{if session['nomeDoUsuario']}
+            <!-- Só aparece quando o usuário tiver logado -->
+            <li><a href="@{Pessoas.listar()}">Listagem</a></li>
+            #{/if }
+            
+            
+            <!-- Deslogado, imprimesse isso -->
+            #{if !session['nomeDoUsuario']}
+            <li><a href="@{Logins.form()}">Login</a></li>
+            #{/if }
+            
+            <!-- Logado, imprimesse isso -->
+            #{else} 
+            <li><a href="@{Logins.logout()}">Logout</a></li>
+            #{/else }
+
+        </ul>
+    </nav>
+
+    #{doLayout /}
+
+    <script src="@{'/public/javascripts/jquery-1.6.4.min.js'}" type="text/javascript"
+        charset="${_response_encoding}"></script>
+    #{get 'moreScripts' /}
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>

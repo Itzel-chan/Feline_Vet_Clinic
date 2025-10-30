@@ -1,0 +1,33 @@
+#{extends 'main.html' /}
+#{set title:'Listagem' /}
+
+
+<table>
+    <thead>
+        <tr>
+            <th class="table-title" colspan="3">Listagem de usuários</th>
+        </tr>
+
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Remoção</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        #{list items:listaDePessoas, as:'pessoa'}
+        <tr>
+            <td>${pessoa.id}</td>
+            <td>${pessoa.nome}</td>
+            <td class="remove-link"><a href="@{Pessoas.remover(pessoa.id)}">Remover</a></td>
+        </tr>
+        #{/list}
+        #{else}
+        <tr>
+            <td class="empty-table" colspan="3">Nenhum usuário registrado ainda</td>
+        </tr>
+        #{/else}
+    </tbody>
+</table>

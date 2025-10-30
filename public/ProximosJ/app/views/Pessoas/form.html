@@ -1,0 +1,22 @@
+#{extends 'main.html' /}
+#{set title:'Cadastro' /}
+
+
+<form action="@{Pessoas.salvar}" method="post">
+    <input type="hidden" name="novaPessoa.id">
+
+    <h1>Cadastro</h1>
+
+    <div class="inputGroup">
+        <label>Nome</label>
+        <input type="text" minlength="3" name="novaPessoa.nome" placeholder="Digite seu nome" autocomplete="off">
+    </div>
+
+    <div class="inputGroup">
+        <label>Senha</label>
+        <input type="password" minlength="3" name="novaPessoa.senha" placeholder="Digite sua senha" autocomplete="off">
+    </div>
+
+    <button type="submit">Cadastrar</button>
+
+</form>
