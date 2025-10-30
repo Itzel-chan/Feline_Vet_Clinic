@@ -1,0 +1,41 @@
+#{extends 'main.html' /}
+#{set title:'Listagem' /}
+
+
+<div class="totalPets">
+    <strong>Quantidade total de pets: </strong> ${totalDePets}
+</div>
+
+<table>
+
+    <tr>
+        <th class="title" colspan="8">Listagem</th>
+    </tr>
+
+    <tr>
+        <th>Nome</th>
+        <th>Email</th>
+        <th>CPF</th>
+        <th>Vínculo profissão</th>
+        <th>Data de nascimento</th>
+        <th>Idade</th>
+        <th>Quantidade de pets</th>
+        <th>Remoção</th>
+    </tr>
+
+    #{list items: lista, as:'usuario'}
+
+    <tr>
+        <td><a href="@{Usuarios.detalhar(usuario.id)}">${usuario.nome}</a></td>
+        <td>${usuario.email}</td>
+        <td>${usuario.cpf}</td>
+        <td>${usuario.vinculoProfissao}</td>
+        <td>${usuario.dataNascimento.format("dd/MM/yyyy")}</td>
+        <td>${usuario.idade} anos</td>
+        <td>${usuario.quantidadeDePets}</td>
+        <td><a href="@{Usuarios.remover(usuario.id)}">Remover</a></td>
+    </tr>
+
+    #{/list}
+
+</table>

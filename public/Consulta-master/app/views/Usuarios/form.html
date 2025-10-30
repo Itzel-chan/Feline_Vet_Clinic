@@ -1,0 +1,34 @@
+#{extends 'main.html' /}
+#{set title:'Formulário' /}
+
+
+<form action="@{Usuarios.salvar}" method="post">
+
+    <h1>Cadastro</h1>
+
+    <label>Nome</label>
+    <input type="text" name="usu.nome">
+
+    <label>Email</label>
+    <input type="text" name="usu.email">
+
+    <label>CPF</label>
+    <input type="text" name="usu.cpf">
+
+    <label>Vinculo profissão</label>
+    <select name="usu.vinculoProfissao">
+        <option value="Autônomo">Autônomo</option>
+        <option value="Celetista">Celetista</option>
+        <option value="Funcionário Público">Funcionário Público</option>
+        <option value="Desempregado">Desempregado</option>
+    </select>
+
+    <label>Data de nascimento</label>
+    <input type="date" name="usu.dataNascimento">
+
+    <label>Quantidade de pets</label>
+    <input type="number" name="usu.quantidadeDePets">
+
+    <button type="submit">Salvar</button>
+
+</form>

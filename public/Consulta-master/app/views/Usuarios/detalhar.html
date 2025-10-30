@@ -1,0 +1,15 @@
+#{extends 'main.html' /}
+#{set title:'Detalhar' /}
+
+<div class="detalhar">
+
+    <div class="title"><strong>Detalhar</strong></div>
+  
+    <div><strong>Nome: </strong>${usu.nome}</div>
+    <div><strong>Email: </strong>${usu.email}</div>
+    <div><strong>CPF: </strong>${usu.cpf}</div>
+    <div><strong>Vínculo Profissão: </strong>${usu.vinculoProfissao}</div>
+    <div><strong>Data de nascimento: </strong>${usu.dataNascimento.format('dd/MM/yyyy')}</div>
+    <div><strong>Idade: </strong>${usu.idade} anos</div>
+    <div><strong>Quantidade de pets: </strong>${usu.quantidadeDePets}</div>
+</div>
