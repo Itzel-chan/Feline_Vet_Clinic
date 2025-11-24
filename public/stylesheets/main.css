@@ -309,7 +309,8 @@ form textarea,
     background-color 0.3s ease;
 
   /* Propriedades extras para o select */
-  appearance: none; /* Remove o estilo padrão do navegador */
+  appearance: none;
+  /* Remove o estilo padrão do navegador */
   -webkit-appearance: none;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%232c3e50' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-chevron-down'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
   background-repeat: no-repeat;
@@ -321,13 +322,15 @@ form textarea,
 .pet-form input[type="email"]:focus,
 .pet-form input[type="number"]:focus,
 .pet-form input[type="date"]:focus,
-.pet-form select:focus, /* Adicione o seletor de foco para o <select> */
+.pet-form select:focus,
+/* Adicione o seletor de foco para o <select> */
 form textarea:focus {
   outline: none;
   border-color: var(--button-accent);
   box-shadow: 0 0 0 4px rgba(52, 152, 219, 0.2);
   background-color: #f7fcfe;
 }
+
 .form-page-content {
   flex-grow: 1;
   padding: 40px 20px;
@@ -1691,11 +1694,9 @@ p {
   display: flex;
   align-items: center;
   padding: 25px 20px;
-  background: linear-gradient(
-    135deg,
-    var(--secondary-color),
-    var(--primary-color)
-  );
+  background: linear-gradient(135deg,
+      var(--secondary-color),
+      var(--primary-color));
   border-bottom: 2px solid var(--white);
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
@@ -1781,15 +1782,22 @@ p {
 }
 
 .carteira {
-  width: 600px; /* Largura padrão */
-  height: 350px; /* Altura padrão */
-  background-color: #5680e9; /* Azul da imagem */
-  border-radius: 15px; /* Bordas arredondadas */
+  width: 600px;
+  /* Largura padrão */
+  height: 350px;
+  /* Altura padrão */
+  background-color: #5680e9;
+  /* Azul da imagem */
+  border-radius: 15px;
+  /* Bordas arredondadas */
   padding: 30px;
-  color: white; /* Texto em branco */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Sombra para profundidade */
+  color: white;
+  /* Texto em branco */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  /* Sombra para profundidade */
   position: relative;
-  box-sizing: border-box; /* Inclui padding e borda na largura/altura */
+  box-sizing: border-box;
+  /* Inclui padding e borda na largura/altura */
   display: grid;
   grid-template-rows: auto 1fr;
   gap: 20px;
@@ -1822,6 +1830,7 @@ p {
     border-color: rgb(255, 120, 9);
     color: rgb(255, 120, 9);
   }
+
   &.remover:hover {
     border-color: red;
     color: red;
@@ -1846,8 +1855,10 @@ p {
   justify-content: center;
   align-items: center;
   font-size: 40px;
-  color: #5680e9; /* Cor do ícone */
-  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.3); /* Contorno branco sutil */
+  color: #5680e9;
+  /* Cor do ícone */
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.3);
+  /* Contorno branco sutil */
 }
 
 .nome-gatinho {
@@ -1866,7 +1877,8 @@ p {
 /* ------------------- DADOS DO GATINHO ------------------- */
 .dados-gatinho {
   padding-left: 20px;
-  line-height: 1.8; /* Espaçamento entre as linhas */
+  line-height: 1.8;
+  /* Espaçamento entre as linhas */
   font-size: 18px;
 }
 
@@ -1875,14 +1887,16 @@ p {
 }
 
 .dados-gatinho strong {
-  font-weight: normal; /* Aumenta a clareza visual */
+  font-weight: normal;
+  /* Aumenta a clareza visual */
 }
 
 /* Linhas sublinhadas para preenchimento */
 .dados-gatinho span {
   border-bottom: 1px solid white;
   display: inline-block;
-  min-width: 150px; /* Garante que a linha tenha um tamanho mínimo */
+  min-width: 150px;
+  /* Garante que a linha tenha um tamanho mínimo */
 }
 
 /* ------------------- PATINHAS ------------------- */
@@ -1891,7 +1905,8 @@ p {
   bottom: 30px;
   right: 30px;
   font-size: 30px;
-  color: rgba(255, 255, 255, 0.7); /* Patinhas em um branco mais transparente */
+  color: rgba(255, 255, 255, 0.7);
+  /* Patinhas em um branco mais transparente */
   display: flex;
   flex-direction: column;
   gap: 5px;
@@ -1902,6 +1917,7 @@ p {
   transform: rotate(-15deg);
   margin-right: 10px;
 }
+
 .patinhas .fa-paw:last-child {
   transform: rotate(15deg) translateY(-10px);
 }
@@ -1911,7 +1927,8 @@ p {
   .carteira {
     width: 90%;
     max-width: 450px;
-    height: auto; /* Altura ajustável em telas menores */
+    height: auto;
+    /* Altura ajustável em telas menores */
     padding: 20px;
   }
 
@@ -1965,7 +1982,8 @@ p {
 
 .card {
   width: 300px;
-  height: 200px; /* Reduzi um pouco a altura para ficar mais compacto */
+  height: 200px;
+  /* Reduzi um pouco a altura para ficar mais compacto */
   cursor: pointer;
   box-shadow: 0 4px 8px var(--sombra-escuro);
   border-radius: 15px;
@@ -1993,7 +2011,8 @@ p {
 }
 
 .icon-grande {
-  font-size: 3.5em; /* Ajustei o tamanho do ícone */
+  font-size: 3.5em;
+  /* Ajustei o tamanho do ícone */
   color: var(--azul-claro);
   margin-bottom: 10px;
 }
@@ -2004,7 +2023,8 @@ p {
 
 /* 1. OVERLAY (O fundo escuro) - ESSENCIAL PARA O JS */
 .modal-overlay {
-  display: none; /* ESCONDIDO POR PADRÃO */
+  display: none;
+  /* ESCONDIDO POR PADRÃO */
 
   position: fixed;
   z-index: 1000;
@@ -2013,18 +2033,21 @@ p {
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: rgba(0, 0, 0, 0.85); /* Mais escuro */
+  background-color: rgba(0, 0, 0, 0.85);
+  /* Mais escuro */
 
   /* Centralização */
   justify-content: center;
   align-items: center;
-  padding: 20px; /* Ajuda na visualização em telas pequenas */
+  padding: 20px;
+  /* Ajuda na visualização em telas pequenas */
   box-sizing: border-box;
 }
 
 /* Classe que o JS adiciona para MOSTRAR o modal */
 .modal-overlay.active {
-  display: flex; /* MUDA PARA FLEXBOX para mostrar e centralizar */
+  display: flex;
+  /* MUDA PARA FLEXBOX para mostrar e centralizar */
 }
 
 /* 2. CONTEÚDO DO MODAL */
@@ -2037,7 +2060,8 @@ p {
   position: relative;
   display: flex;
   overflow: hidden;
-  width: 95%; /* Garante que é responsivo */
+  width: 95%;
+  /* Garante que é responsivo */
   margin: auto;
 }
 
@@ -2061,12 +2085,15 @@ p {
 .bg-alimentacao {
   background-color: #0f4c75;
 }
+
 .bg-comportamento {
   background-color: #3282b8;
 }
+
 .bg-higiene {
   background-color: #1b262c;
 }
+
 .bg-saude {
   background-color: #007bff;
 }
@@ -2127,7 +2154,7 @@ p {
   padding: 5px;
   gap: 20px;
   justify-content: center;
-  
+
 }
 
 .dia {
@@ -2138,19 +2165,19 @@ p {
   background-color: rgb(74, 119, 216);
   color: white;
   border-radius: 10px;
-  padding: 5px  30px;
+  padding: 5px 30px;
   align-items: center;
   justify-content: center;
 }
 
-.link{
+.link {
   opacity: 0.5;
   cursor: pointer;
   transition: all ease-in-out .3s;
-  color:white;
+  color: white;
   text-decoration: none;
 
-  &:hover{
+  &:hover {
     opacity: 1;
   }
 }
@@ -2161,173 +2188,201 @@ p {
 
 /* Container principal do cartão */
 .business-card {
-    width: 500px; /* Largura típica de cartão de visita na tela */
-    height: 300px; /* Altura típica de cartão de visita na tela */
-    background-color: white;
-    border-radius: 20px; /* Bordas arredondadas */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    display: flex;
-    overflow: hidden; /* Importante para as ondas laterais */
-    margin: 10px;
+  width: 500px;
+  /* Largura típica de cartão de visita na tela */
+  height: 300px;
+  /* Altura típica de cartão de visita na tela */
+  background-color: white;
+  border-radius: 20px;
+  /* Bordas arredondadas */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  display: flex;
+  overflow: hidden;
+  /* Importante para as ondas laterais */
+  margin: 10px;
 }
 
 /* Lado esquerdo (fundo azul) */
 .card-left {
-    width: 20%; /* Ocupa cerca de 1/3 do cartão */
-    background-color: #003366; /* Azul escuro principal */
-    position: relative;
-    padding: 15px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end; /* Coloca o logo na parte inferior */
-    align-items: center;
-    color: white;
+  width: 20%;
+  /* Ocupa cerca de 1/3 do cartão */
+  background-color: #003366;
+  /* Azul escuro principal */
+  position: relative;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  /* Coloca o logo na parte inferior */
+  align-items: center;
+  color: white;
 
-    &.AGENDADA{
-      background-color: #1abc9c;
-    }
+  &.AGENDADA {
+    background-color: #1abc9c;
+  }
 
-    &.FINALIZADA{
-      background-color: #4b058b;
-    }
+  &.FINALIZADA {
+    background-color: #4b058b;
+  }
 }
 
 /* Área do Logo */
 .logo-area {
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .logo-icon {
-    font-size: 30px;
-    font-weight: bold;
-    line-height: 1;
+  font-size: 30px;
+  font-weight: bold;
+  line-height: 1;
 }
 
 .logo-text {
-    font-size: 10px;
-    margin-top: 5px;
+  font-size: 10px;
+  margin-top: 5px;
 }
 
 /* Lado direito (Conteúdo e informações) */
 .card-right {
-    width: 65%;
-    padding: 30px 20px;
-    display: flex;
-    flex-direction: column;
-    position: relative;
+  width: 65%;
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
 }
 
 /* Nome e Posição */
 .name-position {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .name {
-    font-size: 24px;
-    font-weight: bold;
-    color: #003366; /* Azul escuro */
-    margin-bottom: 2px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #003366;
+  /* Azul escuro */
+  margin-bottom: 2px;
 }
 
 .position {
-    font-size: 14px;
-    color: #0099ff; /* Azul claro */
+  font-size: 14px;
+  color: #0099ff;
+  /* Azul claro */
 }
 
 /* Informações de Contato */
 .contact-info {
-    font-size: 12px;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    flex-grow: 1;
-    position: absolute;
-    right: 20px;
-    top: 90px;
-    justify-content: center;
+  font-size: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  flex-grow: 1;
+  position: absolute;
+  right: 20px;
+  top: 90px;
+  justify-content: center;
 }
 
 .info-item {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-  }
-  
-  .info-item p {
-    text-align: right;
-    margin-right: 10px;
-    font-size: 1rem !important;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.info-item p {
+  text-align: right;
+  margin-right: 10px;
+  font-size: 1rem !important;
 }
 
 .info-item i {
-    color: #0099ff; /* Ícones em azul claro */
-    font-size: 14px;
-    width: 20px;
-    height: 20px;
-    border: 1px solid #0099ff;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  color: #0099ff;
+  /* Ícones em azul claro */
+  font-size: 14px;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #0099ff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* QR Code (Simulação) */
 .iconeAgenda {
-    position: absolute;
-    top: 30px;
-    right: 20px;
-    /* Adicione um fundo de imagem real de QR code aqui */
+  position: absolute;
+  top: 30px;
+  right: 20px;
+  /* Adicione um fundo de imagem real de QR code aqui */
 }
 
-.iconeAgenda  .fa-calendar-alt{
+.iconeAgenda .fa-calendar-alt {
   font-size: 2.5rem;
 }
 
 /* Ajustando a posição do QR Code e Contato para a imagem */
 .contact-info {
-    position: static; /* Remove o posicionamento absoluto anterior */
-    margin-top: 20px; /* Espaçamento após o nome/posição */
-    align-items: flex-end; /* Alinha todos os itens à direita */
+  position: static;
+  /* Remove o posicionamento absoluto anterior */
+  margin-top: 20px;
+  /* Espaçamento após o nome/posição */
+  align-items: flex-end;
+  /* Alinha todos os itens à direita */
 }
 
 .contact-info .info-item {
-    justify-content: flex-end; /* Mantém o parágrafo à esquerda e o ícone à direita */
-    width: 100%;
+  justify-content: flex-end;
+  /* Mantém o parágrafo à esquerda e o ícone à direita */
+  width: 100%;
 }
 
 .qr-code {
-    position: absolute;
-    top: 30px; /* Posição no topo */
-    right: 20px; /* Posição à direita */
-    width: 60px; /* Tamanho do QR */
-    height: 60px;
-    background-color: #333; /* Fundo simulado */
-    /* Você usaria uma imagem de fundo real ou um gerador de QR code aqui */
+  position: absolute;
+  top: 30px;
+  /* Posição no topo */
+  right: 20px;
+  /* Posição à direita */
+  width: 60px;
+  /* Tamanho do QR */
+  height: 60px;
+  background-color: #333;
+  /* Fundo simulado */
+  /* Você usaria uma imagem de fundo real ou um gerador de QR code aqui */
 }
 
 /* Ajuste o texto de contato para ficar mais à esquerda quando necessário */
 .info-item p {
-    flex-grow: 1;
-    text-align: right;
-    font-size: 11px;
+  flex-grow: 1;
+  text-align: right;
+  font-size: 11px;
 }
 
 /* ==============btns ListarConsultas Cards================= */
 
-.business-card .btns{
+.business-card .btns {
   display: flex;
   justify-content: right;
   align-items: center;
   gap: 10px;
   transform: translateY(5px);
- 
+
 }
 
+.business-card .btns a {
+  text-decoration: none;
 
+  &:hover {
+    color: rgb(0, 64, 255);
+  }
+}
 
-
+.business-card .btns a.desmarcar {
+  text-decoration: none;
+  transition: all ease-in-out 0.3s;
+  color: red;
+}

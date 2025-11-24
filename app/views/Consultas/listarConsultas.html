@@ -1,6 +1,17 @@
 #{extends 'main.html' /}
 #{set title:'Listagem de consultas' /}
 
+
+<div class="filtro-container">
+    <h1>Filtragem</h1>
+    <div id="AGENDADA" class="filtro">Agendada</div>
+    <div id="EM_ANDAMENTO" class="filtro">Em andamento</div>
+    <div id="FINALIZADA" class="filtro">Finalizadas</div>
+    <div id="TODAS" class="filtro">Todas</div>
+</div>
+
+
+
 <div class="cards">
 
     #{list items: consultas, as: 'consulta' }
@@ -43,13 +54,13 @@
                 <i class="fas fa-calendar-alt"></i>
             </div>
 
-            #{if session['adm']}
             <div class="btns">
+            #{if session['adm']}
                 <a href="@{Consultas.agendar(consulta.id)}">Agendar</a>
                 <a href="@{Consultas.finalizarConsulta(consulta.id)}">Finalizar</a>
-                
+                #{/if}
+                <a href="@{Consultas.finalizarConsulta(consulta.id)}" class="desmarcar">Desmarcar</a>
             </div>
-            #{/if}
         </div>
     </div>
 

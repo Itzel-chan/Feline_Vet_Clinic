@@ -17,7 +17,6 @@ import play.data.validation.Validation;
 import play.mvc.Controller;
 import play.mvc.With;
 
-
 @With(Interceptador.class)
 public class Consultas extends Controller {
 
@@ -50,12 +49,25 @@ public class Consultas extends Controller {
         listarConsultasUsu(null);
     }
 
+    public static void desmarcar(long id) {
+        Consulta consulta = Consulta.findById(id);
+
+        consulta.delete();
+        flash.put("info", "Consulta desmarcada!");
+
+        listarConsultasUsu(null);
+    }
+
     public static void agendar(Long id) {
         Consulta consulta = Consulta.findById(id);
 
-        consulta.situacaoConsulta = SituacaoConsulta.AGENDADA;
+        if (consulta.situacaoConsulta != SituacaoConsulta.FINALIZADA) {
+            consulta.situacaoConsulta = SituacaoConsulta.AGENDADA;
+            consulta.save();
+        } else {
+            flash.error("Consulta já finalizada!");
+        }
 
-        consulta.save();
         listarConsultas(null);
 
     }
@@ -136,6 +148,18 @@ public class Consultas extends Controller {
 
         render(datas, id);
 
+    }
+
+    public static void filtragem(String id) {
+        List<Consulta> lista = null;
+
+        if (id.equals("TODAS")) {
+            lista = Consulta.findAll();
+        } else {
+            lista = Consulta.find("situacaoConsulta = ?1", SituacaoConsulta.valueOf(id)).fetch();
+        }
+
+        renderJSON(lista);
     }
 
 }
