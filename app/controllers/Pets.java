@@ -3,6 +3,7 @@ package controllers;
 import java.util.Arrays;
 import java.util.List;
 
+import models.Consulta;
 import models.Pessoa;
 import models.Pet;
 import models.PetSexo;
@@ -64,7 +65,14 @@ public class Pets extends Controller {
     }
 
     public static void remover(long id) {
+
         Pet s = Pet.findById(id);
+        List<Consulta> consuPett = Consulta.find("pet =?1", s).fetch();
+
+        for (Consulta consulta : consuPett) {
+            consulta.delete();
+            
+        } 
         s.situacao = Situacao.INATIVA;
         s.save();
         listarPetsUsu();

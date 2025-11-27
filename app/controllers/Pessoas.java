@@ -2,6 +2,7 @@ package controllers;
 
 import java.util.List;
 
+import models.Consulta;
 import models.Pessoa;
 import models.Pet;
 import models.Situacao;
@@ -21,7 +22,7 @@ public class Pessoas extends Controller {
         if (validation.hasErrors()) {
             validation.keep();
             form();
-            
+
         }
         pess.save();
         flash.success("Usuário cadastrado com sucesso");
@@ -51,7 +52,14 @@ public class Pessoas extends Controller {
 
         List<Pet> petsAssociados = Pet.find("situacao = ?1 and dono.id = ?2", Situacao.ATIVA, s.id).fetch();
 
+        List<Consulta> consuPet = null;
         for (Pet pet : petsAssociados) {
+
+            consuPet = Consulta.find("pet = ?1", pet).fetch();
+        for (Consulta consulta : consuPet) {
+                consulta.delete();
+            }
+
             pet.situacao = Situacao.INATIVA;
             pet.save();
         }
