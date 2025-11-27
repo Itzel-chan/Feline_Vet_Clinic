@@ -1,0 +1,12 @@
+#{extends 'main.html' /}
+#{set title:'Perfil' /}
+
+<div class="perfil">
+    <span>${pessoa.nome}</span>
+    <span>${pessoa.email}</span>
+    <span>${pessoa.senha}</span>
+    <div class="btns-usu">
+        <a href="@{Pessoas.editar(pessoa.id)}">Editar</a>
+        <a href="@{Pessoas.remover(pessoa.id)}">Excluir conta</a>
+    </div>
+</div>

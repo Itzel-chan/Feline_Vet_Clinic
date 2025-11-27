@@ -69,4 +69,10 @@ public class Pessoas extends Controller {
         listar(null);
     }
 
+    public static void perfil(){
+        String chave = session.get("DadosUsu");
+        Pessoa pessoa = Pessoa.find("nome = ?1", chave).first();
+        render(pessoa);
+    }
+
 }
