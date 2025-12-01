@@ -29,6 +29,16 @@ public class Pessoas extends Controller {
         Logins.form();
     }
 
+    public static void perfil() {
+        String chave = session.get("DadosUsu");
+        Pessoa pessoa = Pessoa.find("nome = ?1", chave).first();
+        render(pessoa);
+    }
+
+    public static void areaAdm() {
+        render();
+    }
+
     public static void listar(String busca) {
 
         List<Pessoa> lista;
@@ -56,7 +66,7 @@ public class Pessoas extends Controller {
         for (Pet pet : petsAssociados) {
 
             consuPet = Consulta.find("pet = ?1", pet).fetch();
-        for (Consulta consulta : consuPet) {
+            for (Consulta consulta : consuPet) {
                 consulta.delete();
             }
 
@@ -68,11 +78,4 @@ public class Pessoas extends Controller {
         s.save();
         listar(null);
     }
-
-    public static void perfil(){
-        String chave = session.get("DadosUsu");
-        Pessoa pessoa = Pessoa.find("nome = ?1", chave).first();
-        render(pessoa);
-    }
-
 }

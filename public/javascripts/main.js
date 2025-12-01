@@ -126,4 +126,71 @@ document.addEventListener('click', function(event) {
     if (event.target.classList.contains('modal-overlay')) {
         closeModal(event.target.id);
     }
+
+
+
+    
+
+    document.addEventListener('DOMContentLoaded', function() {
+    const pricingCards = document.querySelectorAll('.pricing-card');
+
+    pricingCards.forEach(card => {
+        const highlightColor = card.getAttribute('data-highlight-color');
+        const icon = card.querySelector('.pricing-icon');
+        const button = card.querySelector('.btn-pricing');
+
+        // Garante que o botão tenha a cor de destaque inicial
+        button.style.backgroundColor = highlightColor;
+
+        card.addEventListener('mouseenter', () => {
+            card.style.borderColor = highlightColor; // Borda do card
+            icon.style.color = highlightColor; // Cor do ícone
+            
+            // Botão: um tom um pouco mais escuro/saturado no hover do card
+            button.style.backgroundColor = darkenColor(highlightColor, -10); // Escurece um pouco
+            button.style.boxShadow = `0 8px 20px ${highlightColor}60`; // Sombra colorida
+        });
+
+        card.addEventListener('mouseleave', () => {
+            card.style.borderColor = 'transparent'; // Volta a borda transparente
+            icon.style.color = 'var(--text-muted)'; // Volta a cor do ícone
+            
+            // Botão volta à cor normal
+            button.style.backgroundColor = highlightColor;
+            button.style.boxShadow = 'none';
+        });
+
+        // Efeito de hover direto no botão para um toque extra
+        button.addEventListener('mouseenter', () => {
+            button.style.transform = 'translateY(-3px) scale(1.02)'; // Escala um pouco mais
+            button.style.boxShadow = `0 10px 25px ${highlightColor}70`;
+        });
+        button.addEventListener('mouseleave', () => {
+            button.style.transform = 'translateY(0) scale(1)';
+            button.style.boxShadow = `0 8px 20px ${highlightColor}60`; // Volta à sombra do card hover
+        });
+    });
+
+    // Função auxiliar para escurecer/clarear uma cor hexadecimal
+    function darkenColor(hex, percent) {
+        var f = parseInt(hex.slice(1), 16),
+            t = percent < 0 ? 0 : 255,
+            p = percent < 0 ? percent * -1 : percent,
+            R = f >> 16,
+            G = (f >> 8) & 0x00ff,
+            B = f & 0x0000ff;
+        return (
+            "#" +
+            (
+                0x1000000 +
+                (Math.round((t - R) * p) + R) * 0x10000 +
+                (Math.round((t - G) * p) + G) * 0x100 +
+                (Math.round((t - B) * p) + B)
+            )
+            .toString(16)
+            .slice(1)
+        );
+    }
+});
+
 });

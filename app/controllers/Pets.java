@@ -57,6 +57,21 @@ public class Pets extends Controller {
         render(lista);
     }
 
+    
+    public static void listarPetsUsu() {
+        if (session.contains("DadosUsu") == false) {
+            flash.error("Login necessário!");
+            Logins.form();
+        }
+    
+        String NomeUsu = session.get("DadosUsu");
+        Pessoa usuario = Pessoa.find("nome = ?1", NomeUsu).first();
+
+        List<Pet> pets = Pet.find("dono = ?1 and situacao = ?2 ", usuario, Situacao.ATIVA).fetch();
+        render(pets);
+
+    }
+
     public static void editar(long id) {
         Pet fe = Pet.findById(id);
         List<PetSexo> sexos = Arrays.asList(PetSexo.values());
@@ -71,25 +86,11 @@ public class Pets extends Controller {
 
         for (Consulta consulta : consuPett) {
             consulta.delete();
-            
         } 
+
         s.situacao = Situacao.INATIVA;
         s.save();
         listarPetsUsu();
-    }
-
-    public static void listarPetsUsu() {
-        if (session.contains("DadosUsu") == false) {
-            flash.error("Login necessário!");
-            Logins.form();
-        }
-    
-        String NomeUsu = session.get("DadosUsu");
-        Pessoa usuario = Pessoa.find("nome = ?1", NomeUsu).first();
-
-        List<Pet> pets = Pet.find("dono = ?1 and situacao = ?2 ", usuario, Situacao.ATIVA).fetch();
-        render(pets);
-
     }
 
     public static void cuidadosPet(){

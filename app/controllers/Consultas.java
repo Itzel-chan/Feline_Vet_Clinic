@@ -4,12 +4,15 @@ import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
 import models.Consulta;
 import models.Pessoa;
 import models.Pet;
+import models.PetSexo;
+import models.Situacao;
 import models.SituacaoConsulta;
 import play.cache.Cache;
 import play.data.validation.Valid;
@@ -20,12 +23,40 @@ import play.mvc.With;
 @With(Interceptador.class)
 public class Consultas extends Controller {
 
+    public static void form() {
+        List<Pet> pets = Pet.find("situacao = ?1", Situacao.ATIVA).fetch();
+        render(pets);
+    }
+
+    public static void salvar(Consulta consulta) {
+        consulta.save();
+        flash.success("Consulta cadastrada com sucesso!");
+        form();
+    }
+
+    public static void calendario(Long id) {
+        List<Date> datas = new ArrayList<>();
+        Date data = null;
+        LocalDate aux = null;
+
+        int diasRestantesDoMes = LocalDate.now().lengthOfMonth() - LocalDate.now().getDayOfMonth();
+
+        for (int i = 1; i <= diasRestantesDoMes; i++) {
+            aux = LocalDate.now().plusDays(i);
+            if (aux.getDayOfWeek() != DayOfWeek.SATURDAY && aux.getDayOfWeek() != DayOfWeek.SUNDAY) {
+                data = Date.from(aux.atStartOfDay(ZoneId.systemDefault()).toInstant());
+                datas.add(data);
+            }
+        }
+
+        render(datas, id);
+    }
+
     public static void registrarConsulta(@Valid Date data, long id) {
 
         if (Validation.hasErrors()) {
             flash.error("Falha ao cadastrar consulta!");
             Pets.listarPetsUsu();
-
         }
 
         Consulta consulta = new Consulta();
@@ -49,15 +80,6 @@ public class Consultas extends Controller {
         listarConsultasUsu(null);
     }
 
-    public static void desmarcar(long id) {
-        Consulta consulta = Consulta.findById(id);
-
-        consulta.delete();
-        flash.put("info", "Consulta desmarcada!");
-
-        listarConsultasUsu(null);
-    }
-
     public static void agendar(Long id) {
         Consulta consulta = Consulta.findById(id);
 
@@ -69,7 +91,6 @@ public class Consultas extends Controller {
         }
 
         listarConsultas(null);
-
     }
 
     public static void finalizarConsulta(Long id) {
@@ -128,26 +149,6 @@ public class Consultas extends Controller {
         }
 
         render(consultas);
-
-    }
-
-    public static void calendario(Long id) {
-        List<Date> datas = new ArrayList<>();
-        Date data = null;
-        LocalDate aux = null;
-
-        int diasRestantesDoMes = LocalDate.now().lengthOfMonth() - LocalDate.now().getDayOfMonth();
-
-        for (int i = 1; i <= diasRestantesDoMes; i++) {
-            aux = LocalDate.now().plusDays(i);
-            if (aux.getDayOfWeek() != DayOfWeek.SATURDAY && aux.getDayOfWeek() != DayOfWeek.SUNDAY) {
-                data = Date.from(aux.atStartOfDay(ZoneId.systemDefault()).toInstant());
-                datas.add(data);
-            }
-        }
-
-        render(datas, id);
-
     }
 
     public static void filtragem(String id) {
@@ -161,5 +162,15 @@ public class Consultas extends Controller {
 
         renderJSON(lista);
     }
+
+    public static void desmarcar(long id) {
+        Consulta consulta = Consulta.findById(id);
+
+        consulta.delete();
+        flash.put("info", "Consulta desmarcada!");
+
+        listarConsultasUsu(null);
+    }
+
 
 }

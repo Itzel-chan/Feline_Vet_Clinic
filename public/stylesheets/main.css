@@ -49,6 +49,14 @@
   --warning-border: #e0a800;
   --info-blue: #17a2b8;
   --info-border: #138496;
+
+      --dark-bg-color: #1A1A2E;
+    --dark-card-color: #2C2C4A;
+    --text-light: #E0E0E0;
+    --text-muted: #A0A0A0;
+    --highlight-blue: #007bff;
+    --highlight-lilac: #9d52ed;
+    --button-text-color: #FFF;
 }
 
 /* ======================================================= */
@@ -883,7 +891,6 @@ body {
   color: #fff;
   text-align: center;
   font-size: 1.2rem;
-  /* Cor do texto padrão */
 }
 
 .flash-success {
@@ -1003,6 +1010,16 @@ p {
   /* Animação de entrada */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   /* Sombra sutil */
+  
+transition:all ease-in-out 0.3s;
+animation: sumir 3s linear ;
+opacity: 0;
+}
+
+@keyframes sumir{
+0%{
+opacity:1;
+}
 }
 
 .flash-success {
@@ -2385,4 +2402,407 @@ p {
   text-decoration: none;
   transition: all ease-in-out 0.3s;
   color: red;
+}
+
+
+
+/* --- Cores e Variáveis Globais --- */
+:root {
+    --dark-bg-color: #1A1A2E;
+    --dark-card-color: #2C2C4A;
+    --text-light: #E0E0E0;
+    --text-muted: #A0A0A0;
+    --highlight-blue: #007bff;
+    --highlight-lilac: #9d52ed;
+    --button-text-color: #FFF;
+}
+
+/* --- Estilo do Fundo da Página (ou Container Principal) --- */
+/* APLIQUE ESTES ESTILOS AO SEU BODY OU DIV PRINCIPAL DO LAYOUT */
+.cardsAdm {
+    /* É melhor aplicar o fundo e a altura total ao BODY ou MAIN */
+    background: linear-gradient(135deg, var(--dark-bg-color) 0%, #0F0F1A 100%);
+    min-height: 100vh; 
+    
+    /* Permite que o conteúdo interno flua (ou seja, as duas linhas de cards) */
+    display: block; /* Mudei de 'flex' para 'block' para o container principal */
+    width: 100%;
+    
+    /* Centraliza o conteúdo (as duas linhas de cards) */
+    display: flex; /* Mantido flex para centralizar o bloco 'pricing-bg' */
+    align-items: center; 
+    justify-content: center;
+    
+    padding: 40px 20px; /* Aumentei o padding vertical para dar mais espaço acima e abaixo */
+    margin: 0;
+}
+
+/* O restante do seu CSS pode permanecer **inalterado**. */
+.pricing-bg {
+    /* Este container agora se adapta ao tamanho das duas linhas */
+    width: 100%;
+}
+/* --- Seu CSS Original --- */
+
+/* --- Ajuste da Linha (row) para centralização e espaçamento --- */
+.pricing-row {
+width: 100%;
+margin: 0 auto;
+max-width: 1000px;
+display: flex; 
+justify-content: center;
+align-items: stretch; 
+    
+    /* ADICIONE ESTA LINHA: Garante espaçamento abaixo de cada linha de cards */
+    margin-bottom: 30px; 
+}
+
+/* O restante do seu CSS permanece o mesmo para manter o estilo Dark/Azul/Lillás */
+
+/* O restante do CSS de .pricing-row, .pricing-card, etc., permanece igual */
+/* ... (Seu CSS original aqui) ... */
+
+/* --- Estilo do Card Principal --- */
+.pricing-card {
+    background-color: var(--dark-card-color);
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    padding: 30px 20px;
+    text-align: center;
+    color: var(--text-light);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    border: 2px solid transparent; /* Borda transparente inicial */
+    height: 100%; /* Garante que todos os cards tenham a mesma altura, devido ao align-items: stretch no row */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Distribui o espaço entre os elementos */
+    margin: 0 10px; /* Espaçamento entre os cards */
+    flex-grow: 1; /* Permite que os cards cresçam para preencher o espaço */
+    max-width: 300px; /* Limita a largura individual do card para parecer com a imagem */
+}
+
+/* Quando o layout muda para telas menores (ex: mobile), use col-sm-6 ou col-12 */
+@media (max-width: 767.98px) { /* Para telas pequenas, como celulares */
+    .col-md-4 {
+        flex: 0 0 80%; /* Ocupa 80% da largura do pai */
+        max-width: 80%;
+    }
+    .pricing-card {
+        margin: 15px auto; /* Centraliza e adiciona margem vertical */
+    }
+}
+@media (min-width: 768px) and (max-width: 991.98px) { /* Para tablets */
+    .col-md-4 {
+        flex: 0 0 32%; /* Ajusta para 3 cards por linha */
+        max-width: 32%;
+    }
+    .pricing-card {
+        margin: 0 8px; /* Espaçamento um pouco menor */
+    }
+}
+@media (min-width: 992px) { /* Para desktops */
+    .col-md-4 {
+        flex: 0 0 30%; /* Ocupa cerca de 30% da largura para 3 cards */
+        max-width: 30%;
+    }
+}
+
+
+/* --- Títulos dos Planos --- */
+.card-plan-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text-light);
+    margin-bottom: 25px;
+}
+
+/* --- Ícones dos Planos --- */
+.pricing-icon {
+    font-size: 4rem; /* Ícone maior */
+    color: var(--text-muted); /* Cor inicial do ícone */
+    transition: color 0.3s ease, transform 0.3s ease;
+    padding-bottom: 15px; /* Espaçamento extra abaixo do ícone */
+}
+.pricing-card:hover .pricing-icon {
+    transform: scale(1.1); /* Ícone cresce no hover */
+}
+
+/* --- Listagem de Features --- */
+.plan-features {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    line-height: 2.2; /* Espaçamento entre as linhas */
+    margin-top: 20px;
+    flex-grow: 1; /* Faz a lista crescer para preencher espaço */
+    padding-left: 0; /* Remove padding padrão de ul */
+}
+.plan-features li {
+    padding: 5px 0;
+}
+
+/* --- Botões de Ação --- */
+.btn-pricing {
+    background-color: var(--text-muted); /* Cor padrão antes do JS */
+    border: none;
+    border-radius: 8px;
+    color: var(--button-text-color);
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    width: 100%; /* Botão com largura total */
+    max-width: 250px; /* Limita a largura máxima do botão */
+    margin: 0 auto; /* Centraliza o botão dentro do card */
+    display: block; /* Para aplicar margin auto */
+}
+
+.btn-pricing:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Cores dos Botões (JS irá aplicar, mas podemos ter um fallback) */
+.btn-standard {
+    background-color: var(--highlight-blue);
+}
+.btn-expert {
+    background-color: var(--highlight-lilac);
+}
+.btn-elite {
+    background-color: var(--highlight-blue); /* Elite usa azul como Standard */
+}
+/* No hover dos botões, JS vai intensificar a cor */
+
+/* Alinhamento para o conteúdo do card */
+.card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+
+
+/* Paleta baseada na imagem */
+:root {
+    --fundo-claro: #F5F5F7;
+    --card-fundo: #FFFFFF;
+    --borda-azul: #64B5F6; /* Azul claro para a borda do avatar */
+    --texto-principal: #343A40;
+    --texto-secundario: #6C757D;
+    --azul-acao: #589AFE; /* Azul dos botões de ação */
+    --azul-excluir: #495057; /* Cinza escuro/Azul para o botão de exclusão */
+    --laranja-avatar: #FF9800; /* Para detalhes, se necessário */
+    --sombra-card: rgba(0, 0, 0, 0.08);
+}
+
+/* ------------------------------------------------ */
+/* Layout Geral */
+/* ------------------------------------------------ */
+
+.perfil-container-v2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Ocupa a altura total para centralizar */
+    background-color: var(--fundo-claro);
+    padding: 30px;
+    font-family: Arial, sans-serif;
+}
+
+/* Card Principal */
+.perfil-card-v2 {
+    display: flex;
+    background: var(--card-fundo);
+    border-radius: 20px;
+    box-shadow: 0 15px 40px var(--sombra-card);
+    padding: 40px 60px;
+    max-width: 750px;
+    width: 100%;
+    gap: 40px;
+}
+
+/* ------------------------------------------------ */
+/* Bloco da Imagem (Esquerda) */
+/* ------------------------------------------------ */
+
+.avatar-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 150px; /* Garante que o avatar não encolha */
+}
+
+.avatar-pet-parent-v2 {
+    width: 150px;
+    height: 150px;
+    /* Substitua pela URL da sua imagem do gato */
+    background-image: url('https://i.imgur.com/g0t6wLh.png'); /* URL da imagem do gato laranja, ou substitua pela sua */
+    background-size: cover;
+    background-position: center;
+    border-radius: 15px; /* Quase quadrado com cantos arredondados */
+    border: 3px solid var(--borda-azul);
+    box-shadow: 0 0 0 6px rgba(100, 181, 246, 0.2); /* Borda externa sutil */
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.social-icons a {
+    font-size: 1.1em;
+    color: var(--texto-secundario);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.social-icons a:hover {
+    color: var(--azul-acao);
+}
+
+/* ------------------------------------------------ */
+/* Bloco de Informações (Direita) */
+/* ------------------------------------------------ */
+
+.perfil-info-v2 {
+    flex-grow: 1;
+}
+
+.card-title {
+    font-size: 1.8em;
+    font-weight: 700;
+    color: var(--texto-principal);
+    margin: 0 0 5px 0;
+}
+
+.card-subtitle {
+    font-size: 1em;
+    color: var(--texto-secundario);
+    margin-bottom: 30px;
+}
+
+/* Campos de Informação */
+.info-field {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.field-label {
+    font-weight: 600;
+    color: var(--texto-principal);
+    width: 100px; /* Para alinhar os campos */
+    flex-shrink: 0;
+}
+
+.field-content {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+    border: 1px solid var(--fundo-claro); /* Borda sutil */
+    border-radius: 8px;
+    background-color: var(--fundo-claro);
+}
+
+.field-value {
+    flex-grow: 1;
+    color: var(--texto-secundario);
+}
+
+.hidden-password {
+    /* Estilo para simular o texto "••••••••" */
+    font-size: 1.5em; /* Deixa os pontos maiores */
+    line-height: 0.5;
+}
+
+.edit-icon {
+    text-decoration: none;
+    margin-left: 10px;
+    color: var(--texto-secundario);
+    transition: color 0.2s;
+    cursor: pointer;
+}
+
+.edit-icon:hover {
+    color: var(--azul-acao);
+}
+
+.pencil-icon {
+    font-size: 0.8em;
+    opacity: 0.7;
+}
+
+/* ------------------------------------------------ */
+/* Botões de Ação */
+/* ------------------------------------------------ */
+
+.btns-usu-v2 {
+    margin-top: 30px;
+    display: flex;
+    gap: 15px;
+}
+
+.btn-acao-v2 {
+    text-decoration: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1em;
+    text-align: center;
+    flex-grow: 1;
+    transition: background-color 0.2s, transform 0.2s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.btn-edit {
+    background-color: var(--azul-acao);
+    color: white;
+}
+
+.btn-edit:hover {
+    background-color: #4A8AEB;
+    transform: translateY(-1px);
+}
+
+.btn-delete {
+    background-color: var(--azul-excluir);
+    color: white;
+}
+
+.btn-delete:hover {
+    background-color: #343A40;
+    transform: translateY(-1px);
+}
+
+/* Responsividade Básica */
+@media (max-width: 768px) {
+    .perfil-card-v2 {
+        flex-direction: column;
+        align-items: center;
+        padding: 30px;
+        gap: 20px;
+    }
+
+    .info-field {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .field-label {
+        width: 100%;
+        margin-bottom: 5px;
+    }
+
+    .field-content {
+        width: 100%;
+    }
+
+    .btns-usu-v2 {
+        flex-direction: column;
+    }
 }

@@ -1,4 +1,4 @@
-#{extends 'main.html' /}
+<!-- #{extends 'main.html' /}
 #{set title:'Perfil' /}
 
 <div class="perfil">
@@ -8,5 +8,67 @@
     <div class="btns-usu">
         <a href="@{Pessoas.editar(pessoa.id)}">Editar</a>
         <a href="@{Pessoas.remover(pessoa.id)}">Excluir conta</a>
+    </div>
+</div> -->
+
+
+#{extends 'main.html' /}
+#{set title:'Pet Parent Profile' /}
+
+<div class="perfil-container-v2">
+    <div class="perfil-card-v2">
+        
+        <div class="avatar-wrapper">
+            <div class="avatar-pet-parent-v2">
+                </div>
+            <div class="social-icons">
+                <a href="#" title="Link 1">🐾</a>
+                <a href="#" title="Link 2">📸</a>
+                <a href="#" title="Link 3">📧</a>
+                <a href="#" title="Link 4">🔔</a>
+            </div>
+        </div>
+
+        <div class="perfil-info-v2">
+            <h1 class="card-title">Pet Parent Profile</h1>
+            <p class="card-subtitle">
+                Hi there! Manage your pet's future.
+            </p>
+            
+            <div class="info-field">
+                <label class="field-label">Name:</label>
+                <div class="field-content">
+                    <span class="field-value">${pessoa.nome}</span>
+                    <a href="@{Pessoas.editar(pessoa.id)}" title="Edit Name" class="edit-icon">
+                        <span class="pencil-icon">✏️</span>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="info-field">
+                <label class="field-label">Email:</label>
+                <div class="field-content">
+                    <span class="field-value">${pessoa.email}</span>
+                    <a href="@{Pessoas.editar(pessoa.id)}" title="Edit Email" class="edit-icon">
+                        <span class="pencil-icon">✏️</span>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="info-field">
+                <label class="field-label">Password:</label>
+                <div class="field-content">
+                    <span class="field-value hidden-password">********</span>
+                    <a href="@{Pessoas.editar(pessoa.id)}" title="Change Password" class="edit-icon">
+                        <span class="pencil-icon">✏️</span>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="btns-usu-v2">
+                <a href="@{Pessoas.editar(pessoa.id)}" class="btn-acao-v2 btn-edit">Edit Account</a>
+                <a href="@{Pessoas.remover(pessoa.id)}" class="btn-acao-v2 btn-delete">Delete Account</a>
+            </div>
+        </div>
     </div>
 </div>
