@@ -76,6 +76,6 @@ public class Pessoas extends Controller {
 
         s.situacao = Situacao.INATIVA;
         s.save();
-        listar(null);
+        Logins.deslogar();
     }
 }

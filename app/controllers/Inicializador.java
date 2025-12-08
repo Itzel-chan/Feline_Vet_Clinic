@@ -25,7 +25,7 @@ public class Inicializador extends Job {
             adm1.IsAdm = true;
             adm1.save();
 
-// >>>>>>>>>> DAQUI PRA BAIXO É O CÓDIGO Q EU FIZ <<<<<<<<<<<<<<
+
 
               // Users
             Pessoa user1 = new Pessoa();

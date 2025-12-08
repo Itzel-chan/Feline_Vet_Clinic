@@ -1,6 +1,8 @@
 #{extends 'main.html' /}
 #{set title:'Listagem de Pessoas' /}
 
+
+
 <div class="container form-filter-container">
 
     <h2>Filtro de pessoas</h2>
@@ -16,17 +18,17 @@
 </table>
 
 
-
+<main class="data-table-container">
     <h1>Listagem de Pessoas</h1>
 
     <table class="data-table">
         <thead>
             <tr>
-                
+
                 <th class="column-name">Nome</th>
                 <th>Telefone</th>
                 <th>Email</th>
-                <!-- <th>senha</th> --> 
+                <!-- <th>senha</th> -->
                 <th class="column-actions" colspan="3">Ações</th>
             </tr>
         </thead>
@@ -37,7 +39,7 @@
             <tr>
                 <td>${pessoa.nome}</td>
                 <td>${pessoa.email}</td>
-               
+
 
 
                 <td><a href='@{Pets.form()}'>Adicionar novo pet</a></td>
@@ -62,4 +64,4 @@
     <div class="add-new-button-container">
         <a href="@{Pessoas.form()}" class="add-new-button">Cadastrar Nova Pessoa</a>
     </div>
-
+</main>

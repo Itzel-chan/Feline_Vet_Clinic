@@ -4,6 +4,12 @@
 
     <form action="@{Consultas.salvar}" method="post" class="pet-form">
 
+          <h1>
+            #{if pe} Edição #{/if}
+            #{else} Cadastro #{/else}
+            de Consulta
+        </h1>
+
 
         <!-- Input dataAgendada -->
         <div class="form-group">

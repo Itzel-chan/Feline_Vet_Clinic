@@ -8,7 +8,7 @@
     #{get 'moreStyles' /}
     <link rel="shortcut icon" type="image/png" href="@{'/public/images/favicon.png'}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
 <body>
@@ -31,7 +31,7 @@
                     <li><a href="@{Application.index()}" class="nav-link">Página Inicial</a></li>
                     <!-- <li><a href="@{Pessoas.listar()}" class="nav-link">Listagem Pessoas</a></li>
                     <li><a href="@{Pets.listar()}" class="nav-link">Listagem Pets</a></li> -->
-                    
+
                     #{if !session['DadosUsu']}
                     <li><a href="@{Logins.form()}" class="nav-link">Login</a></li>
                     <li><a href="@{Pessoas.form()}" class="nav-link">Cadastrar-se</a></li>
@@ -39,65 +39,91 @@
                     #{/if}
                     #{if session['adm']}
                     <li><a href="@{Consultas.listarConsultas()}" class="nav-link">Listar Consultas</a></li>
+                    <li><a href="@{Pessoas.listar()}" class="nav-link">Listar Pessoas</a></li>
+                    <li><a href="@{Pets.listar()}" class="nav-link">Listar Pets</a></li>
+
+
+
+
                     #{/if}
                 </ul>
             </nav>
         </div>
-        
+
         #{if session['DadosUsu']}
-       <button class="icon-user-btn" aria-label="Abrir menu do usuário">
-    <i class="fa-solid fa-user"></i>
-</button>
+        <button class="icon-user-btn" aria-label="Abrir menu do usuário">
+            <i class="fa-solid fa-user"></i>
+        </button>
 
-<button class="close-btn" aria-label="Fechar menu do usuário">
-    <i class="fas fa-paw"></i>
-</button>
+        <button class="close-btn" aria-label="Fechar menu do usuário">
+            <i class="fas fa-paw"></i>
+        </button>
 
-<div id="user-sidebar" class="user-sidebar">
-    <div class="sidebar-top">
-        <div class="user-info">
-            <i class="fas fa-cat"></i>
-            <span>${session['DadosUsu'] ? session['DadosUsu'] : 'Usuário'}</span>
+        <div id="user-sidebar" class="user-sidebar">
+            <div class="sidebar-top">
+                <div class="user-info">
+                    <i class="fas fa-cat"></i>
+                    <span>${session['DadosUsu'] ? session['DadosUsu'] : 'Usuário'}</span>
+                </div>
+            </div>
+
+
+
+            <div class="user-sidebar-content">
+                <a href="@{Pessoas.perfil()}" class="sidebar-link">
+                    <i class="fas fa-cat"></i>Perfil
+                </a>
+
+
+                #{if session['DadosUsu']}
+
+                #{if session['adm']}
+
+
+                  <a href="@{Pessoas.form()}" class="sidebar-link">
+                    <i class="fas fa-cat"></i>Cadastrar Pessoa
+                </a>
+                <!-- <a href="@{Pets.form()}" class="sidebar-link">
+                    <i class="fas fa-cat"></i>Cadastrar Pet
+                </a> -->
+                <a href="@{Consultas.form()}" class="sidebar-link">
+                    <i class="fas fa-cat"></i>Cadastrar Consulta
+                </a>
+                #{/if}
+                #{else}
+
+                <a href="@{Consultas.listarConsultasUsu()}" class="sidebar-link">
+                    <i class="fas fa-stethoscope"></i>Consultas
+                </a>
+                <a href="@{Pets.listarPetsUsu()}" class="sidebar-link">
+                    <i class="fas fa-heart"></i>Seus Pets
+                    <!-- <img src="/public/imagens/pngCat.svg" class="svg-Cat"></i>Seus Pets -->
+                </a>
+
+                #{/else}
+                
+
+                 
+                <a href="@{Pets.form()}" class="sidebar-link">
+                    <i class="fas fa-cat"></i>Cadastrar Pet
+                </a>
+                <a href="@{Pets.cuidadosPet()}" class="sidebar-link">
+                    <i class="fas fa-paw"></i> Cuidados Pet
+                </a>
+
+            </div>
+
+            <div class="sidebar-bottom">
+                <a href="@{Logins.deslogar()}" class="sidebar-link deslogar-link">
+                    <i class="fas fa-sign-out-alt"></i> Deslogar
+                </a>
+            </div>
         </div>
-    </div>
-    
-    <div class="user-sidebar-content">
-        
-        <!-- <a href="@{Logins.deslogar()}" class="sidebar-link">
-            <i class="fa-solid fa-user"></i>Perfil
-        </a> -->
-        <a href="@{Pessoas.perfil()}" class="sidebar-link">
-            <i class="fas fa-cat"></i>Perfil
-        </a>
+        #{/if}
+        #{/if}
 
-        <a href="@{Pets.form()}" class="sidebar-link">
-            <i class="fas fa-cat"></i>Cadastrar Pet
-        </a>
-            
-        <a href="@{Consultas.listarConsultasUsu()}" class="sidebar-link">
-             <i class="fas fa-stethoscope"></i>Consultas
-        </a>
-        <a href="@{Pets.listarPetsUsu()}" class="sidebar-link">
-          <i class="fas fa-heart"></i>Seus Pets
-            <!-- <img src="/public/imagens/pngCat.svg" class="svg-Cat"></i>Seus Pets -->
-        </a>
 
-        <a href="@{Pets.cuidadosPet()}" class="sidebar-link">
-            <i class="fas fa-paw"></i> Cuidados Pet
-        </a>
-
-    </div>
-
-    <div class="sidebar-bottom">
-        <a href="@{Logins.deslogar()}" class="sidebar-link deslogar-link">
-            <i class="fas fa-sign-out-alt"></i> Deslogar
-        </a>
-    </div>
-</div>
-
-#{/if}
-
-        </header>
+    </header>
 
     <main class="main-content">
         <div class="flash-messages-container container">
@@ -141,11 +167,12 @@
     <script src="@{'/public/javascripts/jquery-3.7.1.min.js'}" type="text/javascript"
         charset="${_response_encoding}"></script>
     <script src="@{'/public/javascripts/main.js'}" type="text/javascript" charset="${_response_encoding}"></script>
-    <script src="@{'/public/javascripts/scriptAjax.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+    <script src="@{'/public/javascripts/scriptAjax.js'}" type="text/javascript"
+        charset="${_response_encoding}"></script>
     <script src="https://kit.fontawesome.com/your-font-awesome-kit.js" crossorigin="anonymous"></script>
-   
+
     #{get 'moreScripts' /}
-    
+
 </body>
 
 </html>

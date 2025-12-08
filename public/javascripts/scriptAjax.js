@@ -29,7 +29,7 @@
 
             <div class="contact-info">
                 <div class="info-item">
-                    <p>${lista[index].dataAgendada.toLocaleDateString()}</p>
+                    <p>${lista[index].dataAgendada}</p>
                     <i class="fas fa-map-marker-alt"></i>
                 </div>
                 <div class="info-item">

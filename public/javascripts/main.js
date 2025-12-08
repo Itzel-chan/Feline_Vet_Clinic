@@ -193,4 +193,42 @@ document.addEventListener('click', function(event) {
     }
 });
 
+
+
+
+
+
+
+// Arquivo filtro.js
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Seleciona todos os elementos com a classe 'filtro'
+    const filterItems = document.querySelectorAll('.filtro');
+
+    // Inicialmente, define o item "TODAS" como ativo por padrão
+    const todasElement = document.getElementById('TODAS');
+    if (todasElement) {
+        todasElement.classList.add('ativo');
+    }
+
+    // Adiciona um ouvinte de evento 'click' a cada item de filtro
+    filterItems.forEach(item => {
+        item.addEventListener('click', (event) => {
+            
+            // 1. Remove a classe 'ativo' de todos os itens
+            filterItems.forEach(i => {
+                i.classList.remove('ativo');
+            });
+            
+            // 2. Adiciona a classe 'ativo' no item clicado
+            event.currentTarget.classList.add('ativo');
+
+            // 3. (OPCIONAL) Aqui você pode chamar sua função de filtragem no backend/frontend,
+            //    usando o ID do elemento clicado para saber qual status filtrar.
+            const selectedStatus = event.currentTarget.id;
+            console.log(`Filtrando consultas por: ${selectedStatus}`);
+        });
+    });
+});
+
 });

@@ -1,6 +1,7 @@
 package controllers;
 
 import models.Pessoa;
+import models.Situacao;
 import play.data.validation.Email;
 import play.data.validation.Min;
 import play.data.validation.MinSize;
@@ -25,7 +26,7 @@ public class Logins extends Controller {
 
         }
 
-        Pessoa pes = Pessoa.find("nome = ?1 and email = ?2 and senha = ?3", nome, email, senha).first();
+        Pessoa pes = Pessoa.find("nome = ?1 and email = ?2 and senha = ?3 and situacao = ?4", nome, email, senha, Situacao.ATIVA).first();
 
         if (pes == null) {
             flash.error("nome, email ou senha incorreto(s)");

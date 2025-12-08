@@ -307,12 +307,12 @@ form textarea,
   /* Inclui select também */
   width: 100%;
   padding: 14px 18px;
-  border: 1px solid var(--soft-blue);
+  border: 1px solid #002d62;
   border-radius: 8px;
   font-family: "Quicksand", sans-serif;
   font-size: 1.1em;
   color: var(--text-dark);
-  background-color: var(--text-light);
+  background-color: #BEDCF2;
   transition: border-color 0.3s ease, box-shadow 0.3s ease,
     background-color 0.3s ease;
 
@@ -360,11 +360,43 @@ form textarea:focus {
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
   max-width: 550px;
   width: 100%;
+  
+  /* --- Modificação para Centralizar --- */
+  margin: 0 auto;
+  /* ------------------------------------ */
+  
   display: flex;
   flex-direction: column;
   gap: 20px;
   animation: fadeIn 0.8s ease-out;
+
+
+
+
+
+
+
+  /* .person-form,
+.pet-form { */
+  /* Estilo base para ambos os formulários */
+  /* background-color: var(--light-blue-bg);
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  max-width: 550px;
+  width: 100%; */
+  
+  /* --- Modificação para Centralizar --- */
+  /* margin: 0 auto; */
+  /* ------------------------------------ */
+  
+  /* display: flex;
+  flex-direction: column;
+  gap: 20px;
+  animation: fadeIn 0.8s ease-out;
+} */
 }
+
 
 .person-form h1,
 .pet-form h1 {
@@ -421,12 +453,12 @@ form textarea {
   /* Inclui textarea também */
   width: 100%;
   padding: 14px 18px;
-  border: 1px solid var(--soft-blue);
+  border: 1px solid var(--dark-blue);
   border-radius: 8px;
   font-family: "Quicksand", sans-serif;
   font-size: 1.1em;
   color: var(--text-dark);
-  background-color: var(--text-light);
+  background-color: rgba(149, 201, 243, 0.361);
   /* Fundo do input */
   transition: border-color 0.3s ease, box-shadow 0.3s ease,
     background-color 0.3s ease;
@@ -604,7 +636,7 @@ form br {
 
 /* Efeito hover nas linhas da tabela */
 .data-table tbody tr:hover {
-  background-color: var(--highlight-blue);
+  background-color: rgb(14, 51, 94);
   /* Fundo azul no hover */
   color: var(--light-text-color);
   /* Texto claro no hover */
@@ -677,7 +709,8 @@ form br {
 }
 
 .add-new-button:hover {
-  background-color: var(--soft-blue);
+  background-color: #C7EAC7;
+   color: var(--text-dark);
   /* Azul pastel no hover */
   transform: translateY(-3px);
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
@@ -1984,6 +2017,7 @@ opacity:1;
 }
 
 .tituloPágCuid h1 {
+ 
   color: var(--azul-escuro);
   margin-bottom: 40px;
   text-align: center;
@@ -1991,6 +2025,7 @@ opacity:1;
 
 /* CARDS */
 .cards-container {
+ 
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -1998,6 +2033,7 @@ opacity:1;
 }
 
 .card {
+  margin-top: 2.5rem;
   width: 300px;
   height: 200px;
   /* Reduzi um pouco a altura para ficar mais compacto */
@@ -2806,3 +2842,165 @@ align-items: stretch;
         flex-direction: column;
     }
 }
+
+
+
+
+/*
+  =============================
+  ESTILIZAÇÃO DO CONTAINER DE FILTRO (MODIFICADO)
+  =============================
+*/
+.filtro-container {
+  margin: 0 auto;
+  margin-bottom: 30px;
+  /* Estilo do container geral */
+  background-color: #ffffff;
+  padding: 25px 20px 25px 30px;
+  border-radius: 15px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+  /* A largura máxima não é mais 100%, ela será definida pelo seu contêiner pai
+     ou pelos itens internos, mas manteremos um max-width para controle. */
+  max-width: fit-content; /* Permite que o container se ajuste ao conteúdo (novo) */
+  min-width: 300px; /* Garante uma largura mínima razoável (novo) */
+  transition: all 0.5s ease-in-out;
+  border-left: 6px solid #1e88e5;
+  
+  /* --- MODIFICAÇÃO CHAVE: Flexbox para layout horizontal --- */
+  display: flex;
+  flex-direction: row; /* Coloca os filhos (H1 e os filtros) em coluna */
+  align-items: center;
+  flex-wrap: nowrap; /* Não permite quebra automática */
+  gap: 10px; /* Espaço entre os itens (vertical) */
+  /* -------------------------------------------------------- */
+}
+
+/*
+  =============================
+  ESTILIZAÇÃO DO TÍTULO H1 (CENTRALIZADO)
+  =============================
+*/
+.filtro-container h1 {
+  /* ... (outros estilos do h1) ... */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+  font-size: 1.9rem; 
+  font-weight: 800; 
+  color: #0d47a1; 
+  text-transform: uppercase; 
+  letter-spacing: 1px; 
+  margin-top: 0;
+  margin-bottom: 15px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center; /* --- NOVO: Centraliza o conteúdo horizontalmente --- */
+  gap: 10px;
+  width: 100%; /* Ocupa a largura total para que a centralização funcione */
+}
+
+.filtro-container h1::before {
+  content: '📊';
+  font-size: 1.2em;
+}
+
+/*
+  =============================
+  CONTÊINER SECUNDÁRIO para os Itens de Filtro
+  (Necessário para alinhar os itens horizontalmente se o H1 estiver acima)
+  =============================
+*/
+.filtro-items-wrapper {
+    display: flex; /* Habilita o Flexbox para alinhar os itens horizontalmente */
+    flex-wrap: wrap; /* Permite quebra, caso necessário */
+    gap: 10px; /* Espaço horizontal e vertical entre os filtros */
+}
+
+/*
+  =============================
+  ESTILIZAÇÃO DOS ITENS DE FILTRO (LAYOUT AJUSTADO AO TEXTO)
+  =============================
+*/
+.filtro {
+  cursor: pointer;
+  font-size: 1.5rem; 
+  font-weight: 600;
+  padding: 8px 15px; 
+  margin-bottom: 0; /* Removido para usar o 'gap' do wrapper */
+  border-radius: 20px; /* Bordas arredondadas (pill-shaped) */
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  border: 1px solid transparent; 
+  text-align: center; 
+  
+  /* --- MODIFICAÇÃO CHAVE: Ajuste de tamanho --- */
+  /* Remove qualquer largura fixa para que o padding e o conteúdo definam o tamanho */
+  flex-grow: 0; 
+  flex-shrink: 0;
+  width: auto; /* Garante que o tamanho seja o do conteúdo */
+  /* ------------------------------------------- */
+}
+
+.filtro:hover {
+  transform: translateY(-2px); /* Efeito de elevação sutil no hover */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+  background-color: #f0f4f8; 
+}
+
+/*
+  =============================
+  ESTILIZAÇÃO POR STATUS (CORES)
+  (Mantenha inalterado)
+  =============================
+*/
+
+#AGENDADA { color: #1e88e5; }
+#AGENDADA:hover { border-color: #1e88e5; }
+
+#EM_ANDAMENTO { color: #ffb300; }
+#EM_ANDAMENTO:hover { border-color: #ffb300; }
+
+#FINALIZADA { color: #43a047; }
+#FINALIZADA:hover { border-color: #43a047; }
+
+#TODAS { color: #546e7a; }
+#TODAS:hover { border-color: #546e7a; }
+
+
+/*
+  =============================
+  ESTADO ATIVO/SELECIONADO (Mantenha inalterado)
+  =============================
+*/
+.filtro.ativo {
+  font-weight: 700;
+  transform: translateY(-1px); /* Ajusta a transição para corresponder ao hover */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  background-color: #e3f2fd;
+  border-left: 5px solid;
+}
+
+#AGENDADA.ativo { border-left-color: #1e88e5; }
+#EM_ANDAMENTO.ativo { border-left-color: #ffb300; }
+#FINALIZADA.ativo { border-left-color: #43a047; }
+#TODAS.ativo { border-left-color: #546e7a; }
+
+
+
+/* Fundo Cuidados Pet */
+
+.fundoCuidadosPet{
+  /* Garante que o gradiente cubra toda a altura da página */
+  min-height: 100vh;
+  margin: 0; /* Remove a margem padrão do body */
+  
+  /* Gradiente linear do topo para baixo */
+  background: linear-gradient(
+    to bottom, 
+    #b3e5fc, /* Azul Claro (Sky Blue) */
+    #0b334b  /* Azul Médio/Escuro (Deep Blue) */
+    
+  );
+  
+  /* Garante que, se o conteúdo for menor que a tela, o gradiente não se repita */
+  background-attachment: fixed; 
+}
+
