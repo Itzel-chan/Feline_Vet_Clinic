@@ -1,0 +1,17 @@
+#{extends 'main.html' /}
+#{set title:'Calendário' /}
+
+
+<div class="calendario">
+
+    #{list items: datas, as: 'data' }
+
+    <div class="dia">
+        <span class="data"><strong>${data.format("dd/MM/yyyy")}</strong></span>
+       <a href="@{Consultas.registrarConsulta(data,id)}" class="link">Agendar</a>
+     
+    </div>
+
+    #{/list}
+
+</div>

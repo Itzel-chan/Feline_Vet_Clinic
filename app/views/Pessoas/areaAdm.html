@@ -1,0 +1,106 @@
+#{extends 'main.html' /}
+#{set title:'Formulário de Pessoas' /}
+
+
+
+<div class="cardsAdm">
+    <div class="container-fluid pricing-bg">
+        
+        <div class="row justify-content-center align-items-center pricing-row">
+            
+            <div class="col-md-4 col-sm-6 mb-4">
+                <div class="pricing-card" data-highlight-color="#007bff">
+                    <div class="card-content">
+                        <h5 class="card-plan-title">Formulário Pessoa</h5>
+                        <i class="fas fa-list-alt pricing-icon icon-standard mb-4"></i>
+                        <ul class="plan-features list-unstyled">
+                             <li>Criação de Novo Registro</li>
+                            <li>Edição de Dados Existentes</li>
+                            <li>Validação de Campos</li>
+                        </ul>
+                        <a href="@{Pessoas.form()}" class="btn btn-pricing mt-4 btn-standard">Ir para o formulário</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-sm-6 mb-4">
+                <div class="pricing-card" data-highlight-color="#9d52ed">
+                    <div class="card-content">
+                        <h5 class="card-plan-title">Formulário Pet</h5>
+                        <i class="fas fa-edit pricing-icon icon-expert mb-4"></i>
+                        <ul class="plan-features list-unstyled">
+                            <li>Criação de Novo Registro</li>
+                            <li>Edição de Dados Existentes</li>
+                            <li>Validação de Campos</li>
+                        </ul>
+                        <a href="@{Pets.form()}" class="btn btn-pricing mt-4 btn-expert">Ir para o formulário</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-sm-6 mb-4">
+                <div class="pricing-card" data-highlight-color="#007bff">
+                    <div class="card-content">
+                        <h5 class="card-plan-title">Formulário Consulta</h5>
+                        <i class="fas fa-chart-line pricing-icon icon-elite mb-4"></i>
+                        <ul class="plan-features list-unstyled">
+                            <li>Criação de Novo Registro</li>
+                            <li>Edição de Dados Existentes</li>
+                            <li>Validação de Campos</li>
+                        </ul>
+                        <a href="@{Consultas.form()}" class="btn btn-pricing mt-4 btn-elite">Ir para o formulário</a>
+                    </div>
+                </div>
+            </div>
+            
+        </div> 
+        <div class="row justify-content-center align-items-center pricing-row"> 
+
+            <div class="col-md-4 col-sm-6 mb-4">
+                <div class="pricing-card" data-highlight-color="#9d52ed">
+                    <div class="card-content">
+                        <h5 class="card-plan-title">Listagem Pessoa</h5>
+                        <i class="fas fa-cogs pricing-icon icon-standard mb-4"></i>
+                        <ul class="plan-features list-unstyled">
+                            <li>Itens de Listagem</li>
+                            <li>Acesso a Tabelas</li>
+                            <li>Filtros e Buscas</li>
+                        </ul>
+                        <a href="@{Pessoas.listar(null)}" class="btn btn-pricing mt-4 btn-expert">Ver listagem</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-sm-6 mb-4">
+                <div class="pricing-card" data-highlight-color="#007bff">
+                    <div class="card-content">
+                        <h5 class="card-plan-title">Listagem Pet</h5>
+                        <i class="fas fa-tachometer-alt pricing-icon icon-expert mb-4"></i>
+                        <ul class="plan-features list-unstyled">
+                            <li>Itens de Listagem</li>
+                            <li>Acesso a Tabelas</li>
+                            <li>Filtros e Buscas</li>
+                        </ul>
+                        <a href="@{Pets.listar(null)}" class="btn btn-pricing mt-4 btn-standard">Ver listagem</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-sm-6 mb-4">
+                <div class="pricing-card" data-highlight-color="#9d52ed">
+                    <div class="card-content">
+                        <h5 class="card-plan-title">Listagem Consulta</h5>
+                        <i class="fas fa-life-ring pricing-icon icon-elite mb-4"></i>
+                        <ul class="plan-features list-unstyled">
+                            <li>Itens de Listagem</li>
+                            <li>Acesso a Tabelas</li>
+                            <li>Filtros e Buscas</li>
+                        </ul>
+                        <a href="@{Consultas.listarConsultas(null)}" class="btn btn-pricing mt-4 btn-expert">Ver listagem</a>
+                    </div>
+                </div>
+            </div>
+
+        </div> 
+        </div>
+</div>

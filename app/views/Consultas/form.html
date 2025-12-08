@@ -1,0 +1,41 @@
+#{extends 'main.html' /}
+#{set title:'Formulário de Consulta' /}
+
+
+    <form action="@{Consultas.salvar}" method="post" class="pet-form">
+
+          <h1>
+            #{if pe} Edição #{/if}
+            #{else} Cadastro #{/else}
+            de Consulta
+        </h1>
+
+
+        <!-- Input dataAgendada -->
+        <div class="form-group">
+            <label for="petdataNascimento">Data da consulta:</label> <span class="error"> #{error 'consulta.dataAgendada'/}</span>
+
+            <input type="date" id="petdataNascimento" name="consulta.dataAgendada" > 
+        </div>
+
+        <!-- Select Pet -->
+        <div class="form-group">
+            <label for="petdataNascimento">Pet:</label> <span class="error"> #{error 'consulta.pet'/}</span>
+
+
+            <select name="consulta.pet.id">
+                <option value="" disabled selected>Selecione uma opção</option>
+                #{list items: pets, as: 'pet'}
+                <option value="${pet.id}" >${pet.nome}</option>
+
+                #{/list}
+
+            </select>
+        </div>
+
+        <!-- Button -->
+        <button type="submit" class="submit-button">Cadastrar consulta</button>
+      
+        <a href="@{Consultas.listarConsultas(null)}" class="back-button">Lista de Consultas</a>
+       
+    </form>

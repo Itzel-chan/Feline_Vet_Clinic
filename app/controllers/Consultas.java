@@ -1,0 +1,176 @@
+package controllers;
+
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.List;
+
+import models.Consulta;
+import models.Pessoa;
+import models.Pet;
+import models.PetSexo;
+import models.Situacao;
+import models.SituacaoConsulta;
+import play.cache.Cache;
+import play.data.validation.Valid;
+import play.data.validation.Validation;
+import play.mvc.Controller;
+import play.mvc.With;
+
+@With(Interceptador.class)
+public class Consultas extends Controller {
+
+    public static void form() {
+        List<Pet> pets = Pet.find("situacao = ?1", Situacao.ATIVA).fetch();
+        render(pets);
+    }
+
+    public static void salvar(Consulta consulta) {
+        consulta.save();
+        flash.success("Consulta cadastrada com sucesso!");
+        form();
+    }
+
+    public static void calendario(Long id) {
+        List<Date> datas = new ArrayList<>();
+        Date data = null;
+        LocalDate aux = null;
+
+        int diasRestantesDoMes = LocalDate.now().lengthOfMonth() - LocalDate.now().getDayOfMonth();
+
+        for (int i = 1; i <= diasRestantesDoMes; i++) {
+            aux = LocalDate.now().plusDays(i);
+            if (aux.getDayOfWeek() != DayOfWeek.SATURDAY && aux.getDayOfWeek() != DayOfWeek.SUNDAY) {
+                data = Date.from(aux.atStartOfDay(ZoneId.systemDefault()).toInstant());
+                datas.add(data);
+            }
+        }
+
+        render(datas, id);
+    }
+
+    public static void registrarConsulta(@Valid Date data, long id) {
+
+        if (Validation.hasErrors()) {
+            flash.error("Falha ao cadastrar consulta!");
+            Pets.listarPetsUsu();
+        }
+
+        Consulta consulta = new Consulta();
+        consulta.dataAgendada = data;
+
+        Pet pet = Pet.findById(id);
+
+        if (pet == null) {
+            Validation.addError("consulta.pet", "Id inválido");
+        }
+
+        if (Validation.hasErrors()) {
+            flash.error("Falha ao cadastrar consulta!");
+            Pets.listarPetsUsu();
+        }
+
+        consulta.pet = pet;
+        consulta.save();
+        flash.success("Consulta registrada com sucesso!");
+
+        listarConsultasUsu(null);
+    }
+
+    public static void agendar(Long id) {
+        Consulta consulta = Consulta.findById(id);
+
+        if (consulta.situacaoConsulta != SituacaoConsulta.FINALIZADA) {
+            consulta.situacaoConsulta = SituacaoConsulta.AGENDADA;
+            consulta.save();
+        } else {
+            flash.error("Consulta já finalizada!");
+        }
+
+        listarConsultas(null);
+    }
+
+    public static void finalizarConsulta(Long id) {
+
+        Consulta consulta = Consulta.findById(id);
+
+        consulta.situacaoConsulta = SituacaoConsulta.FINALIZADA;
+
+        consulta.save();
+        listarConsultas(null);
+
+    }
+
+    public static void listarConsultas(String termo) {
+        List<Consulta> consultas = null;
+
+        if (termo == null) {
+            consultas = Consulta.findAll();
+        }
+
+        else if (termo.equals("andamento")) {
+            consultas = Consulta.find("situacaoConsulta = ?1, SituacaoConsulta.EM_ANDAMENTO").fetch();
+
+        } else if (termo.equals("agendadas")) {
+            consultas = Consulta.find("situacaoConsulta = ?1, SituacaoConsulta.AGENDADA").fetch();
+
+        } else if (termo.equals("finalizadas")) {
+            consultas = Consulta.find("situacaoConsulta = ?1, SituacaoConsulta.FINALIZADA").fetch();
+
+        }
+
+        render(consultas);
+
+    }
+
+    public static void listarConsultasUsu(String termo) {
+
+        String nomeUsu = session.get("DadosUsu");
+        Pessoa pes = Pessoa.find("nome =?1", nomeUsu).first();
+
+        List<Consulta> consultas = null;
+
+        if (termo == null) {
+            consultas = Consulta.find("pet.dono = ?1", pes).fetch();
+        }
+
+        else if (termo.equals("andamento")) {
+            consultas = Consulta.find("situacaoConsulta = ?1, SituacaoConsulta.EM_ANDAMENTO").fetch();
+
+        } else if (termo.equals("agendadas")) {
+            consultas = Consulta.find("situacaoConsulta = ?1, SituacaoConsulta.AGENDADA").fetch();
+
+        } else if (termo.equals("finalizadas")) {
+            consultas = Consulta.find("situacaoConsulta = ?1, SituacaoConsulta.FINALIZADA").fetch();
+
+        }
+
+        render(consultas);
+    }
+
+    public static void filtragem(String id) {
+        List<Consulta> lista = null;
+
+        if (id.equals("TODAS")) {
+            lista = Consulta.findAll();
+        } else {
+            lista = Consulta.find("situacaoConsulta = ?1", SituacaoConsulta.valueOf(id)).fetch();
+        }
+
+        renderJSON(lista);
+    }
+
+    public static void desmarcar(long id) {
+        Consulta consulta = Consulta.findById(id);
+
+        consulta.delete();
+        flash.put("info", "Consulta desmarcada!");
+
+        listarConsultasUsu(null);
+    }
+
+
+}

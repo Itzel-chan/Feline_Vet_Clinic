@@ -14,21 +14,17 @@
         <input type="hidden" name="pess.id" value="${pe?.id}">
 
         <div class="form-group">
-            <label for="nome">Nome:</label>
-            <input type="text" id="nome" name="pess.nome" value="${pe?.nome}" required>
-        </div>
-        <div class="form-group">
-            <label for="telefone">Telefone:</label>
-            <input type="text" id="telefone" name="pess.telefone" value="${pe?.telefone}" required>
+            <label for="nome">Nome:</label> <span class="error"> #{error 'pess.nome'/} </span>
+            <input type="text" id="nome" name="pess.nome" value="${pe?.nome}" placeholder="Informe seu nome">
         </div>
 
         <div class="form-group">
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="pess.email" value="${pe?.email}" required>
+            <label for="email">Email:</label> <span class="error"> #{error 'pess.email'/}</span>
+            <input type="text" id="email" name="pess.email" value="${pe?.email}" placeholder="Informe seu email">
         </div>
         <div class="form-group">
-            <label for="senha">Senha:</label>
-            <input type="password" id="senha" name="pess.senha" required>
+            <label for="senha">Senha:</label> <span class="error"> #{error 'pess.senha'/}</span>
+            <input type="password" id="senha" name="pess.senha" placeholder="Informe sua senha">
         </div>
 
         <button type="submit" class="submit-button">
@@ -36,7 +32,8 @@
             #{else} Cadastrar Pessoa #{/else}
         </button>
 
+        #{if session['adm']}
         <a href="@{Pessoas.listar()}" class="back-button">Voltar para a Lista</a>
-
+        #{/if}
     </form>
 </main>

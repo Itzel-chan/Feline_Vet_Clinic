@@ -8,18 +8,18 @@
         <h1>Login </h1>
 
         <div class="form-group">
-            <label for="nome">Nome:</label>
-            <input type="text" id="nome" name="nome" placeholder="Informe seu nome" required>
+            <label for="nome">Nome:</label> <span class="error">#{error 'nome'/}</span>
+            <input type="text" id="nome" name="nome" placeholder="Informe seu nome" >
         </div>
 
         <div class="form-group">
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" placeholder="Informe seu email" required>
+            <label for="email">Email:</label> <span class="error">#{error 'email'/}</span>
+            <input type="text" id="email" name="email" placeholder="Informe seu email" >
         </div>
 
         <div class="form-group">
-            <label for="senha">Senha:</label>
-            <input type="password" id="senha" name="senha" placeholder="Informe sua senha" required>
+            <label for="senha">Senha:</label> <span class="error">#{error 'senha'/}</span>
+            <input type="password" id="senha" name="senha" placeholder="Informe sua senha" >
         </div>
 
         <button type="submit" class="submit-button">Logar</button>

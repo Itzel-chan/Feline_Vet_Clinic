@@ -1,0 +1,558 @@
+#{extends 'main.html' /}
+#{set title:'Formulário' /}
+
+<div class="fundoCuidadosPet">
+
+    <div class="filtro-container">
+        <div class="tituloPágCuid">
+            <h1>Guia de Cuidados Essenciais para seu Felino</h1>
+        </div>
+    </div>
+
+    <div class="fundo">
+
+        <main class="cards-container">
+
+            <div class="card" onclick="openModal('modal-alimentacao')">
+                <div class="card-front">
+                    <i class="fas fa-utensils icon-grande"></i>
+                    <h2>Alimentação</h2>
+                </div>
+            </div>
+
+            <div class="card" onclick="openModal('modal-comportamento')">
+                <div class="card-front">
+                    <i class="fas fa-paw icon-grande"></i>
+                    <h2>Comportamento e Socialização</h2>
+                </div>
+            </div>
+
+            <div class="card" onclick="openModal('modal-higiene')">
+                <div class="card-front">
+                    <i class="fas fa-shower icon-grande"></i>
+                    <h2>Higiene</h2>
+                </div>
+            </div>
+
+            <div class="card" onclick="openModal('modal-saude')">
+                <div class="card-front">
+                    <i class="fas fa-heartbeat icon-grande"></i>
+                    <h2>Saúde e Bem-Estar</h2>
+                </div>
+            </div>
+
+        </main>
+
+
+        <div id="modal-alimentacao" class="modal-overlay">
+            <div class="modal-content">
+
+                <div class="modal-left bg-alimentacao">
+                    <i class="fas fa-utensils modal-icon"></i>
+                    <h2>Alimentação Ideal para Felinos</h2>
+                    <p>Os pilares de uma vida longa e saudável começam na tigela.</p>
+                </div>
+
+                <div class="modal-right">
+                    <h3>Nutrição e Hidratação</h3>
+                    <p><strong>COMO CUIDAR DO MEU GATO?:</strong> <br>
+                        Os gatos são animais de estimação que estão cada vez
+                        mais presente nos lares. E com
+                        isso é preciso ter cuidados especiais com eles, como a alimentação adequada levando
+                        em consideração a idade do animal. A saúde, mantendo vacinas e consultas
+                        veterinárias regulares. Assim, como a higiene, sendo muito importante para evitar
+                        estresse e doenças ao animal. Também é fundamental garantir o bem-estar do animal,
+                        com um ambiente limpo e agradável.</p>
+                    <br>
+                    <p><strong>TIPOS DE RAÇÂO:</strong> <br>
+                        A ração úmida, também conhecida como sachê ou patê, é muito consumida por gatos
+                        pelo seu sabor e textura, apesar de ser mais cara, ainda continua sendo uma das
+                        formas de complementar a dieta do gato. Possuindo grande quantidade de água,
+                        ajudando na hidratação. Muitas das vezes os tutores misturam a ração seca e a ração
+                        úmida, afim de trazer benefícios nutricionais para o animal, e sempre se atentando ao
+                        armazenamento. </p><br>
+                    <p>
+                        A ração natural, é feita com ingredientes frescos e minimamente processados,
+                        podendo oferecer benefícios a saúde do animal, como uma melhor digestão e
+                        pelagem. Sendo sugerido procurar um veterinário antes de alimentar o animal.</p>
+                    <br>
+
+                    <p><strong> ALIMENTAÇÃO SE DÁ DE ACORDO COM A IDADE DO ANIMAL (FILHOTE--ADULTO--IDOSO):</strong>
+                        <br>
+                    <p>Antes de alimentar seu gato é preciso verificar os rótulos das embalagens de rações ou
+                        alimentos destinados a eles. Analisando se o alimento é adequado para a idade e se é
+                        completo nutricionalmente, ou se precisa completar com outros alimentos.</p>
+                    <br>
+                    <p><strong>FILHOTES RECÉM-NASCIDOS DE 0 A 4 SEMANAS:</strong> <br>
+                    <p>Durante essa fase, os filhotes são dependentes do leite materno, tendo como a única
+                        fonte de nutrição, podendo se alimentar livremente. Porém, se ele não tiver contato
+                        com a mãe para a alimentação, é possível fazer uma modificação com um substituto do
+                        leite, podendo ser encontrado no veterinário ou em um petshop, com uso moderado.
+                    </p>
+                    <br>
+                    <p><strong>FILHOTES DE 4 A 8 SEMANAS:</strong> <br>
+                    <p>A partir da 4 semana de idade, começa a ocorrer o desmame do filhote. Onde já é
+                        possível ir gradualmente modificando sua alimentação, de uma alimentação líquida
+                        para uma mais sólida.</p>
+                    <br>
+                    <p><strong>FILHOTES DE 8 A 16 SEMANAS:</strong> <br>
+                    <p>A partir das 8 semanas de idade, o gato já deve estar desmamado e sua a
+                        personalidade está se desenvolvendo, junto com seus instintos predatórios. Esse
+                        período é essencial para que ele tenha uma boa alimentação, rica em proteínas e
+                        ácidos graxos de origem animal e com vitaminas que ajudem o crescimento saudável,
+                        sobretudo o cérebro e dos olhos.</p>
+
+
+                    <p><strong>FILHOTES DE 4 A 6 MESES:</strong> <br>
+                    <p>Nessa fase, ele se adaptará a sua rotina. Então, é muito importante está estabelecendo
+                        bons hábitos diários. E importante criar uma dieta variada, que ajuda a evitar enjoos, e
+                        possivelmente o deixa mais saudável, e evita do mesmo se acostume apenas com um
+                        único tipo de ração, que futuramente poderia se ter uma dificuldade em aceitar
+                        comida úmida. Onde alimentos úmidos possuem mais proteínas de origem animal e
+                        água, sendo nutrientes importantes para a espécie.</p>
+                    <br>
+
+                    <p><strong>GATO DE 6 MESES A 10 anos:</strong> <br>
+                    <p>Nessa fase, o gato está ficando mais velho. Mas, ainda é preciso de muitas calorias para
+                        ajudar no crescimento. Seu metabolismo fica um pouco mais lento gradualmente e as
+                        necessidades nutricionais são parecidas com as de um adulto. Então, a partir do
+                        primeiro ano de vida do gato, é possível fazer a troca de ração de filhote para a ração
+                        de adulto.</p>
+                    <br>
+
+                    <p><strong>GATOS IDOSOS COM MAIS DE 11 ANOS:</strong> <br>
+                    <p>Gatos idosos, são diferentes de gatos adultos jovens e de meia-idade, porque possuem
+                        necessidades nutricionais únicas. Com a redução da eficiência em metabolizar
+                        proteínas, eles têm maior risco de perder massa muscular, precisando assim, de uma
+                        dieta com mais proteínas de boa qualidade. Com a idade, eles ficam mais vulneráveis e
+                        podem adquirir problemas de saúde como problemas dentários ou doenças crônicas.
+                    </p> <br>
+
+                    <p><strong>ALIMENTOS TÓXICOS</strong> <br>
+                    <p><strong>Alimentos Salgados:</strong>
+                        <br>
+                        O excesso do sal é prejudicial aos gatos, podendo causar problemas nos rins e
+                        hipertensão. Alimentos como embutidos, devem ser evitados.
+                        <br>
+                        <strong>• Leite e produtos lácteos:</strong>
+                        <br>
+                        Após o desmame, os gatos tornam-se intolerantes à lactose. Oferecer leite pode causar
+                        diarreias e vômitos.
+                        <br>
+                        <strong>• Limão e Vinagre:</strong>
+                        <br>
+                        Por serem líquidos muitos ácidos, pode causar dores no estômago, além de vômitos e
+                        mal-estar do animal.
+                        <br>
+                        <strong> • Cebola, Alho-Poró e Alho:</strong>
+                        <br>
+                        Estes alimentos, são tóxicos para gatos, podendo destruir glóbulos vermelhos e causar
+                        anemia.
+                        <br>
+                        <strong>• Chocolate:</strong>
+                        <br>
+                        É toxico para gatos por conter a teobromina, podendo causando diarreia, vômitos,
+                        aceleração do coração e em casos mais graves, levando a morte do animal.
+                        <br>
+                        <strong>• Abacate:</strong>
+                        <br>
+                        O abacate é uma fruta rica em gordura e não deve ser oferecido como alimento para
+                        gatos, pois eles não conseguem digeri-la bem, o que pode causar problemas digestivos
+                        e pancreatite.
+                        <br>
+                        <strong>• Frutos Secos:</strong>
+                        <br>
+                        São alimentos gordurosos, não sendo bem digeridos pelo estômago do animal, podem
+                        provocar falhas renais, diarreias e problemas digestivos.
+                        <br>
+                        <strong>• Peixe Cru:</strong>
+                        <br>
+                        Não devem ser oferecidos como alimento para gatos, pois contém enzimas que
+                        destroem a vitamina B1, podendo levar o animal a ter convulsões ou coma, além de
+                        risco de intoxicações por bactérias.
+                        <br>
+                        <strong>• Doces:</strong>
+                        <br>
+                        Doces não devem ser oferecidos como alimentos a gatos, pois, além de serem
+                        gordurosos, podem causar problemas digestivos e até insuficiência hepática.
+                        <br>
+                        <strong> • Uvas e passas:</strong>
+                        <br>
+                        São frutas extremamente prejudiciais aos gatos, podendo causar falhas renais e
+                        insuficiência renal, mesmo que consumidas em pequenas quantidades.
+                    </p>
+                    <br>
+
+                </div>
+            </div>
+        </div>
+
+        <div id="modal-comportamento" class="modal-overlay">
+            <div class="modal-content">
+
+
+                <div class="modal-left bg-comportamento">
+                    <i class="fas fa-paw modal-icon"></i>
+                    <h2>Compreendendo e Estimulando seu Gato</h2>
+                    <p>Dicas para um ambiente feliz, seguro e enriquecido.</p>
+                </div>
+
+                <div class="modal-right">
+                    <h3>Enriquecimento e Vínculo</h3>
+                    <p>O comportamento dos gatos compreende sua forma de agir e os hábitos que realizam
+                        no seu dia a dia, como a linguagem que utilizam para se comunicar, se relacionar e
+                        interagir com os indivíduos e estímulos do seu ambiente.
+                    </p>
+                    <br>
+
+                    <p><strong>A PERSONALIDADE FELINA É INFLUENCIADA POR TRÊS FATORES PRINCIPAIS:</strong>
+                        <br><br>
+                    <p><strong>Genética:</strong>
+                        Representa até 30% da personalidade do gato, incluindo traços
+                        herdados de seus pais e da raça.
+                        <strong>Socialização:</strong>
+                         O período crítico ocorre entre 2 e 7 semanas de vida, quando o
+                        filhote aprende a reconhecer seres humanos, outros animais e diferentes
+                        ambientes.
+                        <strong>Aprendizagem:</strong> 
+                        Experiências vividas e o ambiente em que o gato é criado
+                        moldam seu comportamento ao longo do tempo
+                    </p>
+    
+                    <br>
+                    <p><Strong>A PERSONALIDADE DO GATO DE ACORDO COM A IDADE:</Strong></p>
+                    <br>
+                    <p><strong>• Filhotes:</strong> São curiosos, brincalhões e estão em fase de aprendizado e
+                        socialização.
+                        <br>
+                        <strong>• Adultos:</strong> Tendem a ser mais calmos e estabelecem rotinas mais definidas. <br>
+                        <strong> • Idosos:</strong> Podem apresentar comportamentos mais reservados e menos ativos,
+                        refletindo mudanças naturais da idade. <br>
+                        Assim, cada gato pode apresentar uma personalidade única, mesmo quando
+                        falamos de indivíduos irmãos que foram criados juntos e tiveram experiências
+                        semelhantes.
+                    </p>
+                    <br>
+
+                    <p><Strong>COMPORTAMENTO DOS GATOS FILHOTES:</Strong></p>
+                    <br>
+                    <p>Nos primeiros dias de vida, os filhotes dependem totalmente da mãe. A partir dos 9 a
+                        15 dias, começam a explorar o ambiente e interagir com estímulos. Durante o período
+                        de socialização, entre duas a sete semanas, é crucial proporcionar experiências
+                        positivas com pessoas, outros animais e diferentes ambientes para evitar o
+                        desenvolvimento de medos ou comportamentos indesejados.
+                    </p>
+                    <br>
+                    <p><strong>COMPORTAMENTO DOS GATOS COM HUMANOS:</strong></p><br>
+                    <p>Os gatos reconhecem seus tutores como parte de seu grupo social. Embora sejam mais
+                        independentes que os cães, demonstram afeto e confiança de maneiras sutis, como
+                        esfregar-se nas pernas ou dormir próximo ao tutor. É importante respeitar o espaço do
+                        gato e interagir com ele quando ele desejar, evitando forçar contato.</p><br>
+
+                    <p><Strong>MATURIDADE SEXUAL: </Strong></p><br>
+                    <p>Mais tarde, a partir das 7 semanas de vida e até a puberdade, os felinos iniciam-se no
+                        período juvenil, que se caracteriza pelo aparecimento de comportamentos sexuais.
+                        Neste momento será essencial ir ao nosso veterinário para nos informar sobre os
+                        benefícios para a saúde que a castração dos gatos representa, como a prevenção de
+                        certos tipos de câncer ou a marcação com urina dentro de casa.</p><br>
+
+                    <p><strong>COMPORTAMENTO DOS GATOS NO CIO:</strong></p><br>
+                    <p>Durante o cio, os gatos podem apresentar comportamentos como vocalizações
+                        intensas, nervosismo, agressividade, tremores, esfregação, aumento da atividade
+                        sexual e marcação territorial com urina. É recomendável a castração para evitar esses
+                        comportamentos e contribuir para o controle populacional de felinos.</p>
+
+
+                </div>
+            </div>
+        </div>
+
+        <div id="modal-higiene" class="modal-overlay">
+            <div class="modal-content">
+
+
+                <div class="modal-left bg-higiene">
+                    <i class="fas fa-shower modal-icon"></i>
+                    <h2>Higiene e Conforto Felino</h2>
+                    <p>O segredo para um pelo brilhante e um lar limpo.</p>
+                </div>
+
+                <div class="modal-right">
+                    <h3>Cuidados </h3>
+                    <p><strong>ALIMENTAÇÃO E HIDRATAÇÃO:</strong></p>
+                    <br>
+                    <p>Ofereça ração ou comida úmida de alta qualidade, priorizando proteínas animais.
+                        Mantenha os recipientes de comida e água sempre limpos. Troque a água várias vezes
+                        ao dia para garantir frescor e evitar problemas de saúde.</p>
+                    <br>
+                    <p><strong>ESCOVAÇÃO DO PELO:</strong></p><br>
+                    <p>A escovação diária do pelo do gato mantém a pele e a pelagem saudáveis, previne nós
+                        e problemas de pele, ajuda a reduzir bolas de pelo e mantém a casa mais limpa. É
+                        importante escolher a escova adequada conforme o tipo de pelo do felino.</p> <br>
+
+                    <p><strong>UNHAS E HIGIENE DENTAL:</strong></p>
+                    <br>
+                    <p>Proporcione arranhadores para que seu gato possa afiar as unhas. Verifique
+                        regularmente se estão em bom estado e, se necessário, leve-o ao veterinário para
+                        apará-las. Quanto à higiene dental, ofereça brinquedos e petiscos específicos para
+                        ajudar na limpeza dos dentes. É recomendável também escovar os dentes do seu gato
+                        com produtos adequados.
+                    </p>
+                    <br>
+
+                    <p><strong>CAIXA DE AREIA:</strong></p>
+                    <br>
+                    <p>Mantenha a caixa de areia limpa, retirando fezes e urina regularmente. Utilize areia
+                        aglomerante para facilitar a limpeza e escolha modelos de caixas que sejam fáceis de
+                        higienizar.
+                    </p>
+                    <br>
+
+                    <p><strong>BANHO:</strong></p>
+                    <br>
+                    <p>Embora os gatos se limpem sozinhos, banhos ocasionais podem ser necessários. Use
+                        produtos específicos para gatos e evite banhos frequentes, devemos dar-lhe banho de
+                        vez em quando, no máximo duas vezes por mês. Limpeza com esponjas úmidas
+                        também é uma alternativa para manter a higiene sem estressá-lo.</p>
+                    <br>
+
+                    <p><strong>LIMPEZA DOS OLHOS E OUVIDOS:</strong>
+                        <br>
+                    <p>Limpe os olhos do seu gato regularmente para prevenir secreções excessivas. Para os
+                        ouvidos, utilize gaze estéril umedecida com soro fisiológico uma vez por semana para
+                        evitar acúmulo de sujeira e prevenir otites.</p> <br>
+
+                    <p><strong>EXERCÍCIO E ESTÍMULO MENTAL:</strong></p> <br>
+                    <p>Proporcione brinquedos e atividades que estimulem o exercício físico e mental do seu
+                        gato, brinque com ele por longos períodos diários e construa jogos divertidos e
+                        circuitos com caixas, cordas, presas e outros brinquedos ideais para os felinos. Isso
+                        ajuda a prevenir comportamentos indesejados e mantém seu gato saudável e feliz.</p>
+
+
+                </div>
+            </div>
+        </div>
+
+        <div id="modal-saude" class="modal-overlay">
+            <div class="modal-content">
+
+
+                <div class="modal-left bg-saude">
+                    <i class="fas fa-heartbeat modal-icon"></i>
+                    <h2>Saúde, Prevenção e Longevidade</h2>
+                    <p>Cuidado constante é a chave para a vida plena do seu companheiro.</p>
+                </div>
+
+                <div class="modal-right">
+                    <h3>Veterinário, Vacinas e Prevenção</h3>
+                    <p><strong>POR QUE É PRECISO VACINAR OS GATOS?:</strong></p>
+                    <br>
+                    <p>A vacinação é um método essencial, eficaz e de baixo custo para o controle de doenças
+                        infecciosas, evitando que os animais sofram com patologias que poderiam ser evitadas
+                        ou seus sintomas mitigados. Os gatos possuem doenças infecciosas muito graves, que
+                        podem levá-los a óbito, e a vacina também evita a transmissão de doenças
+                        infectocontagiosas dos gatos para as pessoas, como a raiva. Dessa forma, a vacinação
+                        protege não só o animal, mas também seu tutor.</p><br>
+
+
+                    <p><strong>O QUE ACONTECE SE NÃO VACINAR O GATO?:</strong> </p> <br>
+                    <p>Caso o gato não receba as vacinas elaboradas para e espécie, ele ficará vulnerável às
+                        doenças infecciosas, como: <br>
+                        <strong> • Clamidiose</strong><br>
+                        <strong>• Raiva</strong><br>
+                        <strong>• Leucemia felina</strong><br>
+                        <strong>• Panleucopenia</strong><br>
+                        <strong>• Calicivirose</strong><br>
+                        <strong>• Dentre outras.</strong><br>
+                    </p>
+                    <br>
+                    <p><strong>QUAL 1° VACINA O GATO TEM QUE TOMAR?:</strong></p><br>
+                    <p>Caso o gato não seja testado para o vírus da leucemia felina e seja negativo, ele poderá
+                        iniciar seu calendário vacinal com a vacina quíntupla felina(V5), preparada a partir de
+                        vírus da: <br>
+                        <strong>• Rinotraqueíte felina</strong><br>
+                        <strong>• Calicivirose</strong><br>
+                        <strong>• Panleucopenia</strong><br>
+                        <strong>• Leucemia felina</strong><br>
+                        <strong>• Chlamydia psittaci.</strong><br>
+
+                    </p>
+                    <br>
+                    <p>Mas se o gatinho for portador do vírus da leucemia felina, ele deverá ser vacinado com
+                        a quádrupla felina(V4), que o imunizará contra a infecção pelo vírus da: <br>
+                        <strong>• Rinotraqueíte felina</strong><br>
+                        <strong>• Calicivírus felino</strong><br>
+                        <strong>• Vírus da panleucopenia felina</strong><br>
+                        <strong>• Chlamydia psittaci</strong><br>
+                    </p>
+                    <br>
+
+                    <p><Strong>DOENÇAS:</Strong></p><br>
+                    <p>informação sobre as doenças graves mais comuns nos gatos:</p> <br>
+                    <p><strong>LEUCEMIA FELINA:</strong></p> <br>
+                    <p> A leucemia felina é uma doença viral grave causada por um
+                        oncovírus, transmitido principalmente por contato com fluidos corporais, como
+                        saliva, urina, fezes e leite materno. É mais comum em filhotes, gatinhos jovens e
+                        em grandes grupos de gatos, como colônias de rua ou criações. A doença pode
+                        provocar tumores em diversos órgãos, inflamação dos gânglios, anorexia, perda
+                        de peso, anemia e depressão, podendo levar à morte. A prevenção inclui
+                        vacinação e evitar o contato com gatos infectados.</p>
+                    <br>
+
+                    <p><Strong> PANLEUCOPENIA FELINA:</Strong></p><br>
+                    <p>A panleucopenia felina é uma doença viral grave causada
+                        por um parvovírus, transmitida pelo contato com fluidos de gatos infectados.
+                        Afeta principalmente filhotes e gatinhos jovens, provocando sintomas como
+                        febre, vômitos, diarreia, fraqueza, desidratação, depressão e anorexia, além de
+                        redução dos glóbulos brancos. O tratamento envolve hidratação, antibióticos e
+                        cuidados de suporte, mas a doença pode ser fatal. A prevenção é feita por
+                        vacinação e evitando contato com gatos doentes.</p>
+                    <br>
+                    <p><Strong> RINOTRAQUEITE FELINA:</Strong></p><br>
+                    <p>A rinotraqueíte felina é uma doença viral causada por um
+                        herpesvírus que afeta o trato respiratório de gatos, principalmente os jovens
+                        não vacinados. Os sintomas incluem febre, espirros, coriza, conjuntivite,
+                        lacrimejamento e úlceras na córnea. A transmissão ocorre pelo contato com
+                        secreções nasais e saliva. Não há tratamento específico, apenas cuidados para
+                        aliviar os sintomas. Mesmo após a recuperação, gatos podem se tornar
+                        portadores do vírus. A prevenção é feita por vacinação.
+                    </p>
+                    <br>
+                    <p><Strong>CALICIVIROSE FELINO:</Strong></p><br>
+                    <p>A calicivirose felina é uma doença viral
+                        causada por um picornavírus, que afeta principalmente o sistema respiratório e
+                        a boca dos gatos. Os sintomas incluem espirros, febre, salivação excessiva e
+                        úlceras ou bolhas na boca e na língua. A doença tem alta mortalidade e, mesmo
+                        após a recuperação, os gatos podem se tornar portadores, transmitindo o vírus
+                        a outros animais.</p> <br>
+
+                    <p><Strong>PNEUMONITE FELINA:</Strong></p><br>
+                    <p>A pneumonite felina é causada pelo microrganismo
+                        Chlamydia psittaci, responsável por infecções respiratórias como rinites e
+                        conjuntivites. A transmissão ocorre pelo contato com fluidos e secreções de
+                        gatos infectados. Embora não seja mortal por si só, pode causar complicações
+                        graves se não for tratada. Os sintomas incluem lacrimejamento, conjuntivite,
+                        pálpebras avermelhadas e doloridas, secreção ocular amarelada ou esverdeada,
+                        espirros, febre, tosse, coriza e falta de apetite. O tratamento envolve
+                        antibióticos, cuidados oculares, repouso, dieta adequada e, quando necessário,
+                        fluidoterapia. A prevenção inclui vacinação em dia e evitar contato com gatos
+                        infectados</p><br>
+
+                    <p><Strong>IMUNODEFICIÊNCIA FELINA:</Strong></p><br>
+                    <p>A imunodeficiência felina é causada por um lentivírus,
+                        também chamado de aids felina. A transmissão ocorre principalmente por
+                        mordidas durante lutas ou reprodução, afetando principalmente gatos adultos
+                        não esterilizados. A doença causa depressão do sistema imunológico, tornando
+                        o gato suscetível a infecções secundárias, que podem levar à morte.
+                        Atualmente, não existe vacina eficaz, embora alguns gatos desenvolvam
+                        resistência natural ao vírus.
+                    </p> <br>
+
+                    <p><Strong>PERITONITE INFECCIOSA:</Strong></p><br>
+                    <p>A peritonite infecciosa felina (PIF) é causada por um
+                        coronavírus, que afeta principalmente gatos jovens e, ocasionalmente, idosos. A
+                        transmissão ocorre principalmente pelo contato com fezes de gatos infectados,
+                        sendo comum em locais com grande concentração de animais, como criadouros
+                        e colônias de rua. Os sintomas incluem febre, anorexia, aumento do volume
+                        abdominal e acúmulo de líquido na cavidade abdominal ou torácica, devido à
+                        inflamação das membranas das cavidades corporais. Não há cura para a
+                        doença, que é geralmente fatal, sendo o tratamento apenas sintomático. A
+                        prevenção envolve manter a vacinação em dia, reduzir o estresse do animal e
+                        evitar contato com gatos infectados.</p><br>
+
+                    <p><Strong>RAIVA:</Strong></p><br>
+                    <p>A raiva é uma doença viral transmitida entre mamíferos, incluindo
+                        humanos, sendo classificada como zoonose. A transmissão ocorre
+                        principalmente pela mordida de um animal infectado, através da saliva. Embora
+                        seja uma doença grave, a raiva foi controlada ou erradicada em muitas regiões
+                        graças à vacinação, que é obrigatória em diversos países.</p><br>
+
+                    <p><Strong>QUAIS VACINAS OS GATOS DEVEM TOMAR?</Strong></p><br>
+                    <p>Deve tomar duas doses da quíntupla felina, com intervalo de 21 dias. Além disso,
+                        precisa da vacina antirrábica aos 6 meses. Reforços anuais são necessários. <br>
+                        Já o gato portador do vírus da leucemia felina deve receber duas doses da
+                        quádrupla felina: a primeira aos 60 dias e a segunda após 21 dias. Também deve
+                        tomar a antirrábica aos 6 meses, com reforços anuais.</p> <br>
+
+
+                    <p><Strong>QUANTO CUSTA A VACINAÇÃO DE UM GATO?:</Strong></p><br>
+                    <p>O custo da vacinação de gatos varia conforme a região, mas em média a vacina
+                        quádrupla felina custa R$ 80,00 por dose, a quíntupla felina R$ 95,00 e a antirrábica
+                        pode ser gratuita em órgãos públicos de zoonoses ou cerca de R$ 60,00 em clínicas
+                        particulares.</p> <br>
+
+                    <p><Strong>QUAIS VACINAS O GATO DEVE TOMAR PARA VIAJAR DE AVIÃO:</Strong></p><br>
+                    <p>Para viagens de avião nacionais, o gato deve ter as vacinas quádrupla ou quíntupla
+                        e antirrábica atualizadas, além do Atestado de Saúde ou Certificado Sanitário. <br>
+                        Em viagens internacionais, é exigido o Certificado Veterinário Internacional (CVI) e,
+                        opcionalmente, o Passaporte para Trânsito de Cães e Gatos, emitidos pelo
+                        Ministério da Agricultura, Pecuária e Abastecimento, localizados nas Unidades do
+                        Sistema de Vigilância Agropecuária Internacional (VIGIAGRO) nos aeroportos.</p> <br>
+
+
+                    <p><Strong>QUAIS VACINAS OS GATOS DEVEM TOMAR PARA VIAJAR DE ONIBUS?</Strong></p><br>
+                    <p>As empresas de ônibus exigem o Atestado de Saúde, com data de emissão de até
+                        15 dias antes da viagem, e a carteira de vacinação atualizada.</p> <br>
+
+                    <p><Strong> EFEITOS ADVERSOS QUE AS VACINAS PODEM CAUSAR EM GATOS:</Strong></p><br>
+                    <p>Reações leves são esperadas e comuns: dor no local da aplicação, febre baixa,
+                        letargia. Reações mais sérias são raras como vômitos, inchaço facial, prurido, em
+                        casos de gatos alérgicos a algum componente da vacina.</p> <br>
+
+                    <p><Strong>VERMÍFUGO E ANTIPULGAS PARA GATOS:</Strong></p><br>
+                    <p>A vermifugação deve começar a partir dos 30 dias de vida e ser repetida após 21 dias,
+                        especialmente em filhotes. Animais resgatados devem receber a primeira dose
+                        imediatamente e a segunda 21 dias depois. Após o ciclo inicial, é recomendado exame
+                        de fezes em série (3 amostras em dias diferentes) para verificar se há vermes ou
+                        protozoários remanescentes e definir o tratamento mais adequado. <br>
+                        A prevenção contra pulgas e carrapatos deve ser feita mensalmente usando produtos
+                        aprovados para gatos. É importante verificar na embalagem a duração da proteção. A
+                        prevenção frequente é necessária porque esses parasitas podem causar incômodo e
+                        doenças, como alergias, anemia e parasitoses.</p><br>
+
+
+                    <p><Strong>CHECK-UP:</Strong></p><br>
+                    <p>Os felinos são mestres em esconder sinais de doença, o que pode fazer com que
+                        problemas de saúde avancem silenciosamente. Por isso, o check-up anual é
+                        fundamental para garantir uma vida longa e saudável ao seu bichano.
+                    </p> <br>
+
+
+
+                    <p><Strong>POR QUE CHECK-UP ANUAL É ESSENCIAL?</Strong></p><br>
+                    <p>O check-up anual é a maneira mais eficaz de detectar precocemente esses problemas e
+                        garantir um tratamento adequado. Algumas das doenças mais comuns em felinos,
+                        como doenças renais, diabetes e hipertensão, podem ser assintomáticas por muito
+                        tempo.</p> <br>
+
+
+                    <p><Strong>BENEFÍCIOS DO CHECK-UP ANUAL: </Strong></p><br>
+                    <p>
+                        <strong>• Detecção precoce de doenças – </strong>identifica problemas de saúde antes que
+                        fiquem graves. <br>
+                        <strong>• Acompanhamento nutricional – </strong>ajusta dieta e peso para manter a saúde do
+                        gato. <br>
+                        <strong>• Saúde bucal em dia –</strong> previne complicações como infecções e dificuldades para
+                        comer. <br>
+                        <strong>• Prevenção de parasitas –</strong> protege mesmo gatos que ficam dentro de casa. <br>
+                        <strong>• Atualização do protocolo de vacinação – </strong>garante proteção contra doenças
+                        graves.
+                    </p>
+                    <p><Strong>COM QUE FREQUÊNCIA MEU GATO DEVE FAZER CHECK-UPS?</Strong></p><br>
+                    <p>Gatos adultos (1 a 7 anos) – Devem passar por um check-up anual para monitoramento
+                        da saúde geral. <br>
+                        Gatos idosos (acima de 7 anos) – O ideal é que o check-up seja feito a cada seis meses,
+                        pois o risco de doenças aumenta com a idade.</p> <br>
+
+                    <p><Strong>PAPEL DO TUTOR NA SAÚDE DO GATO:</Strong></p><br>
+                    <p>O tutor deve observar sinais de alerta como mudanças no apetite ou peso, vômitos
+                        frequentes, dificuldade para urinar, pelagem sem brilho ou caída e comportamento
+                        diferente. Ao notar qualquer alteração, é importante levar o gato ao veterinário
+                        imediatamente.</p>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

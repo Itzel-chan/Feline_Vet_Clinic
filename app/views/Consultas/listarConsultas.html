@@ -1,0 +1,68 @@
+#{extends 'main.html' /}
+#{set title:'Listagem de consultas' /}
+
+
+<div class="filtro-container">
+    <h1>Filtragem</h1>
+    <div id="AGENDADA" class="filtro">Agendadas</div>
+    <div id="EM_ANDAMENTO" class="filtro">Em andamento</div>
+    <div id="FINALIZADA" class="filtro">Finalizadas</div>
+    <div id="TODAS" class="filtro">Todas</div>
+</div>
+
+
+
+<div class="cards">
+
+    #{list items: consultas, as: 'consulta' }
+
+<!-- Ok, vamo ver se coisa, tem q ter 3 consultas, uma em andamento, ota agendada e ota finalizada -->
+ <!-- Issu no BD, certo? -->
+  <!-- Vc pode mexer direto pela pagina do BD -> localhost:9000/@db-->
+
+    <div class="business-card">
+        <div class="card-left
+        ${consulta.situacaoConsulta == models.SituacaoConsulta.AGENDADA? 'AGENDADA' : ''}
+        ${consulta.situacaoConsulta == models.SituacaoConsulta.FINALIZADA? 'FINALIZADA' : ''}        
+        ">
+            <div class="logo-area">
+                <div class="logo-icon">FVC</div>
+            </div>
+        </div>
+
+        <div class="card-right">
+            <div class="name-position">
+                <h1 class="name">Consulta</h1>
+            </div>
+
+            <div class="contact-info">
+                <div class="info-item">
+                    <p>${consulta.dataAgendada.format("dd/MM/yyyy")}</p>
+                    <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <div class="info-item">
+                    <p>${consulta.pet.nome}</p>
+                    <i class="fas fa-globe"></i>
+                </div>
+                <div class="info-item">
+                    <p>${consulta.situacaoConsulta}</p>
+                    <i class="fas fa-envelope"></i>
+                </div>
+            </div>
+
+            <div class="iconeAgenda">
+                <i class="fas fa-calendar-alt"></i>
+            </div>
+
+            <div class="btns">
+            #{if session['adm']}
+                <a href="@{Consultas.agendar(consulta.id)}">Agendar</a>
+                <a href="@{Consultas.finalizarConsulta(consulta.id)}">Finalizar</a>
+                #{/if}
+                <a href="@{Consultas.desmarcar(consulta.id)}" class="desmarcar">Desmarcar</a>
+            </div>
+        </div>
+    </div>
+
+    #{/list}
+</div>

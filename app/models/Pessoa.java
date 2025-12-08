@@ -10,15 +10,31 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import org.postgresql.translation.messages_bg;
+
+import play.data.validation.Email;
+import play.data.validation.Max;
+import play.data.validation.Min;
+import play.data.validation.MinSize;
+import play.data.validation.Required;
 import play.db.jpa.Model;
 
 @Entity
 public class Pessoa extends Model {
 
+    @Required(message = "Nome obrigatório!")
+    @MinSize(value = 3, message = "No mínimo 3 caracteres!")
     public String nome;
-    public String telefone;
+   
+    @Required(message= "Email obrigatório!")
+    @Email(message = "Fomato inválido!")
     public String email;
+    
+    @Required(message = "Senha obrigatória!")
+    @MinSize(value= 4, message = "No mínimo 4 caracteres!")
     public String senha;
+    
+    public boolean IsAdm;
 
     @Enumerated(EnumType.STRING)
     public Situacao situacao;
