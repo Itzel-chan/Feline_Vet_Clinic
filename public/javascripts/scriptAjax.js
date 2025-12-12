@@ -49,6 +49,7 @@
              <div class="btns">
                 <a href="agendar?id=${lista[index].id}">Agendar</a>
                 <a href="finalizarConsulta?id=${lista[index].id}">Finalizar</a>
+                <a href="desmarcar?id=${lista[index].id}" class="desmarcar">Desmarcar</a>
 
             </div>
 
