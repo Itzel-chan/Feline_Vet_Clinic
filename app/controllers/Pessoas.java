@@ -76,6 +76,14 @@ public class Pessoas extends Controller {
 
         s.situacao = Situacao.INATIVA;
         s.save();
-        Logins.deslogar();
+
+        if (session.contains("adm")) {
+            listar(null);
+
+        } else {
+            Logins.deslogar();
+
+        }
+
     }
 }

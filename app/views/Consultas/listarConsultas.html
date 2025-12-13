@@ -16,10 +16,6 @@
 
     #{list items: consultas, as: 'consulta' }
 
-<!-- Ok, vamo ver se coisa, tem q ter 3 consultas, uma em andamento, ota agendada e ota finalizada -->
- <!-- Issu no BD, certo? -->
-  <!-- Vc pode mexer direto pela pagina do BD -> localhost:9000/@db-->
-
     <div class="business-card">
         <div class="card-left
         ${consulta.situacaoConsulta == models.SituacaoConsulta.AGENDADA? 'AGENDADA' : ''}
